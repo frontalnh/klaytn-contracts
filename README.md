@@ -13,12 +13,12 @@ If you find any security problems in the source code, please report it to develo
 
 The following packages should be installed before using this source code.
 
-* git
-* docker
-* Node v10.21.0
-* Truffle v5.1.61
-* ganache-cli v6.12.1
-* jq
+- git
+- docker
+- Node v10.21.0
+- Truffle v5.1.61
+- ganache-cli v6.12.1
+- jq
 
 # Package Installation
 
@@ -31,6 +31,7 @@ $ npm install -g ganache-cli@v6.12.1
 ```
 
 The package jq is also required. You can install jq by the following command in MacOS:
+
 ```bash
 $ brew install jq
 ```
@@ -77,7 +78,6 @@ $ npm run test:klaytn -- ./test/token/KIP7/KIP7.test.js
 ```
 
 # How to Deploy Contracts
-
 
 ## Deploying a contract to the local network
 
@@ -132,6 +132,7 @@ const secretAccessKey = "SECRET_KEY";
 ## Deploying a contract to Cypress
 
 ### Using an EN
+
 Update `privateKey` and `EN URL` in `baobab` of [truffle-config.js](./truffle-config.js).
 
 ```js

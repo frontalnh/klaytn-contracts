@@ -2,15 +2,15 @@
 
 pragma solidity ^0.5.6;
 
-import "../token/KIP17/IKIP17.sol";
-import "../token/KIP17/KIP17.sol";
-import "../token/KIP17/IKIP17Receiver.sol";
-import "../token/KIP17/IKIP17Metadata.sol";
-import "../token/KIP17/IKIP17Enumerable.sol";
-import "../utils/Address.sol";
-import "../utils/Context.sol";
+import "../../token/KIP17/IKIP17.sol";
+import "../../token/KIP17/KIP17.sol";
+import "../../token/KIP17/IKIP17Receiver.sol";
+import "../../token/KIP17/IKIP17Metadata.sol";
+import "../../token/KIP17/IKIP17Enumerable.sol";
+import "../../utils/Address.sol";
+import "../../GSN/Context.sol";
 import "./Strings.sol";
-import "../introspection/KIP13.sol";
+import "../../introspection/KIP13.sol";
 
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[KIP17] Non-Fungible Token Standard, including

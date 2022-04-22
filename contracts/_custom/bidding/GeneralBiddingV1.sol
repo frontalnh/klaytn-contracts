@@ -1,7 +1,7 @@
 pragma solidity ^0.5.6;
 
-import "../ownership/Ownable.sol";
-import "../token/KIP17/IKIP17.sol";
+import "../../ownership/Ownable.sol";
+import "../../token/KIP17/IKIP17.sol";
 import "./GeneralBidding.sol";
 import "../oldproxy/Initializable.sol";
 
@@ -72,10 +72,14 @@ contract GeneralBiddingV1 is Initializable, Ownable {
   }
 
   function bid(uint256 amount) external {
-    bool avail = _isWhiteListAddress(msg.sender) || _isPartnerHolder(msg.sender);
+    bool isWhiteListAddress_ = _isWhiteListAddress(msg.sender);
+    bool isParnerHolder_ = _isPartnerHolder(msg.sender);
+    bool avail = isWhiteListAddress_ || isParnerHolder_;
     require(avail, "Only the account in white list or partner NFT holders can bid.");
     require(remains >= amount, "No whitelist left.");
-    require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
+    if (isWhiteListAddress_) {
+      require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
+    }
     require(maxBidPerTx >= amount, "You can not bid that much.");
 
     winAddresses.push(msg.sender);
@@ -87,5 +91,9 @@ contract GeneralBiddingV1 is Initializable, Ownable {
   function withdrawMoney() external onlyOwner {
     (bool success, ) = msg.sender.call.value(address(this).balance)("");
     require(success, "Transfer failed.");
+  }
+
+  function getWinAddresses() external view returns (address[] memory) {
+    return winAddresses;
   }
 }

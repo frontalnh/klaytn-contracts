@@ -1,3 +1,7 @@
+// Custom Data Starts
+const NAMHOON_accessKeyId = "KASKNN6OZJA71UWQDKSBJOVD";
+const NAMHOON_secretAccessKey = "y4JMDOsrzCT8e8Blt8VBBRnl2wfyGPI0B0STtopM";
+// Custom Data Ends
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -21,13 +25,13 @@
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
-const fs = require('fs');
+const fs = require("fs");
 const path = require("path");
-const Caver = require('caver-js')
+const Caver = require("caver-js");
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
-const accessKeyId = "ACCESS_KEY";
-const secretAccessKey = "SECRET_KEY";
+const accessKeyId = NAMHOON_accessKeyId;
+const secretAccessKey = NAMHOON_secretAccessKey;
 
 const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
 const privateKey = "0x123";
@@ -53,64 +57,68 @@ module.exports = {
     //
     // for ganache
     development: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 8545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
-      gas: 80000000
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 8545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+      gas: 80000000,
     },
     klaytn: {
       provider: () => {
-        const pks = JSON.parse(fs.readFileSync(path.resolve(__dirname)+'/privateKeys.js'))
+        const pks = JSON.parse(fs.readFileSync(path.resolve(__dirname) + "/privateKeys.js"));
 
-        return new HDWalletProvider(pks, "http://localhost:8551", 0, pks.length)
+        return new HDWalletProvider(pks, "http://localhost:8551", 0, pks.length);
       },
-      network_id: '203', //Klaytn baobab testnet's network id
-      gas: '8500000',
-      gasPrice: null
+      network_id: "203", //Klaytn baobab testnet's network id
+      gas: "8500000",
+      gasPrice: null,
     },
     kasBaobab: {
       provider: () => {
         const option = {
           headers: [
-            { name: 'Authorization', value: 'Basic ' + Buffer.from(accessKeyId + ':' + secretAccessKey).toString('base64') },
-            { name: 'x-chain-id', value: '1001' }
+            { name: "Authorization", value: "Basic " + Buffer.from(accessKeyId + ":" + secretAccessKey).toString("base64") },
+            { name: "x-chain-id", value: "1001" },
           ],
           keepAlive: false,
-        }
-        return new HDWalletProvider(privateKey, new Caver.providers.HttpProvider("https://node-api.klaytnapi.com/v1/klaytn", option))
+        };
+        return new HDWalletProvider(privateKey, new Caver.providers.HttpProvider("https://node-api.klaytnapi.com/v1/klaytn", option));
       },
-      network_id: '1001', //Klaytn baobab testnet's network id
-      gas: '8500000',
-      gasPrice:'750000000000'
+      network_id: "1001", //Klaytn baobab testnet's network id
+      gas: "8500000",
+      gasPrice: "750000000000",
     },
     kasCypress: {
       provider: () => {
         const option = {
           headers: [
-            { name: 'Authorization', value: 'Basic ' + Buffer.from(accessKeyId + ':' + secretAccessKey).toString('base64') },
-            { name: 'x-chain-id', value: '8217' }
+            { name: "Authorization", value: "Basic " + Buffer.from(accessKeyId + ":" + secretAccessKey).toString("base64") },
+            { name: "x-chain-id", value: "8217" },
           ],
           keepAlive: false,
-        }
-        return new HDWalletProvider(cypressPrivateKey, new Caver.providers.HttpProvider("https://node-api.klaytnapi.com/v1/klaytn", option))
+        };
+        return new HDWalletProvider(cypressPrivateKey, new Caver.providers.HttpProvider("https://node-api.klaytnapi.com/v1/klaytn", option));
       },
-      network_id: '8217', //Klaytn baobab testnet's network id
-      gas: '8500000',
-      gasPrice:'750000000000'
+      network_id: "8217", //Klaytn baobab testnet's network id
+      gas: "8500000",
+      gasPrice: "750000000000",
     },
     baobab: {
-      provider: () => { return new HDWalletProvider(privateKey, "http://your.baobab.en:8551") },
-      network_id: '1001', //Klaytn baobab testnet's network id
-      gas: '8500000',
-      gasPrice: null
+      provider: () => {
+        return new HDWalletProvider(privateKey, "http://your.baobab.en:8551");
+      },
+      network_id: "1001", //Klaytn baobab testnet's network id
+      gas: "8500000",
+      gasPrice: null,
     },
     cypress: {
-      provider: () => { return new HDWalletProvider(privateKey, "http://your.cypress.en:8551") },
-      network_id: '8217', //Klaytn mainnet's network id
-      gas: '8500000',
-      gasPrice: null
-    }
-    
+      provider: () => {
+        return new HDWalletProvider(privateKey, "http://your.cypress.en:8551");
+      },
+      network_id: "8217", //Klaytn mainnet's network id
+      gas: "8500000",
+      gasPrice: null,
+    },
+
     // development: {
     //  host: "127.0.0.1",     // Localhost (default: none)
     //  port: 8545,            // Standard Ethereum port (default: none)
@@ -119,30 +127,30 @@ module.exports = {
 
     // Another network with more advanced options...
     // advanced: {
-      // port: 8777,             // Custom port
-      // network_id: 1342,       // Custom network
-      // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
-      // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
-      // from: <address>,        // Account to send txs from (default: accounts[0])
-      // websockets: true        // Enable EventEmitter interface for web3 (default: false)
+    // port: 8777,             // Custom port
+    // network_id: 1342,       // Custom network
+    // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
+    // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
+    // from: <address>,        // Account to send txs from (default: accounts[0])
+    // websockets: true        // Enable EventEmitter interface for web3 (default: false)
     // },
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-      // network_id: 3,       // Ropsten's id
-      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
+    // network_id: 3,       // Ropsten's id
+    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
+    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     // },
 
     // Useful for private networks
     // private: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-      // network_id: 2111,   // This network is yours, in the cloud.
-      // production: true    // Treats this network as if it was a public net. (default: false)
+    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
+    // network_id: 2111,   // This network is yours, in the cloud.
+    // production: true    // Treats this network as if it was a public net. (default: false)
     // }
   },
 
@@ -154,15 +162,16 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.5.6",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.5.6", // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      settings: {          // See the solidity docs for advice about optimization and evmVersion
+      settings: {
+        // See the solidity docs for advice about optimization and evmVersion
         optimizer: {
           enabled: true,
-          runs: 200
+          runs: 200,
         },
-        evmVersion: "constantinople"
-      }
-    }
-  }
-}
+        evmVersion: "constantinople",
+      },
+    },
+  },
+};

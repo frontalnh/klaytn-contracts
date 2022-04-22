@@ -1,7 +1,7 @@
 pragma solidity ^0.5.6;
 
-import "../ownership/Ownable.sol";
-import "../token/KIP17/IKIP17.sol";
+import "../../ownership/Ownable.sol";
+import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/TransparentUpgradeableProxy.sol";
 
 contract GeneralBidding is TransparentUpgradeableProxy, Ownable {

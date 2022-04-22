@@ -3,7 +3,6 @@
 pragma solidity ^0.5.6;
 
 import "./UpgradeableProxy.sol";
-import "./Initializable.sol";
 
 /**
  * @dev This contract implements a proxy that is upgradeable by an admin.
@@ -26,7 +25,7 @@ import "./Initializable.sol";
  * Our recommendation is for the dedicated account to be an instance of the {ProxyAdmin} contract. If set up this way,
  * you should think of the `ProxyAdmin` instance as the real administrative inerface of your proxy.
  */
-contract TransparentUpgradeableProxy is UpgradeableProxy, Initializable {
+contract TransparentUpgradeableProxy is UpgradeableProxy {
   /**
    * @dev Initializes an upgradeable proxy managed by `_admin`, backed by the implementation at `_logic`, and
    * optionally initialized with `_data` as explained in {UpgradeableProxy-constructor}.
@@ -35,13 +34,7 @@ contract TransparentUpgradeableProxy is UpgradeableProxy, Initializable {
     address _logic,
     address _admin,
     bytes memory _data
-  ) public payable UpgradeableProxy(_logic, _data) {}
-
-  function initialize(
-    address _logic,
-    address _admin,
-    bytes memory _data
-  ) public payable {
+  ) public payable UpgradeableProxy(_logic, _data) {
     assert(_ADMIN_SLOT == bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
     _setAdmin(_admin);
   }
@@ -154,27 +147,11 @@ contract TransparentUpgradeableProxy is UpgradeableProxy, Initializable {
     }
   }
 
-  event Log(string indexed str);
-
   /**
    * @dev Makes sure the admin cannot access the fallback function. See {Proxy-_beforeFallback}.
    */
-  // function _beforeFallback() internal {
-  //     require(msg.sender != _admin(), "TransparentUpgradeableProxy: admin cannot fallback to proxy target");
-  //     super._beforeFallback();
-  // }
   function _beforeFallback() internal {
-    // if (msg.sig == bytes4(keccak256("allowlistMint(uint256)"))) {
-    // bytes memory payload = abi.encodeWithSignature("startAllowlistSale(uint256)", 1000000000000000000);
-    // (bool success, bytes memory returnData) = address(_implementation()).call(payload);
-    // require(success);
-    // address[] memory addresses;
-    // addresses[0]=msg.sender;
-    // uint256[] memory numSlots;
-    // numSlots[0]=1;
-    // kip17.seedAllowlist(addresses,numSlots);
-    // }else{
-    //     revert("you can only call allowlistMint");
-    // }
+    require(msg.sender != _admin(), "TransparentUpgradeableProxy: admin cannot fallback to proxy target");
+    super._beforeFallback();
   }
 }
