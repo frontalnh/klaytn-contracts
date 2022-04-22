@@ -6,17 +6,6 @@ import "./GeneralBidding.sol";
 import "../oldproxy/Initializable.sol";
 
 contract GeneralBiddingV1 is Initializable, Ownable {
-  constructor(
-    uint256 totalSupply,
-    uint256 maxBidPerAddress,
-    uint256 maxBidPerTx_
-  ) public initializer {
-    _totalSupply = totalSupply;
-    _maxBidPerAddress = maxBidPerAddress;
-    remains = totalSupply;
-    maxBidPerTx = maxBidPerTx_;
-  }
-
   // ---------- proxy status start ----------
   mapping(address => uint256) public whitelistAmount;
   address[] public whitelist;
@@ -29,10 +18,10 @@ contract GeneralBiddingV1 is Initializable, Ownable {
   uint256[] public minHolds;
 
   uint256 public _totalSupply; // total supply
-  uint256 public remains; // remain amount
+  uint256 public _remains; // remain amount
 
   uint256 public _maxBidPerAddress;
-  uint256 maxBidPerTx;
+  uint256 public _maxBidPerTx;
 
   // ---------- proxy status end ----------
 
@@ -76,14 +65,14 @@ contract GeneralBiddingV1 is Initializable, Ownable {
     bool isParnerHolder_ = _isPartnerHolder(msg.sender);
     bool avail = isWhiteListAddress_ || isParnerHolder_;
     require(avail, "Only the account in white list or partner NFT holders can bid.");
-    require(remains >= amount, "No whitelist left.");
+    require(_remains >= amount, "No whitelist left.");
     if (isWhiteListAddress_) {
       require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
     }
-    require(maxBidPerTx >= amount, "You can not bid that much.");
+    require(_maxBidPerTx >= amount, "You can not bid that much");
 
     winAddresses.push(msg.sender);
-    remains = remains - amount;
+    _remains = _remains - amount;
     winAmounts[msg.sender] = winAmounts[msg.sender] + amount;
     whitelistAmount[msg.sender] = whitelistAmount[msg.sender] - amount;
   }

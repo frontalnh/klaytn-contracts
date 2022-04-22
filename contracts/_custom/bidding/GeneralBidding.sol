@@ -8,11 +8,14 @@ contract GeneralBidding is TransparentUpgradeableProxy, Ownable {
   constructor(
     uint256 totalSupply,
     uint256 maxBidPerAddress,
+    uint256 maxBidPerTx,
     address _logic,
     address _admin
   ) public TransparentUpgradeableProxy(_logic, _admin, "") {
     _totalSupply = totalSupply;
     _maxBidPerAddress = maxBidPerAddress;
+    _maxBidPerTx = maxBidPerTx;
+    _remains = totalSupply;
   }
 
   // ---------- proxy status start ----------
@@ -27,10 +30,10 @@ contract GeneralBidding is TransparentUpgradeableProxy, Ownable {
   uint256[] public minHolds;
 
   uint256 public _totalSupply; // total supply
-  uint256 public remains; // remain amount
+  uint256 public _remains; // remain amount
 
   uint256 public _maxBidPerAddress;
-  uint256 maxBixPerTx;
+  uint256 public _maxBidPerTx;
 
   // ---------- proxy status end ----------
 }

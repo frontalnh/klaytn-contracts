@@ -15,16 +15,16 @@ contract("GeneralBiddingV1", function (accounts) {
 
     // 두개의 로직 컨트랙트 배포
     this.proxyAdmin = await ProxyAdmin.new();
-    this.logic1 = await GeneralBiddingV1.new(4000, 10, maxBidPerTx, { from: accounts[0] });
-    this.logic2 = await GeneralBiddingV1.new(4000, 10, maxBidPerTx, { from: accounts[0] });
+    this.logic1 = await GeneralBiddingV1.new({ from: accounts[0] });
+    this.logic2 = await GeneralBiddingV1.new({ from: accounts[0] });
 
     // 프록시 컨트랙트 배포
-
-    const proxy_ = await Proxy.new(totalSupply, maxBidPerAddress, this.logic1.address, this.proxyAdmin.address);
+    const proxy_ = await Proxy.new(totalSupply, maxBidPerAddress, maxBidPerTx, this.logic1.address, this.proxyAdmin.address, { from: accounts[0] });
     await this.proxyAdmin.upgrade(proxy_.address, this.logic1.address, { from: accounts[0] });
 
-    this.proxy = await GeneralBiddingV1.at(proxy_.address);
+    this.proxy = await GeneralBiddingV1.at(proxy_.address, { from: accounts[0] });
   });
+
   describe("bid", function () {
     it("add whitelist", async function () {
       // 화리 참여자 등록
@@ -33,6 +33,7 @@ contract("GeneralBiddingV1", function (accounts) {
       const result = await this.proxy.bid(1, { from: accounts[1] });
       console.log(await this.proxy.getWinAddresses());
     });
+
     it("add partner NFT holder", async function () {
       this.NFT1 = await GeneralKIP17Minimized.new("NFT1", "NFT1", 10, 10000, 100, 100, { from: accounts[0] });
       this.NFT2 = await GeneralKIP17Minimized.new("NFT2", "NFT2", 10, 10000, 100, 100, { from: accounts[0] });
@@ -44,7 +45,10 @@ contract("GeneralBiddingV1", function (accounts) {
 
       await this.NFT1.publicSaleMint(1, "1234", { from: accounts[2], value: "100000000000000000" });
       await this.NFT2.publicSaleMint(1, "1234", { from: accounts[2], value: "100000000000000000" });
-      await this.proxy.setPartnerNFT([this.NFT1.address, this.NFT2.address], [1, 1]);
+
+      console.log("owner: ", await this.proxy.owner());
+      console.log("account0: ", await accounts[0]);
+      await this.logic1.setPartnerNFT([this.NFT1.address, this.NFT2.address], [1, 1], { from: accounts[0] });
 
       await this.proxy.bid(1, { from: accounts[2] });
     });
