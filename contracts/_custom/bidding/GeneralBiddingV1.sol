@@ -25,7 +25,11 @@ contract GeneralBiddingV1 is Initializable, Ownable {
 
   // ---------- proxy status end ----------
 
-  function seedWhiteList(address[] calldata addresses, uint256[] calldata amounts) external {
+  function initialize() public initializer {
+    __Ownable_init();
+  }
+
+  function seedWhiteList(address[] calldata addresses, uint256[] calldata amounts) external onlyOwner {
     if (addresses.length != amounts.length) {
       revert("The length of addresses and amounts don't match.");
     }
@@ -64,7 +68,7 @@ contract GeneralBiddingV1 is Initializable, Ownable {
     bool isWhiteListAddress_ = _isWhiteListAddress(msg.sender);
     bool isParnerHolder_ = _isPartnerHolder(msg.sender);
     bool avail = isWhiteListAddress_ || isParnerHolder_;
-    require(avail, "Only the account in white list or partner NFT holders can bid.");
+    require(avail, "Only the account in whitelist or partner NFT holders can bid.");
     require(_remains >= amount, "No whitelist left.");
     if (isWhiteListAddress_) {
       require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
