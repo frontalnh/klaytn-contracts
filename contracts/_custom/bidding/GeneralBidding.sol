@@ -34,6 +34,7 @@ contract GeneralBidding is TransparentUpgradeableProxy, Ownable {
 
   uint256 public _maxBidPerAddress;
   uint256 public _maxBidPerTx;
+  uint256 public price;
 
   // ---------- proxy status end ----------
 }

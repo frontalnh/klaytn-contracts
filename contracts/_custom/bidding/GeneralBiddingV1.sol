@@ -22,11 +22,17 @@ contract GeneralBiddingV1 is Initializable, Ownable {
 
   uint256 public _maxBidPerAddress;
   uint256 public _maxBidPerTx;
+  uint256 public _price;
 
   // ---------- proxy status end ----------
 
-  function initialize() public initializer {
+  function initialize(uint256 price_) public initializer {
     __Ownable_init();
+    _price = price_;
+  }
+
+  function setPrice(uint256 price_) external {
+    _price = price_;
   }
 
   function seedWhiteList(address[] calldata addresses, uint256[] calldata amounts) external onlyOwner {
@@ -64,7 +70,7 @@ contract GeneralBiddingV1 is Initializable, Ownable {
     minHolds = minHolds_;
   }
 
-  function bid(uint256 amount) external {
+  function bid(uint256 amount) external payable {
     bool isWhiteListAddress_ = _isWhiteListAddress(msg.sender);
     bool isParnerHolder_ = _isPartnerHolder(msg.sender);
     bool avail = isWhiteListAddress_ || isParnerHolder_;
@@ -74,6 +80,7 @@ contract GeneralBiddingV1 is Initializable, Ownable {
       require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
     }
     require(_maxBidPerTx >= amount, "You can not bid that much");
+    require(msg.value >= _price * amount, "You should send more money");
 
     winAddresses.push(msg.sender);
     _remains = _remains - amount;
