@@ -3,8 +3,8 @@
 pragma solidity ^0.5.6;
 
 import "../../ownership/Ownable.sol";
-import "./ReentrancyGuard.sol";
-import "../KIP17/KIP17A.sol";
+import "../utils/ReentrancyGuard.sol";
+import "./KIP17A.sol";
 import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 
@@ -13,33 +13,36 @@ contract GeneralKIP17Minimized is Ownable, KIP17A, ReentrancyGuard {
   uint256 public amountForDevs;
   uint256 public amountForAuctionAndDev;
 
-  struct SaleConfig {
+  struct PublicSaleConfig {
+    bool open;
     uint32 publicSaleKey;
-    uint32 publicSaleStartTime;
-    uint32 publicSaleEndTime; // public sale end time
-    uint64 publicPrice;
-    uint256 publicSaleLimit;
+    uint32 startTime;
+    uint32 endTime;
+    uint64 price;
+    uint256 limit;
   }
 
-  struct AllowListSaleConfig {
+  struct AllowlistSaleConfig {
     uint256 price; // mint price for allow list accounts
+    uint32 startTime;
+    uint32 endTime;
   }
 
   struct HolderSaleConfig {
-    uint256 holderPrice;
-    // check nft holder
+    uint256 price;
     address[] nftContracts;
     uint256[] nftMinHolds;
-    uint256 mintLimit;
+    uint256 minMatchCondition;
+    uint256 limit;
+    uint32 startTime;
+    uint32 endTime;
   }
 
-  SaleConfig public saleConfig;
+  PublicSaleConfig public saleConfig;
   HolderSaleConfig public holderSaleConfig;
-  AllowListSaleConfig public allowListSaleConfig;
+  AllowlistSaleConfig public allowListSaleConfig;
 
   mapping(address => uint256) public allowlist;
-
-  uint256 public minMatchCondition = 2;
 
   constructor(
     string memory name_,
@@ -53,23 +56,6 @@ contract GeneralKIP17Minimized is Ownable, KIP17A, ReentrancyGuard {
     amountForAuctionAndDev = amountForAuctionAndDev_;
     amountForDevs = amountForDevs_;
     require(amountForAuctionAndDev_ <= collectionSize_, "larger collection size needed");
-  }
-
-  function startHolderSale(
-    uint256 holderPrice,
-    address[] calldata contracts,
-    uint256[] calldata minHolds,
-    uint256 mintLimit
-  ) external onlyOwner {
-    holderSaleConfig = HolderSaleConfig(holderPrice, contracts, minHolds, mintLimit);
-  }
-
-  function setMintMatchCondition(uint256 count) external {
-    minMatchCondition = count;
-  }
-
-  function endHolderSale() external onlyOwner {
-    holderSaleConfig.holderPrice = 0;
   }
 
   modifier callerIsUser() {
@@ -87,7 +73,7 @@ contract GeneralKIP17Minimized is Ownable, KIP17A, ReentrancyGuard {
       }
     }
 
-    require(minMatchCondition <= _matchCnt, "NFT hold condition not matched");
+    require(holderSaleConfig.minMatchCondition <= _matchCnt, "NFT hold condition not matched");
     _;
   }
 
@@ -116,27 +102,27 @@ contract GeneralKIP17Minimized is Ownable, KIP17A, ReentrancyGuard {
   }
 
   modifier holderSaleOn() {
-    require(holderSaleConfig.holderPrice != 0, "holder sale not in progress");
+    require(holderSaleConfig.price != 0, "holder sale not in progress");
     _;
   }
 
   // mint for user who owns specific NFT tokens
   function holderMint(uint256 amount) external payable callerIsUser matchNFTHoldCondition holderSaleOn {
-    uint256 price = uint256(holderSaleConfig.holderPrice);
+    uint256 price = holderSaleConfig.price * amount;
     require(price != 0, "holder sale has not begun yet");
     require(totalSupply() + amount <= collectionSize, "reached max supply");
-    require(balanceOf(msg.sender) + amount <= holderSaleConfig.mintLimit, "reached max mint count for NFT holders");
+    require(numberMinted(msg.sender) + amount <= holderSaleConfig.limit, "reached max mint count for NFT holders");
     _safeMint(msg.sender, amount);
     refundIfOver(price);
   }
 
   function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser {
-    SaleConfig memory config = saleConfig;
+    PublicSaleConfig memory config = saleConfig;
     uint256 publicSaleKey = uint256(config.publicSaleKey);
-    uint256 publicPrice = uint256(config.publicPrice);
-    uint256 publicSaleStartTime = uint256(config.publicSaleStartTime);
-    uint256 publicSaleEndTime = uint256(config.publicSaleEndTime);
-    uint256 publicSaleLimit = uint256(config.publicSaleLimit);
+    uint256 publicPrice = uint256(config.price);
+    uint256 publicSaleStartTime = uint256(config.startTime);
+    uint256 publicSaleEndTime = uint256(config.endTime);
+    uint256 publicSaleLimit = uint256(config.limit);
     require(publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
     require(isPublicSaleOn(publicPrice, publicSaleKey, publicSaleStartTime, publicSaleEndTime), "public sale has not begun yet");
     require(totalSupply() + quantity <= publicSaleLimit, "reached public sale limit");
@@ -169,11 +155,11 @@ contract GeneralKIP17Minimized is Ownable, KIP17A, ReentrancyGuard {
     uint32 publicSaleEndTime,
     uint256 publicSaleLimit
   ) external onlyOwner {
-    saleConfig = SaleConfig(publicSaleKey, publicSaleStartTime, publicSaleEndTime, publicPriceWei, publicSaleLimit);
+    saleConfig = PublicSaleConfig(true, publicSaleKey, publicSaleStartTime, publicSaleEndTime, publicPriceWei, publicSaleLimit);
   }
 
   function endPublicSale() external onlyOwner {
-    saleConfig.publicPrice = 0;
+    saleConfig.price = 0;
   }
 
   function setPublicSaleKey(uint32 key) external onlyOwner {

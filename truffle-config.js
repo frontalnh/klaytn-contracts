@@ -37,6 +37,9 @@ const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
 const privateKey = "0x123";
 const cypressPrivateKey = "0x456";
 
+const NAMHOON_TEST_WALLET = "0x23072A209e8519e515D11b0E49e15770F9c812Df";
+const NAMHOON_TEST_WALLET_PK = "0x1df474073516dc32bfe911894b8a47e8951805c0bfd64bafbcd9f3747d45abd5";
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -81,7 +84,7 @@ module.exports = {
           ],
           keepAlive: false,
         };
-        return new HDWalletProvider(privateKey, new Caver.providers.HttpProvider("https://node-api.klaytnapi.com/v1/klaytn", option));
+        return new HDWalletProvider(NAMHOON_TEST_WALLET_PK, new Caver.providers.HttpProvider("https://node-api.klaytnapi.com/v1/klaytn", option));
       },
       network_id: "1001", //Klaytn baobab testnet's network id
       gas: "8500000",

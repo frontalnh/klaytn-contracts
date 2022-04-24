@@ -9,7 +9,7 @@ import "../../token/KIP17/IKIP17Metadata.sol";
 import "../../token/KIP17/IKIP17Enumerable.sol";
 import "../../utils/Address.sol";
 import "../../GSN/Context.sol";
-import "./Strings.sol";
+import "../utils/Strings.sol";
 import "../../introspection/KIP13.sol";
 
 /**

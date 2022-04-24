@@ -24,6 +24,7 @@
     "test:klaytn": "truffle test --network klaytn",
     "deploy:klaytn": "truffle deploy --network klaytn",
     "deploy:baobab": "truffle deploy --network baobab",
+    "deploy:kasBaobab": "truffle deploy --network kasBaobab",
     "deploy:cypress": "truffle deploy --network cypress"
   },
   "dependencies": {

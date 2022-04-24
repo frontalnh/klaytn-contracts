@@ -4,8 +4,8 @@ pragma solidity ^0.5.6;
 
 import "../../ownership/Ownable.sol";
 import "./ReentrancyGuard.sol";
-import "./KIP17A.sol";
-import "./Strings.sol";
+import "../KIP17/KIP17A.sol";
+import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 
 contract GeneralKIP17 is Ownable, KIP17A, ReentrancyGuard {
