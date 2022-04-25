@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+import "../oldproxy/Initializable.sol";
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -9,15 +10,12 @@ pragma solidity ^0.5.0;
  * `onlyOwner`, which can be aplied to your functions to restrict their use to
  * the owner.
  */
-contract Ownable {
+contract OwnableUpgradable is Initializable {
   address payable private _owner;
 
   event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-  /**
-   * @dev Initializes the contract setting the deployer as the initial owner.
-   */
-  constructor() internal {
+  function __Ownable_init() internal initializer {
     _owner = msg.sender;
     emit OwnershipTransferred(address(0), _owner);
   }

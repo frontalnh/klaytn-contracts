@@ -1,0 +1,538 @@
+{
+	"compiler": {
+		"version": "0.5.6+commit.b259423e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newImplementation",
+						"type": "address"
+					}
+				],
+				"name": "upgradeTo",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newImplementation",
+						"type": "address"
+					},
+					{
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "upgradeToAndCall",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "amountForAuctionAndDev",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "implementation",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "preSaleConfig",
+				"outputs": [
+					{
+						"name": "open",
+						"type": "bool"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"name": "limit",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "holderSaleConfig",
+				"outputs": [
+					{
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"name": "minMatchCondition",
+						"type": "uint256"
+					},
+					{
+						"name": "limit",
+						"type": "uint256"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "maxPerAddressDuringMint",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "changeAdmin",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "saleConfig",
+				"outputs": [
+					{
+						"name": "open",
+						"type": "bool"
+					},
+					{
+						"name": "publicSaleKey",
+						"type": "uint32"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"name": "price",
+						"type": "uint64"
+					},
+					{
+						"name": "limit",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "allowlistSaleConfig",
+				"outputs": [
+					{
+						"name": "open",
+						"type": "bool"
+					},
+					{
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "amountForDevs",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"name": "_logic",
+						"type": "address"
+					},
+					{
+						"name": "_admin",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "previousAdmin",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "AdminChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "Upgraded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {
+				"admin()": {
+					"details": "Returns the current admin.   * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyAdmin}.   * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call. `0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103`"
+				},
+				"changeAdmin(address)": {
+					"details": "Changes the admin of the proxy.   * Emits an {AdminChanged} event.   * NOTE: Only the admin can call this function. See {ProxyAdmin-changeProxyAdmin}."
+				},
+				"implementation()": {
+					"details": "Returns the current implementation.   * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.   * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call. `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`"
+				},
+				"isOwner()": {
+					"details": "Returns true if the caller is the current owner."
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.   * > Note: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"upgradeTo(address)": {
+					"details": "Upgrade the implementation of the proxy.   * NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}."
+				},
+				"upgradeToAndCall(address,bytes)": {
+					"details": "Upgrade the implementation of the proxy, and then call a function from the new implementation as specified by `data`, which should be an encoded function call. This is useful to initialize new storage variables in the proxied contract.   * NOTE: Only the admin can call this function. See {ProxyAdmin-upgradeAndCall}."
+				}
+			}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/_custom/KIP17/GKIP17.sol": "GKIP17"
+		},
+		"evmVersion": "constantinople",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/GSN/Context.sol": {
+			"keccak256": "0x90a3995645af7562d84b9d69363ffa5ae7217714ab61e951bf7bc450f40e4061",
+			"urls": [
+				"bzzr://51482c01bddf23793bddee43b60ab9578a62948a4f2082def24ea792a553b055"
+			]
+		},
+		"contracts/_custom/KIP17/GKIP17.sol": {
+			"keccak256": "0x2ce70f148dc479ff4df78dc21c318a550c599d9297b0bb2a062524c277bd5fe1",
+			"urls": [
+				"bzzr://eeb9d812231295cd195a589c46bff3d16625703e113485af687281a06988464c"
+			]
+		},
+		"contracts/_custom/KIP17/KIP17A.sol": {
+			"keccak256": "0xff15d28359d1f5c19237c9bc624cb7f69c987e1a632077f89421a98f3f6f1b46",
+			"urls": [
+				"bzzr://d3497dc3b78aa240a866a37ea92181b2ae1df3bea50c4fddd27c0bafb645cad0"
+			]
+		},
+		"contracts/_custom/oldproxy/Initializable.sol": {
+			"keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
+			"urls": [
+				"bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"
+			]
+		},
+		"contracts/_custom/oldproxy/Proxy.sol": {
+			"keccak256": "0x884da6e51d3137baf3e6f6bf41ed5b0c9938c010795222ba0d12fae0ba39e69c",
+			"urls": [
+				"bzzr://a2d681f83963a155a84c5e1542117e8d68d63f9c44436b5ebdd4efeec121dda0"
+			]
+		},
+		"contracts/_custom/oldproxy/TransparentUpgradeableProxy.sol": {
+			"keccak256": "0x97eae08524cab8dff91f72b5dba3bb81fa61508cd70f4b677d32d839e89ba189",
+			"urls": [
+				"bzzr://4751eff29e38df34709d44db7755a341424135e17fad8d81804d3d7d66cd6f6e"
+			]
+		},
+		"contracts/_custom/oldproxy/UpgradeableProxy.sol": {
+			"keccak256": "0xabcf38154774745e038dc4079ff3ec063352ad5a6975c8c02e3e77a2c5b96562",
+			"urls": [
+				"bzzr://78ba7817944395b86eb9c7fdc3c6e2447411ec3f579e51e34744b36a2ab7ea95"
+			]
+		},
+		"contracts/_custom/utils/ReentrancyGuard.sol": {
+			"keccak256": "0xe7167530a26b79b4c718615145c8638670d6cc2547463ec05f3c9d2e9901acc6",
+			"urls": [
+				"bzzr://f0280e7296b67087c400397497cf4a2af84b6014ebf7554389f255d60904cc73"
+			]
+		},
+		"contracts/_custom/utils/Strings.sol": {
+			"keccak256": "0x9f40210b4faa4cc52dc4a9e5b98207216055682470efb7e3a543280ed850726f",
+			"urls": [
+				"bzzr://13fae1612997d70d27df81c88d3254a2a9911baf53a96d28e368eac1c8062e7a"
+			]
+		},
+		"contracts/drafts/Counters.sol": {
+			"keccak256": "0x5eb69360d3441ab2ee799bd7c007cccbffb0896f12b2dfe1456193e2aa180a11",
+			"urls": [
+				"bzzr://ecd0352164978c418c8f5b0080c972b65e4b07f6afc593fb7cdd856185a458ea"
+			]
+		},
+		"contracts/introspection/IKIP13.sol": {
+			"keccak256": "0xf7415711dbec40bc633af7d8cb5c3c0bc3d1ed97fd8c13f795a03eb3073ea219",
+			"urls": [
+				"bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"
+			]
+		},
+		"contracts/introspection/KIP13.sol": {
+			"keccak256": "0x84681701e79f53ba1e9660b6a130bba31880d66cee996ab7d5567d239155c6da",
+			"urls": [
+				"bzzr://743958df51380e11b5e58092297c1e122582ade8d358010c733f27e175e7ca10"
+			]
+		},
+		"contracts/math/SafeMath.sol": {
+			"keccak256": "0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076",
+			"urls": [
+				"bzzr://292843005e754e752644f767477ec5ad7a1ffc91ddb18c38b8079c62f3993cad"
+			]
+		},
+		"contracts/ownership/Ownable.sol": {
+			"keccak256": "0xa738bb8fd54e05f69755d0a77a2d5be382264ab57bc9c0b3cbf4425a1f33ac56",
+			"urls": [
+				"bzzr://974c98184f8428ee37bb5b04503db82005166fdb82cd32207305e8facbd89c7a"
+			]
+		},
+		"contracts/token/KIP17/IERC721Receiver.sol": {
+			"keccak256": "0xadbfb7028fb0f851dc848a48b9e54e7c89ffd2c2edc12fa4ba9bb383dfaa83d9",
+			"urls": [
+				"bzzr://2466b6491600969dd9ffdeb0b705e7cecc38418aa215cec64b2481273bba9076"
+			]
+		},
+		"contracts/token/KIP17/IKIP17.sol": {
+			"keccak256": "0x0b30e5fe64932d8b9343c7897ebb7a0ac15a15577ce5ec1f18c3ba4396120de0",
+			"urls": [
+				"bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"
+			]
+		},
+		"contracts/token/KIP17/IKIP17Enumerable.sol": {
+			"keccak256": "0x5a6a02f871bfcf213445ac1c3625af470cbd25599f915f2bbc0b7df0ed998031",
+			"urls": [
+				"bzzr://f613649522f60a170ab6e4cc32b2087cb29d6bfba77680797cfa5467ffc8c356"
+			]
+		},
+		"contracts/token/KIP17/IKIP17Metadata.sol": {
+			"keccak256": "0xad2c2abcd4cb881620f297edcdf9cd491effc1ace2f12f468bf3546f940d1bf4",
+			"urls": [
+				"bzzr://f2de7f30fb22e7238dd752bbd1ac67648cc3f6236348a63d0224fbb659090d48"
+			]
+		},
+		"contracts/token/KIP17/IKIP17Receiver.sol": {
+			"keccak256": "0xf3dee67a4a395e20ad0459e1f255b9c563272d2fb6752e7421c1302cfcf00ff0",
+			"urls": [
+				"bzzr://28f7d1d507cc9f1377346b3c8a868b712a68b79dfe8888231b30671848b0a80b"
+			]
+		},
+		"contracts/token/KIP17/KIP17.sol": {
+			"keccak256": "0x3ffc95c0da23762b273dad189c551bc0591811ca96026b0da064464aa1f1ec4f",
+			"urls": [
+				"bzzr://6187953810079ca3e10048653d8de3c23991bd4e4df84ffd741f3b2c6f6766c7"
+			]
+		},
+		"contracts/utils/Address.sol": {
+			"keccak256": "0x823cd3a29dd4f710e9350f8e569f4db5bcd25a32257b7586c2603b5c205f1d76",
+			"urls": [
+				"bzzr://16eb37aaae6ccbccbadb24cc0722fcd69f45705d34ac439ec627327376d6ac09"
+			]
+		}
+	},
+	"version": 1
+}
