@@ -76,6 +76,7 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
     bool isWhiteListAddress_ = _isWhiteListAddress(msg.sender);
     bool isPartnerHolder_ = _isPartnerHolder(msg.sender);
     bool avail = isWhiteListAddress_ || isPartnerHolder_;
+    uint256 price = _price * amount;
     require(avail, "Only the account in whitelist or partner NFT holders can bid.");
     require(_remains >= amount, "No whitelist left.");
     if (isWhiteListAddress_) {
@@ -83,7 +84,7 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
     }
     require(_maxBidPerTx >= amount, "You can not bid that much");
     require(_maxBidPerAddress >= winAmounts[msg.sender] + amount, "Exceed max bid per account");
-    require(msg.value >= _price * amount, "You should send more money");
+    require(msg.value >= price, "You should send more money");
     require(block.timestamp >= _startTime, "Bidding has not started yet");
     require(block.timestamp <= _endTime, "Bidding has been ended");
     if (winAmounts[msg.sender] == 0) {
@@ -92,6 +93,14 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
     _remains = _remains - amount;
     winAmounts[msg.sender] = winAmounts[msg.sender] + amount;
     whitelistAmount[msg.sender] = whitelistAmount[msg.sender] - amount;
+    refundIfOver(price);
+  }
+
+  function refundIfOver(uint256 price) private {
+    require(msg.value >= price, "Need to send more ETH.");
+    if (msg.value > price) {
+      msg.sender.transfer(msg.value - price);
+    }
   }
 
   function withdrawMoney() external onlyOwner {
