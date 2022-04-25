@@ -112,11 +112,8 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
     return winAddresses;
   }
 
-  function setRemains(uint256 quantity) external onlyOwner {
-    _remains = quantity;
-  }
-
   function setTotalSupply(uint256 quantity) external onlyOwner {
     _totalSupply = quantity;
+    _remains = quantity;
   }
 }
