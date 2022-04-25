@@ -1,11 +1,11 @@
 pragma solidity ^0.5.6;
 
-import "../../ownership/Ownable.sol";
+import "../ownership/OwnableUpgradable.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "./GeneralBidding.sol";
 import "../oldproxy/Initializable.sol";
 
-contract GeneralBiddingV1 is Initializable, Ownable {
+contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
   // ---------- proxy status start ----------
   mapping(address => uint256) public whitelistAmount;
   address[] public whitelist;
@@ -72,14 +72,15 @@ contract GeneralBiddingV1 is Initializable, Ownable {
 
   function bid(uint256 amount) external payable {
     bool isWhiteListAddress_ = _isWhiteListAddress(msg.sender);
-    bool isParnerHolder_ = _isPartnerHolder(msg.sender);
-    bool avail = isWhiteListAddress_ || isParnerHolder_;
+    bool isPartnerHolder_ = _isPartnerHolder(msg.sender);
+    bool avail = isWhiteListAddress_ || isPartnerHolder_;
     require(avail, "Only the account in whitelist or partner NFT holders can bid.");
     require(_remains >= amount, "No whitelist left.");
     if (isWhiteListAddress_) {
       require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
     }
     require(_maxBidPerTx >= amount, "You can not bid that much");
+    require(_maxBidPerAddress >= winAmounts[msg.sender] + amount, "Exceed max bid per account");
     require(msg.value >= _price * amount, "You should send more money");
 
     winAddresses.push(msg.sender);
@@ -95,5 +96,13 @@ contract GeneralBiddingV1 is Initializable, Ownable {
 
   function getWinAddresses() external view returns (address[] memory) {
     return winAddresses;
+  }
+
+  function setRemains(uint256 quantity) external onlyOwner {
+    _remains = quantity;
+  }
+
+  function setTotalSupply(uint256 quantity) external onlyOwner {
+    _totalSupply = quantity;
   }
 }

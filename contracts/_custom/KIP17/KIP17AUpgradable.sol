@@ -3,14 +3,14 @@
 pragma solidity ^0.5.6;
 
 import "../../token/KIP17/IKIP17.sol";
-import "../../token/KIP17/KIP17.sol";
+import "./KIP17Upgradable.sol";
 import "../../token/KIP17/IKIP17Receiver.sol";
 import "../../token/KIP17/IKIP17Metadata.sol";
 import "../../token/KIP17/IKIP17Enumerable.sol";
 import "../../utils/Address.sol";
 import "../../GSN/Context.sol";
 import "../utils/Strings.sol";
-import "../../introspection/KIP13.sol";
+import "../introspection/KIP13Upgradable.sol";
 import "../oldproxy/Initializable.sol";
 
 /**
@@ -23,7 +23,7 @@ import "../oldproxy/Initializable.sol";
  *
  * Does not support burning tokens to address(0).
  */
-contract KIP17A is Context, KIP13, KIP17, IKIP17Metadata, IKIP17Enumerable {
+contract KIP17A is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Metadata, IKIP17Enumerable, Initializable {
   using Address for address;
   using Strings for uint256;
 
@@ -61,19 +61,17 @@ contract KIP17A is Context, KIP13, KIP17, IKIP17Metadata, IKIP17Enumerable {
   // Mapping from owner to operator approvals
   mapping(address => mapping(address => bool)) private _operatorApprovals;
 
-  /**
-   * @dev
-   * `maxBatchSize` refers to how much a minter can mint at a time.
-   * `collectionSize_` refers to how many tokens are in the collection.
-   */
-  constructor(
+  function __KIP17A_init(
     string memory name_,
     string memory symbol_,
     uint256 maxBatchSize_,
     uint256 collectionSize_
-  ) public {
+  ) internal initializer {
     require(collectionSize_ > 0, "KIP17A: collection must have a nonzero supply");
     require(maxBatchSize_ > 0, "KIP17A: max batch size must be nonzero");
+    __KIP13Upgradable_init();
+    __KIP17A_init(name_, symbol_, maxBatchSize_, collectionSize_);
+
     _name = name_;
     _symbol = symbol_;
     maxBatchSize = maxBatchSize_;
