@@ -193,7 +193,7 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Me
    * @dev See {IKIP17-approve}.
    */
   function approve(address to, uint256 tokenId) public {
-    address owner = KIP17A.ownerOf(tokenId);
+    address owner = KIP17AUpgradable.ownerOf(tokenId);
     require(to != owner, "KIP17A: approval to current owner");
 
     require(_msgSender() == owner || isApprovedForAll(owner, _msgSender()), "KIP17A: approve caller is not owner nor approved for all");
