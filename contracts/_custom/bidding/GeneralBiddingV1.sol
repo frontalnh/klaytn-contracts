@@ -2,7 +2,6 @@ pragma solidity ^0.5.6;
 
 import "../ownership/OwnableUpgradable.sol";
 import "../../token/KIP17/IKIP17.sol";
-import "./GeneralBidding.sol";
 import "../oldproxy/Initializable.sol";
 
 contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
@@ -23,6 +22,9 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
   uint256 public _maxBidPerAddress;
   uint256 public _maxBidPerTx;
   uint256 public _price;
+
+  uint32 public _startTime;
+  uint32 public _endTime;
 
   // ---------- proxy status end ----------
 
@@ -82,8 +84,11 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
     require(_maxBidPerTx >= amount, "You can not bid that much");
     require(_maxBidPerAddress >= winAmounts[msg.sender] + amount, "Exceed max bid per account");
     require(msg.value >= _price * amount, "You should send more money");
-
-    winAddresses.push(msg.sender);
+    require(block.timestamp >= _startTime, "Bidding has not started yet");
+    require(block.timestamp <= _endTime, "Bidding has been ended");
+    if (winAmounts[msg.sender] == 0) {
+      winAddresses.push(msg.sender);
+    }
     _remains = _remains - amount;
     winAmounts[msg.sender] = winAmounts[msg.sender] + amount;
     whitelistAmount[msg.sender] = whitelistAmount[msg.sender] - amount;

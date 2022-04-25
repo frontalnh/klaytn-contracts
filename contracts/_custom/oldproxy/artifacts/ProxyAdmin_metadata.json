@@ -219,12 +219,6 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/_custom/oldproxy/Initializable.sol": {
-			"keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
-			"urls": [
-				"bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"
-			]
-		},
 		"contracts/_custom/oldproxy/Proxy.sol": {
 			"keccak256": "0x884da6e51d3137baf3e6f6bf41ed5b0c9938c010795222ba0d12fae0ba39e69c",
 			"urls": [
@@ -250,9 +244,9 @@
 			]
 		},
 		"contracts/ownership/Ownable.sol": {
-			"keccak256": "0xa738bb8fd54e05f69755d0a77a2d5be382264ab57bc9c0b3cbf4425a1f33ac56",
+			"keccak256": "0x9afc6e5239b677246922fbae97acfb553e72d6163a6689697e269ba96557dc55",
 			"urls": [
-				"bzzr://974c98184f8428ee37bb5b04503db82005166fdb82cd32207305e8facbd89c7a"
+				"bzzr://2d894c6fd17edd5b56fa0805ffdf0a73491a584cfd53b5cb670a142cbc05fb77"
 			]
 		},
 		"contracts/utils/Address.sol": {
