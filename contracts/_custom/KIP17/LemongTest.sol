@@ -8,7 +8,7 @@ import "./KIP17A.sol";
 import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 
-contract Lemong is Ownable, KIP17A, ReentrancyGuard {
+contract LemongTest is Ownable, KIP17A, ReentrancyGuard {
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
   uint256 public amountForAuctionAndDev;

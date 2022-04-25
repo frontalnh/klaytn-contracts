@@ -23,7 +23,7 @@ import "../oldproxy/Initializable.sol";
  *
  * Does not support burning tokens to address(0).
  */
-contract KIP17A is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Metadata, IKIP17Enumerable, Initializable {
+contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Metadata, IKIP17Enumerable, Initializable {
   using Address for address;
   using Strings for uint256;
 

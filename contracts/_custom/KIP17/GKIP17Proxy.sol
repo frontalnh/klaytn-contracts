@@ -9,7 +9,7 @@ import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/TransparentUpgradeableProxy.sol";
 
-contract GKIP17 is Ownable, TransparentUpgradeableProxy {
+contract GKIP17Proxy is Ownable, TransparentUpgradeableProxy {
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
   uint256 public amountForAuctionAndDev;

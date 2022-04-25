@@ -4,12 +4,12 @@ pragma solidity ^0.5.6;
 
 import "../ownership/OwnableUpgradable.sol";
 import "../utils/ReentrancyGuardUpgradable.sol";
-import "./KIP17A.sol";
+import "./KIP17AUpgradable.sol";
 import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/Initializable.sol";
 
-contract GKIP17Impl is Initializable, OwnableUpgradable, KIP17A, ReentrancyGuardUpgradable {
+contract GKIP17Impl is Initializable, OwnableUpgradable, KIP17AUpgradable, ReentrancyGuardUpgradable {
   // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
