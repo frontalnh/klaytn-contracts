@@ -255,6 +255,25 @@
 			},
 			{
 				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "winAmounts",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
 				"inputs": [],
 				"name": "_maxBidPerTx",
 				"outputs": [
@@ -423,9 +442,9 @@
 	},
 	"sources": {
 		"contracts/_custom/bidding/GeneralBiddingProxy.sol": {
-			"keccak256": "0x635fc9c58c95345a799464ad552e508c77d0d6d50103d46bb4d406cf78a92c91",
+			"keccak256": "0x98465a9c2ce8f5a7fc12fe439667e5e3c50fef3342ae66151ed98ebfdce92162",
 			"urls": [
-				"bzzr://77e562f1a815d8c04c08567b0fdcba45a2544afee2c1612830ce09692f34aa80"
+				"bzzr://5a4a36e20d3023f1f2d034a55edf1218b6f56dbd6f505a56439f25c638e1db04"
 			]
 		},
 		"contracts/_custom/oldproxy/Proxy.sol": {

@@ -53,6 +53,20 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [],
+				"name": "_endTime",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -266,20 +280,6 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "setRemains",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
 						"name": "nftContracts_",
 						"type": "address[]"
 					},
@@ -334,6 +334,20 @@
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "_startTime",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -402,9 +416,9 @@
 	},
 	"sources": {
 		"contracts/_custom/bidding/GeneralBiddingV1.sol": {
-			"keccak256": "0x7a3da487bbe05936ec038cb88862ce76b7ba9a54e09ab168084c9facfba1886c",
+			"keccak256": "0xd98639679618d28a75d1c46d41a24cd90b505d57174c04da9eeeace78b7edd10",
 			"urls": [
-				"bzzr://10a0d240ce0e878326cbb3ad8459d88d3289a726a7c3d3fce2a81ab77e0392ba"
+				"bzzr://15f8ff066ef65520aad52c32ac2e2983ddeffccf523948ee272974d67a6e8a66"
 			]
 		},
 		"contracts/_custom/oldproxy/Initializable.sol": {
