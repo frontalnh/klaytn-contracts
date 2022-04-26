@@ -39,5 +39,6 @@ contract LemongBiddingProxy is TransparentUpgradeableProxy, Ownable {
   uint32 public _startTime;
   uint32 public _endTime;
   address internal _lemongAddress;
+  uint32 public _maxMintPerAddress;
   // ---------- proxy status end ----------
 }

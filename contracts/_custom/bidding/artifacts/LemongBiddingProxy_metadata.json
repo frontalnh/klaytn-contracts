@@ -42,19 +42,11 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "startTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "price_",
-						"type": "uint256"
+						"name": "newImplementation",
+						"type": "address"
 					}
 				],
-				"name": "startBidding",
+				"name": "upgradeTo",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -92,11 +84,15 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "amount",
-						"type": "uint256"
+						"name": "newImplementation",
+						"type": "address"
+					},
+					{
+						"name": "data",
+						"type": "bytes"
 					}
 				],
-				"name": "bid",
+				"name": "upgradeToAndCall",
 				"outputs": [],
 				"payable": true,
 				"stateMutability": "payable",
@@ -110,20 +106,6 @@
 					{
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "getWinAddresses",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address[]"
 					}
 				],
 				"payable": false,
@@ -171,6 +153,20 @@
 			{
 				"constant": false,
 				"inputs": [],
+				"name": "implementation",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
 				"name": "renounceOwnership",
 				"outputs": [],
 				"payable": false,
@@ -211,6 +207,20 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "changeAdmin",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "isOwner",
@@ -222,20 +232,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "price_",
-						"type": "uint256"
-					}
-				],
-				"name": "setPrice",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -258,47 +254,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "maxBidPerAddress_",
-						"type": "uint256"
-					}
-				],
-				"name": "setMaxBidPerAddress",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "addresses",
-						"type": "address[]"
-					},
-					{
-						"name": "amounts",
-						"type": "uint256[]"
-					}
-				],
-				"name": "seedWhiteList",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "withdrawMoney",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "_maxBidPerAddress",
@@ -310,56 +265,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "nftContracts_",
-						"type": "address[]"
-					},
-					{
-						"name": "minHolds_",
-						"type": "uint256[]"
-					}
-				],
-				"name": "setPartnerNFT",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "maxBidPerTx_",
-						"type": "uint256"
-					}
-				],
-				"name": "setMaxBidPerTx",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "price_",
-						"type": "uint256"
-					},
-					{
-						"name": "lemongAddress_",
-						"type": "address"
-					}
-				],
-				"name": "initialize",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -392,14 +297,14 @@
 			},
 			{
 				"constant": false,
-				"inputs": [
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
 					{
-						"name": "quantity",
-						"type": "uint256"
+						"name": "",
+						"type": "address"
 					}
 				],
-				"name": "setTotalSupply",
-				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -419,6 +324,38 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"name": "totalSupply",
+						"type": "uint256"
+					},
+					{
+						"name": "maxBidPerAddress",
+						"type": "uint256"
+					},
+					{
+						"name": "maxBidPerTx",
+						"type": "uint256"
+					},
+					{
+						"name": "_logic",
+						"type": "address"
+					},
+					{
+						"name": "_admin",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -434,10 +371,48 @@
 				],
 				"name": "OwnershipTransferred",
 				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "previousAdmin",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "AdminChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "Upgraded",
+				"type": "event"
 			}
 		],
 		"devdoc": {
 			"methods": {
+				"admin()": {
+					"details": "Returns the current admin.   * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyAdmin}.   * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call. `0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103`"
+				},
+				"changeAdmin(address)": {
+					"details": "Changes the admin of the proxy.   * Emits an {AdminChanged} event.   * NOTE: Only the admin can call this function. See {ProxyAdmin-changeProxyAdmin}."
+				},
+				"implementation()": {
+					"details": "Returns the current implementation.   * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.   * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call. `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`"
+				},
 				"isOwner()": {
 					"details": "Returns true if the caller is the current owner."
 				},
@@ -449,6 +424,12 @@
 				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"upgradeTo(address)": {
+					"details": "Upgrade the implementation of the proxy.   * NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}."
+				},
+				"upgradeToAndCall(address,bytes)": {
+					"details": "Upgrade the implementation of the proxy, and then call a function from the new implementation as specified by `data`, which should be an encoded function call. This is useful to initialize new storage variables in the proxied contract.   * NOTE: Only the admin can call this function. See {ProxyAdmin-upgradeAndCall}."
 				}
 			}
 		},
@@ -458,7 +439,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/_custom/bidding/LemongBiddingV1.sol": "LemongBiddingV1"
+			"contracts/_custom/bidding/LemongBiddingProxy.sol": "LemongBiddingProxy"
 		},
 		"evmVersion": "constantinople",
 		"libraries": {},
@@ -469,22 +450,28 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/_custom/bidding/LemongBiddingV1.sol": {
-			"keccak256": "0xccef90c71f272cf3007287feff8420295ad10497015659581f06d5f1c0a18c88",
+		"contracts/_custom/bidding/LemongBiddingProxy.sol": {
+			"keccak256": "0x0f8b9ddf5d3aef9e6d5f1b2cc246f814fe4dd4a7b2fcfb56a994c2ab95964e37",
 			"urls": [
-				"bzzr://fe350be005f02d076eacf1dd9f4ecdd4200840ce35f70d159d6253c94eb91e6e"
+				"bzzr://346b216fd919d9ef12e1d000c445c71ffe7d833ba7210441e858471b608f56b6"
 			]
 		},
-		"contracts/_custom/oldproxy/Initializable.sol": {
-			"keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
+		"contracts/_custom/oldproxy/Proxy.sol": {
+			"keccak256": "0x884da6e51d3137baf3e6f6bf41ed5b0c9938c010795222ba0d12fae0ba39e69c",
 			"urls": [
-				"bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"
+				"bzzr://a2d681f83963a155a84c5e1542117e8d68d63f9c44436b5ebdd4efeec121dda0"
 			]
 		},
-		"contracts/_custom/ownership/OwnableUpgradable.sol": {
-			"keccak256": "0x2a797055543cebb453e5df26ad6346688c197787ed7f93ad51e570e4d61e513b",
+		"contracts/_custom/oldproxy/TransparentUpgradeableProxy.sol": {
+			"keccak256": "0x97eae08524cab8dff91f72b5dba3bb81fa61508cd70f4b677d32d839e89ba189",
 			"urls": [
-				"bzzr://2f3e0b2401f55d6781caef8cfb2052cc7ba333e1cb36e236a51277e12eba6b67"
+				"bzzr://4751eff29e38df34709d44db7755a341424135e17fad8d81804d3d7d66cd6f6e"
+			]
+		},
+		"contracts/_custom/oldproxy/UpgradeableProxy.sol": {
+			"keccak256": "0xabcf38154774745e038dc4079ff3ec063352ad5a6975c8c02e3e77a2c5b96562",
+			"urls": [
+				"bzzr://78ba7817944395b86eb9c7fdc3c6e2447411ec3f579e51e34744b36a2ab7ea95"
 			]
 		},
 		"contracts/introspection/IKIP13.sol": {
@@ -493,10 +480,22 @@
 				"bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"
 			]
 		},
+		"contracts/ownership/Ownable.sol": {
+			"keccak256": "0x9afc6e5239b677246922fbae97acfb553e72d6163a6689697e269ba96557dc55",
+			"urls": [
+				"bzzr://2d894c6fd17edd5b56fa0805ffdf0a73491a584cfd53b5cb670a142cbc05fb77"
+			]
+		},
 		"contracts/token/KIP17/IKIP17.sol": {
 			"keccak256": "0x0b30e5fe64932d8b9343c7897ebb7a0ac15a15577ce5ec1f18c3ba4396120de0",
 			"urls": [
 				"bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"
+			]
+		},
+		"contracts/utils/Address.sol": {
+			"keccak256": "0x823cd3a29dd4f710e9350f8e569f4db5bcd25a32257b7586c2603b5c205f1d76",
+			"urls": [
+				"bzzr://16eb37aaae6ccbccbadb24cc0722fcd69f45705d34ac439ec627327376d6ac09"
 			]
 		}
 	},

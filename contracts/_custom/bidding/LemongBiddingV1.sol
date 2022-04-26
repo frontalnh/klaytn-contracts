@@ -30,12 +30,31 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
   uint32 public _startTime;
   uint32 public _endTime;
   address internal _lemongAddress;
+  uint32 public _maxMintPerAddress;
 
   // ---------- proxy status end ----------
 
-  function initialize(uint256 price_, address lemongAddress_) public initializer {
+  function initialize(
+    uint256 price_,
+    address lemongAddress_,
+    uint256 maxBidPerAddress_,
+    uint256 maxBidPerTx_,
+    uint32 maxMintPerAddress_
+  ) public initializer {
     __Ownable_init();
+    _price = price_;
     _lemongAddress = lemongAddress_;
+    _maxBidPerAddress = maxBidPerAddress_;
+    _maxBidPerTx = maxBidPerTx_;
+    _maxMintPerAddress = maxMintPerAddress_;
+  }
+
+  function setMaxBidPerAddress(uint256 maxBidPerAddress_) public onlyOwner {
+    _maxBidPerAddress = maxBidPerAddress_;
+  }
+
+  function setMaxBidPerTx(uint256 maxBidPerTx_) public onlyOwner {
+    _maxBidPerTx = maxBidPerTx_;
   }
 
   function setPrice(uint256 price_) external {
@@ -93,7 +112,7 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
     require(block.timestamp >= _startTime, "Bidding has not started yet");
     require(block.timestamp <= _endTime, "Bidding has been ended");
     uint256 minted = ILemong(_lemongAddress).numberMinted(msg.sender);
-    require(minted <= 10, "You can mint up to 10 NFT");
+    require(minted <= _maxMintPerAddress, "You can not mint anymore. Check how many LEMONG NFT did you mint.");
     if (winAmounts[msg.sender] == 0) {
       winAddresses.push(msg.sender);
     }
