@@ -87,6 +87,7 @@ contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
     require(msg.value >= price, "You should send more money");
     require(block.timestamp >= _startTime, "Bidding has not started yet");
     require(block.timestamp <= _endTime, "Bidding has been ended");
+
     if (winAmounts[msg.sender] == 0) {
       winAddresses.push(msg.sender);
     }
