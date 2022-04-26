@@ -14,7 +14,7 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
   address[] public whitelist;
 
   address[] public winAddresses;
-  mapping(address => uint256) winAmounts;
+  mapping(address => uint256) public winAmounts;
 
   // Partner NFT holder match
   address[] public nftContracts;
