@@ -33,10 +33,9 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
 
   // ---------- proxy status end ----------
 
-  function initialize(uint256 price_) public initializer {
+  function initialize(uint256 price_, address lemongAddress_) public initializer {
     __Ownable_init();
-    _price = price_;
-    _lemongAddress = 0x548d32825A35921251002e075dF74221b695b5D6;
+    _lemongAddress = lemongAddress_;
   }
 
   function setPrice(uint256 price_) external {
@@ -123,5 +122,15 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
   function setTotalSupply(uint256 quantity) external onlyOwner {
     _totalSupply = quantity;
     _remains = quantity;
+  }
+
+  function startBidding(
+    uint32 startTime_,
+    uint32 endTime_,
+    uint256 price_
+  ) external onlyOwner {
+    _startTime = startTime_;
+    _endTime = endTime_;
+    _price = price_;
   }
 }
