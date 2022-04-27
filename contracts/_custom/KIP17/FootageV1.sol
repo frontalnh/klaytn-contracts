@@ -116,7 +116,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
     require(numberMinted(msg.sender) + quantity <= maxPerAddressDuringMint, "can not mint this many");
     uint256 price = publicSaleConf.price * quantity;
-    require(price >= msg.value, "Need to send more KLAY");
+    require(msg.value >= price, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
     refundIfOver(price);
   }
