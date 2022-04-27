@@ -11,9 +11,6 @@ contract KIP17MetadataUpgradeable is KIP13Upgradeable, KIP17Upgradeable, IKIP17M
   // Token symbol
   string private _symbol;
 
-  // Optional mapping for token URIs
-  mapping(uint256 => string) private _tokenURIs;
-
   /*
    *     bytes4(keccak256('name()')) == 0x06fdde03
    *     bytes4(keccak256('symbol()')) == 0x95d89b41
@@ -49,42 +46,5 @@ contract KIP17MetadataUpgradeable is KIP13Upgradeable, KIP17Upgradeable, IKIP17M
    */
   function symbol() external view returns (string memory) {
     return _symbol;
-  }
-
-  /**
-   * @dev Returns an URI for a given token ID.
-   * Throws if the token ID does not exist. May return an empty string.
-   * @param tokenId uint256 ID of the token to query
-   */
-  function tokenURI(uint256 tokenId) external view returns (string memory) {
-    require(_exists(tokenId), "KIP17Metadata: URI query for nonexistent token");
-    return _tokenURIs[tokenId];
-  }
-
-  /**
-   * @dev Internal function to set the token URI for a given token.
-   * Reverts if the token ID does not exist.
-   * @param tokenId uint256 ID of the token to set its URI
-   * @param uri string URI to assign
-   */
-  function _setTokenURI(uint256 tokenId, string memory uri) internal {
-    require(_exists(tokenId), "KIP17Metadata: URI set of nonexistent token");
-    _tokenURIs[tokenId] = uri;
-  }
-
-  /**
-   * @dev Internal function to burn a specific token.
-   * Reverts if the token does not exist.
-   * Deprecated, use _burn(uint256) instead.
-   * @param owner owner of the token to burn
-   * @param tokenId uint256 ID of the token being burned by the msg.sender
-   */
-  function _burn(address owner, uint256 tokenId) internal {
-    super._burn(owner, tokenId);
-
-    // Clear metadata (if any)
-    if (bytes(_tokenURIs[tokenId]).length != 0) {
-      delete _tokenURIs[tokenId];
-    }
   }
 }

@@ -6,8 +6,12 @@ import "../ownership/OwnableUpgradeable.sol";
 import "../utils/ReentrancyGuardUpgradable.sol";
 import "../oldproxy/Initializable.sol";
 import "./KIP17TokenAUpgradeable.sol";
+import "../utils/Strings.sol";
+import "../reveal/RevealableUpgradeable.sol";
 
-contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable, ReentrancyGuardUpgradable {
+contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable, ReentrancyGuardUpgradable, RevealableUpgradeable {
+  using Strings for uint256;
+
   // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
@@ -187,5 +191,18 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   function withdrawMoney() external onlyOwner nonReentrant {
     (bool success, ) = msg.sender.call.value(address(this).balance)("");
     require(success, "Transfer failed.");
+  }
+
+  /**
+   * @dev See {IKIP17Metadata-tokenURI}.
+   */
+  function tokenURI(uint256 tokenId) public view returns (string memory) {
+    require(_exists(tokenId), "KIP17Metadata: URI query for nonexistent token");
+
+    string memory baseURI = _baseURI();
+    if (revealed) {
+      baseURI = _revealURI;
+    }
+    return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
   }
 }
