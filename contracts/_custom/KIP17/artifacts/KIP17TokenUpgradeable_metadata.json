@@ -876,9 +876,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
-			"keccak256": "0x1c3e2ab537be3c19590e22739d3c54dbf14130935f5c8e9016af7cc288c68e94",
+			"keccak256": "0xd0b8df4649558c3b3dacd1b730a60774eae8cc387230993e29c3d7c1a96ee2c3",
 			"urls": [
-				"bzzr://a327c00d398212f52089e739f36fd6f2c2f8b5e9af386c119fee880de1209d31"
+				"bzzr://afe2f6182290493c25d182b353aeff9997a58b0d97d7198f5e7144213b457910"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17EnumerableUpgradeable.sol": {
@@ -927,6 +927,12 @@
 			"keccak256": "0x6829ffa354738810aa016906451788a5bb02eb94b26b950a695dd86cb5f78ce5",
 			"urls": [
 				"bzzr://8bbd0edf91c4347482d2397870d14b96f16c9dfcfd06482b0256e2e14c2c8a25"
+			]
+		},
+		"contracts/_custom/introspection/KIP13Upgradeable.sol": {
+			"keccak256": "0x6c40bb75ebb71394bc8c0bcfdc29c71a32b0f13fc14769debb1fa6e46d6a9293",
+			"urls": [
+				"bzzr://ff74a16a9a76d2cd9ea56b350c51bc0657cccab33a32b7cbae9aebb432b24b7b"
 			]
 		},
 		"contracts/access/Roles.sol": {

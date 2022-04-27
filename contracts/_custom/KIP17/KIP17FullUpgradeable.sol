@@ -12,6 +12,8 @@ import "./KIP17MetadataUpgradeable.sol";
  */
 contract KIP17FullUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17MetadataUpgradeable {
   function __KIP17Full_init(string memory name, string memory symbol) public {
+    __KIP17_init();
+    __KIP17Enumerable_init();
     __KIP17Metadata_init(name, symbol);
     // solhint-disable-previous-line no-empty-blocks
   }

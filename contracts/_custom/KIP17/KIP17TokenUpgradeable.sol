@@ -16,5 +16,9 @@ contract KIP17TokenUpgradeable is
 {
   function __KIP17Token_init(string memory name, string memory symbol) internal {
     __KIP17Full_init(name, symbol);
+    __KIP17Mintable_init();
+    __KIP17MetadataMintable_init();
+    __KIP17Burnable_init();
+    __KIP17Pausable_init();
   }
 }
