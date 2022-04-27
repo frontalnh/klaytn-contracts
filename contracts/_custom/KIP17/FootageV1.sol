@@ -8,8 +8,9 @@ import "./KIP17AUpgradable.sol";
 import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/Initializable.sol";
+import "./KIP17TokenAUpgradeable.sol";
 
-contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, ReentrancyGuardUpgradable {
+contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable, ReentrancyGuardUpgradable {
   // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
@@ -39,6 +40,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reent
   PreSaleConf public preSaleConf;
   PublicSaleConf public publicSaleConf;
   AllowSaleConf public allowSaleConf;
+  mapping(address => uint256) private _numberMinted;
 
   // Storage End
 
@@ -50,7 +52,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reent
     uint256 amountForDevs_
   ) external initializer {
     __Ownable_init();
-    __KIP17A_init(name_, symbol_, maxBatchSize_, collectionSize_);
+    __KIP17TokenA_init(name_, symbol_, maxBatchSize_, collectionSize_);
     __ReentrancyGuard_init();
     maxPerAddressDuringMint = maxBatchSize_;
     amountForDevs = amountForDevs_;
@@ -80,8 +82,9 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reent
     require(preSaleConf.open == true, "Presale not in progress");
     uint256 price = preSaleConf.price * quantity_;
     require(msg.value >= price, "You should send more KLAY");
-    require(maxPerAddressDuringMint >= numberMinted(msg.sender) + quantity_, "Reached max allowed mint");
+    require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
     _safeMint(msg.sender, quantity_);
+    _increaseMinted(msg.sender, quantity_);
     refundIfOver(price);
   }
 
@@ -98,13 +101,15 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reent
     allowSaleConf.open = false;
   }
 
-  function allowlistMint(uint256 amount) external payable callerIsUser {
+  function allowlistMint(uint256 quantity_) external payable callerIsUser {
     require(allowSaleConf.open == true, "Allowlist sale not in progress");
-    uint256 price = uint256(allowSaleConf.price * amount);
-    require(allowSaleConf.allowlist[msg.sender] >= amount, "not eligible for allowlist mint");
-    require(totalSupply() + amount <= collectionSize, "reached max supply");
-    allowSaleConf.allowlist[msg.sender] = allowSaleConf.allowlist[msg.sender] - amount;
-    _safeMint(msg.sender, amount);
+    uint256 price = uint256(allowSaleConf.price * quantity_);
+    require(allowSaleConf.allowlist[msg.sender] >= quantity_, "not eligible for allowlist mint");
+    require(totalSupply() + quantity_ <= collectionSize, "reached max supply");
+    require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
+    allowSaleConf.allowlist[msg.sender] = allowSaleConf.allowlist[msg.sender] - quantity_;
+    _safeMint(msg.sender, quantity_);
+    _increaseMinted(msg.sender, quantity_);
     refundIfOver(price);
   }
 
@@ -114,11 +119,17 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reent
     require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "Public sale not in progress");
     require(totalSupply() + quantity <= publicSaleConf.limit, "reached public sale limit");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
-    require(numberMinted(msg.sender) + quantity <= maxPerAddressDuringMint, "can not mint this many");
+    require(_numberMinted[msg.sender] + quantity <= maxPerAddressDuringMint, "can not mint this many");
+    require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity, "Reached max allowed mint");
     uint256 price = publicSaleConf.price * quantity;
     require(msg.value >= price, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
+    _increaseMinted(msg.sender, quantity);
     refundIfOver(price);
+  }
+
+  function _increaseMinted(address address_, uint256 quantity) private {
+    _numberMinted[address_] = _numberMinted[address_] + quantity;
   }
 
   function refundIfOver(uint256 price) private {
@@ -179,13 +190,5 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reent
   function withdrawMoney() external onlyOwner nonReentrant {
     (bool success, ) = msg.sender.call.value(address(this).balance)("");
     require(success, "Transfer failed.");
-  }
-
-  function setOwnersExplicit(uint256 quantity) external onlyOwner nonReentrant {
-    _setOwnersExplicit(quantity);
-  }
-
-  function numberMinted(address owner) public view returns (uint256) {
-    return _numberMinted(owner);
   }
 }

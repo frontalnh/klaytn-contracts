@@ -37,6 +37,7 @@ contract KIP17EnumerableUpgradeable is KIP13Upgradeable, KIP17Upgradeable, IKIP1
     // register the supported interface to conform to KIP17Enumerable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_ENUMERABLE);
     __KIP13_init();
+    __KIP17_init();
   }
 
   /**
