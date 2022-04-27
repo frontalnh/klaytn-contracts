@@ -65,11 +65,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     _;
   }
 
-  modifier allowlistSaleOn() {
-    require(allowSaleConf.open == true, "Allowlist sale not in progress");
-    _;
-  }
-
   function openPreSale(
     uint32 startTime_,
     uint32 endTime_,
@@ -106,7 +101,8 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     allowSaleConf.open = false;
   }
 
-  function allowlistMint(uint256 amount) external payable callerIsUser allowlistSaleOn {
+  function allowlistMint(uint256 amount) external payable callerIsUser {
+    require(allowSaleConf.open == true, "Allowlist sale not in progress");
     uint256 price = uint256(allowSaleConf.price * amount);
     require(allowSaleConf.allowlist[msg.sender] >= amount, "not eligible for allowlist mint");
     require(totalSupply() + amount <= collectionSize, "reached max supply");
