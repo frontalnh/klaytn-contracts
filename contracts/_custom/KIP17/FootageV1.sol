@@ -14,7 +14,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
   uint256 public amountForAuctionAndDev;
-
   struct PreSaleConfig {
     bool open;
     uint32 startTime;
@@ -22,7 +21,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint256 price;
     uint256 limit;
   }
-
   struct PublicSaleConfig {
     bool open;
     uint32 publicSaleKey;
@@ -31,7 +29,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint64 price;
     uint256 limit;
   }
-
   struct AllowlistSaleConfig {
     bool open;
     uint256 price; // mint price for allow list accounts
@@ -40,7 +37,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     mapping(address => uint256) allowlist;
     uint256 limit;
   }
-
   PreSaleConfig public preSaleConf;
   PublicSaleConfig public publicSaleConf;
   AllowlistSaleConfig public allowSaleConf;
@@ -87,13 +83,9 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     preSaleConf.limit = limit_;
   }
 
-  modifier preSaleOn() {
-    require(preSaleConf.open == true, "Presale not in progress");
-    _;
-  }
-
-  function preSaleMint(uint256 quantity_) external payable onlyOwner preSaleOn {
+  function preSaleMint(uint256 quantity_) external payable onlyOwner {
     require(collectionSize >= totalSupply() + quantity_, "Reached collection size");
+    require(preSaleConf.open == true, "Presale not in progress");
     uint256 price = preSaleConf.price * quantity_;
     require(msg.value >= price, "You should send more KLAY");
     require(maxPerAddressDuringMint >= numberMinted(msg.sender) + quantity_, "Reached max allowed mint");
