@@ -435,15 +435,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17Upgradable_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "owner",
@@ -537,6 +528,15 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "__KIP17_init",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -974,27 +974,27 @@
 			]
 		},
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0xa465330f3c71fc766f8b848c132929d587e4085d0d6b07752f81ee83ebad610b",
+			"keccak256": "0xc141ab50d753f5397eb096cec34b66bc17c37f82b77d2d18d5a0093eb8dfe18f",
 			"urls": [
-				"bzzr://148d284b37949374ed648255aa7659e28d597db99a040cc17b537e28b1c976d5"
+				"bzzr://29afa9a713b836a08e65100037cfea24487f64461535d4d01b7fd5e6262b7022"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17AUpgradable.sol": {
-			"keccak256": "0x94e72675211138c9ebfdeb3c22d40bdfc1875180d5f06093f45cd0b0d074d9e1",
+			"keccak256": "0xd005f43daf91cc205eba34e381664a8156ac84db7b8509af568bd051a70c244b",
 			"urls": [
-				"bzzr://f326c2f934cd34ce5ad7c8c9868c020ce46fc8fe90b708d0f8e26b0ba5be707c"
+				"bzzr://9a1fdd6a052aac9d86de417f7f463c53beec785de298d0683966435c53354605"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradable.sol": {
-			"keccak256": "0x4e3e81217a9bf6fcdfdfe80a80601361ee69a0723fe5580d0dbaacf52d75515c",
+			"keccak256": "0x217670bf8ee77125c186935119df488f4c87e5bca4c5fba4b6b202e992404895",
 			"urls": [
-				"bzzr://c9b449fcc5dd202ddc3d712af79f2288dea046ff5355aa310caa177a274c75dd"
+				"bzzr://d3d24dc739b0a4dba1ed838e6b84bbeb0c8c11f28d55fea1e9d82511298974d5"
 			]
 		},
 		"contracts/_custom/introspection/KIP13Upgradable.sol": {
-			"keccak256": "0x41389bf2581f000970aeb4aa846bb4f26ff58c49d1a0b382623a4cbbe4828d6a",
+			"keccak256": "0xf344cab5bf58b52900b1f16541fba5d7935bacb7ebbf1eac33b591c8b6891be6",
 			"urls": [
-				"bzzr://5334ed9855982600a26bb59ea11fd31e13914b41f5bdd5e2849352de5d7e3852"
+				"bzzr://39d7b5312090117761627c260d7aa7b918e8cf10fae606ab04cd2a7b1e4bd0e4"
 			]
 		},
 		"contracts/_custom/oldproxy/Initializable.sol": {
