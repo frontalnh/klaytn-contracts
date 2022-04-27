@@ -9,7 +9,7 @@ import "../../introspection/IKIP13.sol";
  * Contracts may inherit from this and call `_registerInterface` to declare
  * their support of an interface.
  */
-contract KIP13Upgradable is IKIP13 {
+contract KIP13Upgradeable is IKIP13 {
   /*
    * bytes4(keccak256('supportsInterface(bytes4)')) == 0x01ffc9a7
    */
