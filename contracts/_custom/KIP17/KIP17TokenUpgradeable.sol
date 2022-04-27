@@ -7,7 +7,13 @@ import "./KIP17BurnableUpgradeable.sol";
 import "./KIP17PausableUpgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
 
-contract KIP17TokenUpgradeable is KIP17FullUpgradeable, KIP17MintableUpgradeable, KIP17MetadataMintableUpgradeable, KIP17BurnableUpgradeable, KIP17PausableUpgradeable, KIP17EnumerableUpgradeable {
+contract KIP17TokenUpgradeable is
+  KIP17FullUpgradeable,
+  KIP17MintableUpgradeable,
+  KIP17MetadataMintableUpgradeable,
+  KIP17BurnableUpgradeable,
+  KIP17PausableUpgradeable
+{
   function __KIP17Token_init(string memory name, string memory symbol) internal {
     __KIP17Full_init(name, symbol);
   }
