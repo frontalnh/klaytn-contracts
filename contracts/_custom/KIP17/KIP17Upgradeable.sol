@@ -6,13 +6,13 @@ import "../../token/KIP17/IKIP17Receiver.sol";
 import "../../math/SafeMath.sol";
 import "../../utils/Address.sol";
 import "../../drafts/Counters.sol";
-import "../../introspection/KIP13.sol";
+import "../introspection/KIP13Upgradeable.sol";
 
 /**
  * @title KIP17 Non-Fungible Token Standard basic implementation
  * @dev see http://kips.klaytn.com/KIPs/kip-17-non_fungible_token
  */
-contract KIP17Upgradeable is KIP13, IKIP17 {
+contract KIP17Upgradeable is KIP13Upgradeable, IKIP17 {
   using SafeMath for uint256;
   using Address for address;
   using Counters for Counters.Counter;
@@ -56,6 +56,7 @@ contract KIP17Upgradeable is KIP13, IKIP17 {
   function __KIP17_init() public {
     // register the supported interfaces to conform to KIP17 via KIP13
     _registerInterface(_INTERFACE_ID_KIP17);
+    __KIP13_init();
   }
 
   /**
