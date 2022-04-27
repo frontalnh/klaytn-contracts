@@ -25,6 +25,36 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "publicSaleKey",
+						"type": "uint32"
+					},
+					{
+						"name": "priceWei",
+						"type": "uint64"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"name": "limit",
+						"type": "uint256"
+					}
+				],
+				"name": "openPublicSale",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "name",
@@ -209,6 +239,20 @@
 			},
 			{
 				"constant": false,
+				"inputs": [
+					{
+						"name": "quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "devMint",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
 				"inputs": [],
 				"name": "unpause",
 				"outputs": [],
@@ -335,25 +379,12 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"name": "tokenURI",
+						"name": "baseURI",
 						"type": "string"
 					}
 				],
-				"name": "mintWithTokenURI",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
+				"name": "setBaseURI",
+				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -573,15 +604,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "__KIP17MetadataMintable_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
 						"name": "startTime_",
@@ -618,6 +640,20 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "key",
+						"type": "uint32"
+					}
+				],
+				"name": "setPublicSaleKey",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -719,6 +755,33 @@
 			},
 			{
 				"constant": false,
+				"inputs": [],
+				"name": "withdrawMoney",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "addresses",
+						"type": "address[]"
+					},
+					{
+						"name": "numSlots",
+						"type": "uint256[]"
+					}
+				],
+				"name": "seedAllowlist",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
 				"inputs": [
 					{
 						"name": "from",
@@ -763,8 +826,31 @@
 			},
 			{
 				"constant": false,
+				"inputs": [
+					{
+						"name": "quantity_",
+						"type": "uint256"
+					}
+				],
+				"name": "allowlistMint",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
 				"inputs": [],
 				"name": "closePreSale",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "endPublicSale",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -1040,9 +1126,6 @@
 				"__KIP17Enumerable_init()": {
 					"details": "Constructor function."
 				},
-				"__KIP17MetadataMintable_init()": {
-					"details": "Constructor function."
-				},
 				"__KIP17Metadata_init(string,string)": {
 					"details": "Constructor function"
 				},
@@ -1088,15 +1171,6 @@
 					"params": {
 						"to": "The address that will receive the minted tokens.",
 						"tokenId": "The token id to mint."
-					},
-					"return": "A boolean that indicates if the operation was successful."
-				},
-				"mintWithTokenURI(address,uint256,string)": {
-					"details": "Function to mint tokens.",
-					"params": {
-						"to": "The address that will receive the minted tokens.",
-						"tokenId": "The token id to mint.",
-						"tokenURI": "The token URI of the minted token."
 					},
 					"return": "A boolean that indicates if the operation was successful."
 				},
@@ -1198,9 +1272,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x62785faf20d520f806b38cafc66ebcdaac51c828e354c4dd675d58e1a19e0608",
+			"keccak256": "0x37bc45f1f77f53246baaa5f47fb4ed6e1f9bbd236b1d1e47e43b58c20bad6d0f",
 			"urls": [
-				"bzzr://d4e0778709f9891382dd86c30649da264bd0e4cbed710f1e54a08cb07fb05c06"
+				"bzzr://6f9b38d9ddab85ea3b2671ad1ec6572de5875b44533c9642624223cf0d373755"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
@@ -1246,9 +1320,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
-			"keccak256": "0xdc25288422bef02a74b4515f34fd6cf874f30474151fdb480f1a93b97f625e0e",
+			"keccak256": "0xf355743a79cd135ac372bbe1da2174e06ca4dfdbd39bc34de35a4c2d3ce964cf",
 			"urls": [
-				"bzzr://6596f8de7ce16f2fc71f31becc85f700cce64c1ab721779908d0863cd7ae2d00"
+				"bzzr://e1f96871f38c832a687ea60ef4d824e63ef5d4c4b4282134bdf66412b975b191"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
@@ -1294,9 +1368,9 @@
 			]
 		},
 		"contracts/_custom/ownership/OwnableUpgradeable.sol": {
-			"keccak256": "0xac9b294d16733b3d31461354489438ab3ea99279cf11d2b452947311552ebf54",
+			"keccak256": "0x0c430a85a35a58ee2e64a326f537a509bf25bc8c6f48a79f793b3ef1a9337d0d",
 			"urls": [
-				"bzzr://9fb03341c69ec03a5a77f64854b51d3b216a0e22d944ff5a69aab96e6d730aa8"
+				"bzzr://90a6c53311b94892ae4b286c1a1ec5cc930b63e5093b1ce898fb120b88961588"
 			]
 		},
 		"contracts/_custom/utils/ReentrancyGuardUpgradable.sol": {
