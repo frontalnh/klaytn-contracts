@@ -25,36 +25,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "priceWei",
-						"type": "uint64"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"name": "openPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "name",
@@ -239,20 +209,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "devMint",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [],
 				"name": "unpause",
 				"outputs": [],
@@ -398,20 +354,6 @@
 						"type": "bool"
 					}
 				],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "baseURI",
-						"type": "string"
-					}
-				],
-				"name": "setBaseURI",
-				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -682,20 +624,6 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "key",
-						"type": "uint32"
-					}
-				],
-				"name": "setPublicSaleKey",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
 						"name": "price",
 						"type": "uint256"
 					}
@@ -791,33 +719,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "withdrawMoney",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "addresses",
-						"type": "address[]"
-					},
-					{
-						"name": "numSlots",
-						"type": "uint256[]"
-					}
-				],
-				"name": "seedAllowlist",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
 						"name": "from",
@@ -862,31 +763,8 @@
 			},
 			{
 				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity_",
-						"type": "uint256"
-					}
-				],
-				"name": "allowlistMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [],
 				"name": "closePreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "endPublicSale",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -1319,22 +1197,10 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/_custom/GSN/ContextUpgradeable.sol": {
-			"keccak256": "0xda6c619a71af37c7682aee9bce45c7c1c91a55577f16e17068177b1f15e9e385",
-			"urls": [
-				"bzzr://26b6dd37c8a37aede2fc439be1681725d7aef92f0ae2007313c81bd4ce08d3e4"
-			]
-		},
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0xc0a6d84002f867d2c133faf7ef352320021596b95bee9cf1f65e381a635dddb8",
+			"keccak256": "0x62785faf20d520f806b38cafc66ebcdaac51c828e354c4dd675d58e1a19e0608",
 			"urls": [
-				"bzzr://d14748d3f73ebd02f8be012dafd9c1bf8658bd620c3e292b6533fcd50dd76178"
-			]
-		},
-		"contracts/_custom/KIP17/KIP17AUpgradable.sol": {
-			"keccak256": "0xf4cb81db79ddb154d7c6a4a17b3b7131d7294c5e76396287efa6052d1ca5ed06",
-			"urls": [
-				"bzzr://ebf9fd9b54739f7405cee94a1d9da5628796c892e94fceb55751b8d6ba422b39"
+				"bzzr://d4e0778709f9891382dd86c30649da264bd0e4cbed710f1e54a08cb07fb05c06"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
@@ -1433,22 +1299,10 @@
 				"bzzr://9fb03341c69ec03a5a77f64854b51d3b216a0e22d944ff5a69aab96e6d730aa8"
 			]
 		},
-		"contracts/_custom/reveal/RevealableUpgradeable.sol": {
-			"keccak256": "0x7f4d17a31b1b111f053a6e9aac1871a5a56db423c2f15700ba7c8afc92046f8d",
-			"urls": [
-				"bzzr://bd400774172ac212028442b2ca37f9325e2158037c5a21b849f99df3139f6866"
-			]
-		},
 		"contracts/_custom/utils/ReentrancyGuardUpgradable.sol": {
 			"keccak256": "0x6ab60bd7b9f69182582d3a4b5e7cc6b60faf44249d62be2365ff1b1bac514134",
 			"urls": [
 				"bzzr://baec21bf80f27b2eda5c452cecfd45d1b49cb7c7f0eb66aaf4403207b42f91e1"
-			]
-		},
-		"contracts/_custom/utils/Strings.sol": {
-			"keccak256": "0x9f40210b4faa4cc52dc4a9e5b98207216055682470efb7e3a543280ed850726f",
-			"urls": [
-				"bzzr://13fae1612997d70d27df81c88d3254a2a9911baf53a96d28e368eac1c8062e7a"
 			]
 		},
 		"contracts/drafts/Counters.sol": {

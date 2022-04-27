@@ -7,13 +7,7 @@ import "./KIP17BurnableUpgradeable.sol";
 import "./KIP17PausableUpgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
 
-contract KIP17TokenAUpgradeable is
-  KIP17FullUpgradeable,
-  KIP17MintableUpgradeable,
-  KIP17MetadataMintableUpgradeable,
-  KIP17BurnableUpgradeable,
-  KIP17PausableUpgradeable
-{
+contract KIP17TokenAUpgradeable is KIP17FullUpgradeable, KIP17MintableUpgradeable, KIP17BurnableUpgradeable, KIP17PausableUpgradeable {
   uint256 private currentIndex = 0;
   uint256 internal collectionSize;
   uint256 internal maxBatchSize;
@@ -26,7 +20,6 @@ contract KIP17TokenAUpgradeable is
   ) internal {
     __KIP17Full_init(name, symbol);
     __KIP17Mintable_init();
-    __KIP17MetadataMintable_init();
     __KIP17Burnable_init();
     __KIP17Pausable_init();
     maxBatchSize = maxBatchSize_;
