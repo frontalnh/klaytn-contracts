@@ -19,11 +19,10 @@ contract LemongBiddingProxy is TransparentUpgradeableProxy, Ownable {
   }
 
   // ---------- proxy status start ----------
-  mapping(address => uint256) public whitelistAmount;
-  address[] public whitelist;
+  mapping(address => uint256) public whitelist;
 
   address[] public winAddresses;
-  mapping(address => uint256) winAmounts;
+  mapping(address => uint256) public winAmounts;
 
   // Partner NFT holder match
   address[] public nftContracts;
