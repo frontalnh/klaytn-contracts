@@ -2,9 +2,9 @@ pragma solidity ^0.5.0;
 
 import "./KIP17Upgradeable.sol";
 import "../../token/KIP17/IKIP17Metadata.sol";
-import "../../introspection/KIP13.sol";
+import "../introspection/KIP13Upgradeable.sol";
 
-contract KIP17MetadataUpgradeable is KIP13, KIP17Upgradeable, IKIP17Metadata {
+contract KIP17MetadataUpgradeable is KIP13Upgradeable, KIP17Upgradeable, IKIP17Metadata {
   // Token name
   string private _name;
 
@@ -32,6 +32,7 @@ contract KIP17MetadataUpgradeable is KIP13, KIP17Upgradeable, IKIP17Metadata {
 
     // register the supported interfaces to conform to KIP17 via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_METADATA);
+    __KIP13_init();
   }
 
   /**

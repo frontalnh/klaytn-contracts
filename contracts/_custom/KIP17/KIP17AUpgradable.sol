@@ -8,9 +8,9 @@ import "../../token/KIP17/IKIP17Receiver.sol";
 import "../../token/KIP17/IKIP17Metadata.sol";
 import "../../token/KIP17/IKIP17Enumerable.sol";
 import "../../utils/Address.sol";
-import "../../GSN/Context.sol";
+import "../GSN/ContextUpgradeable.sol";
 import "../utils/Strings.sol";
-import "../introspection/KIP13Upgradable.sol";
+import "../introspection/KIP13Upgradeable.sol";
 import "../oldproxy/Initializable.sol";
 import "../reveal/RevealableUpgradeable.sol";
 
@@ -24,7 +24,15 @@ import "../reveal/RevealableUpgradeable.sol";
  *
  * Does not support burning tokens to address(0).
  */
-contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradeable, IKIP17Metadata, IKIP17Enumerable, Initializable, RevealableUpgradeable {
+contract KIP17AUpgradable is
+  ContextUpgradeable,
+  KIP13Upgradeable,
+  KIP17Upgradeable,
+  IKIP17Metadata,
+  IKIP17Enumerable,
+  Initializable,
+  RevealableUpgradeable
+{
   using Address for address;
   using Strings for uint256;
 
@@ -70,6 +78,7 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradeable, IKIP17M
   ) internal initializer {
     require(collectionSize_ > 0, "KIP17A: collection must have a nonzero supply");
     require(maxBatchSize_ > 0, "KIP17A: max batch size must be nonzero");
+    __Context_init();
     __KIP13_init();
     __KIP17_init();
     _name = name_;

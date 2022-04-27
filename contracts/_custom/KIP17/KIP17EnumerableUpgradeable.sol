@@ -2,13 +2,13 @@ pragma solidity ^0.5.0;
 
 import "../../token/KIP17/IKIP17Enumerable.sol";
 import "./KIP17Upgradeable.sol";
-import "../../introspection/KIP13.sol";
+import "../introspection/KIP13Upgradeable.sol";
 
 /**
  * @title KIP-17 Non-Fungible Token with optional enumeration extension logic
  * @dev See http://kips.klaytn.com/KIPs/kip-17-non_fungible_token
  */
-contract KIP17EnumerableUpgradeable is KIP13, KIP17Upgradeable, IKIP17Enumerable {
+contract KIP17EnumerableUpgradeable is KIP13Upgradeable, KIP17Upgradeable, IKIP17Enumerable {
   // Mapping from owner to list of owned token IDs
   mapping(address => uint256[]) private _ownedTokens;
 
@@ -36,6 +36,7 @@ contract KIP17EnumerableUpgradeable is KIP13, KIP17Upgradeable, IKIP17Enumerable
   function __KIP17Enumerable_init() public {
     // register the supported interface to conform to KIP17Enumerable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_ENUMERABLE);
+    __KIP13_init();
   }
 
   /**
