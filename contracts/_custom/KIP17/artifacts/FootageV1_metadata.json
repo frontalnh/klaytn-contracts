@@ -206,6 +206,15 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [],
+				"name": "closePublicSale",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [
 					{
@@ -226,15 +235,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17Enumerable_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -377,15 +377,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17Mintable_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [
 					{
@@ -438,15 +429,6 @@
 					}
 				],
 				"name": "initialize",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17Burnable_init",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -554,15 +536,6 @@
 				"constant": false,
 				"inputs": [],
 				"name": "renounceMinter",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17_init",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -693,15 +666,6 @@
 				"outputs": [],
 				"payable": true,
 				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "endPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -911,15 +875,6 @@
 		],
 		"devdoc": {
 			"methods": {
-				"__KIP17Burnable_init()": {
-					"details": "Constructor function."
-				},
-				"__KIP17Enumerable_init()": {
-					"details": "Constructor function."
-				},
-				"__KIP17Mintable_init()": {
-					"details": "Constructor function."
-				},
 				"approve(address,uint256)": {
 					"details": "Approves another address to transfer the given token ID The zero address indicates there is no approved address. There can only be one approved address per token at a given time. Can only be called by the token owner or an approved operator.",
 					"params": {
@@ -1067,27 +1022,27 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x13bd5973d8fde16daada865a055f9d505177a9c92f96b634312e7eb9b063fc37",
+			"keccak256": "0x160dc7fd5cbdbf47389903569577aef2bae8c4cf0daf2a2d5ce2186e4e105e6c",
 			"urls": [
-				"bzzr://2e897a59ece9b17e2fe89d8c79bf7c1c94a1df707ab09b55b1e941e17308228c"
+				"bzzr://af078b5faaa456ac349524a571bc8845945c7eb1cddf8bf0448e2978becee630"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
-			"keccak256": "0xd0b8df4649558c3b3dacd1b730a60774eae8cc387230993e29c3d7c1a96ee2c3",
+			"keccak256": "0x6aa286f50fcc5a6f1e3590e27005873be91d38245cab5ada05d847dd82eb83a8",
 			"urls": [
-				"bzzr://afe2f6182290493c25d182b353aeff9997a58b0d97d7198f5e7144213b457910"
+				"bzzr://e52ce64d8f79de84dfcdbd1c95093fd5897e3f9bd7a51fd38713756f7665c625"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17EnumerableUpgradeable.sol": {
-			"keccak256": "0x1bd646343085cb37dd37e1d57565dfe517e62606c89868d37b61b19530836495",
+			"keccak256": "0x4d4a1e633b0ca8d6ca365102e3b1482dc462a9e98044d45b228744fb68dbd993",
 			"urls": [
-				"bzzr://54e4ce2ab37084ea3d0edab417c3a9d3cbdd0d402d254ce3b696de09facf6f41"
+				"bzzr://fb5177a550b4454ed3f68a3e7d8cc230f0b8f0af1a84c0c4115b584066b2aaee"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17MintableUpgradeable.sol": {
-			"keccak256": "0x8902e8b3551243cc223fd60657dc85af7ecd69fb7461da0e59b17de7b92de33b",
+			"keccak256": "0x946c62b836161f0a7c69c7bb577c275f0e69d3b7d3ffafd61b834eba4cb30223",
 			"urls": [
-				"bzzr://d3efa2747cb2862e10127cbcdef99effc38d755c8227bd1d52af687dda208de9"
+				"bzzr://14deb30db466a46d8f5c4cf45af869ca8d4423703d6cbb2f3e9dbb5a4f264427"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
@@ -1097,9 +1052,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
-			"keccak256": "0x7348f79c6c02c7899813c0fbd1051d3530586215a96c0c2b19dcc4300b1ba682",
+			"keccak256": "0xd17e7a1ff5da2b2a7dd846cbc934b52376e75925664c38ca485f3d19bd4b948d",
 			"urls": [
-				"bzzr://b7914f5fecb5e13e7a6319adb178dd5f20644c1425765db04db83e4a6409c794"
+				"bzzr://6610cf9742c2f11551582e9e96a07f616b3f467e2ca4412bef0cf773fdf9ca51"
 			]
 		},
 		"contracts/_custom/access/Roles.sol": {
