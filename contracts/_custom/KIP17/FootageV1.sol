@@ -69,9 +69,8 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     _;
   }
 
-  modifier allowlistMintOn() {
-    uint256 price = uint256(allowlistSaleConfig.price);
-    require(price != 0, "allowlist sale has not begun yet");
+  modifier allowlistSaleOn() {
+    require(allowlistSaleConfig.open == true, "Allowlist sale not in progress");
     _;
   }
 
@@ -88,8 +87,13 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     preSaleConfig.limit = limit_;
   }
 
-  function preSaleMint(uint256 quantity_) external payable {
-    require(collectionSize >= totalSupply() + quantity_, "");
+  modifier preSaleOn() {
+    require(preSaleConfig.open == true, "Presale not in progress");
+    _;
+  }
+
+  function preSaleMint(uint256 quantity_) external payable onlyOwner preSaleOn {
+    require(collectionSize >= totalSupply() + quantity_, "Reached collection size");
     uint256 price = preSaleConfig.price * quantity_;
     require(msg.value >= price, "You should send more KLAY");
     require(maxPerAddressDuringMint >= numberMinted(msg.sender) + quantity_, "Reached max allowed mint");
@@ -110,9 +114,8 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     allowlistSaleConfig.open = false;
   }
 
-  function allowlistMint(uint256 amount) external payable callerIsUser allowlistMintOn {
+  function allowlistMint(uint256 amount) external payable callerIsUser allowlistSaleOn {
     uint256 price = uint256(allowlistSaleConfig.price * amount);
-    require(price != 0, "allowlist sale has not begun yet");
     require(allowlistSaleConfig.allowlist[msg.sender] >= amount, "not eligible for allowlist mint");
     require(totalSupply() + amount <= collectionSize, "reached max supply");
     allowlistSaleConfig.allowlist[msg.sender] = allowlistSaleConfig.allowlist[msg.sender] - amount;
@@ -120,33 +123,28 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     refundIfOver(price);
   }
 
-  function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser {
+  function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser publicSaleOn {
     require(publicSaleConfig.publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
-    require(
-      isPublicSaleOn(publicSaleConfig.price, publicSaleConfig.publicSaleKey, publicSaleConfig.startTime, publicSaleConfig.endTime),
-      "public sale has not begun yet"
-    );
+    require(block.timestamp >= publicSaleConfig.startTime && block.timestamp <= publicSaleConfig.endTime, "Public sale not in progress");
     require(totalSupply() + quantity <= publicSaleConfig.limit, "reached public sale limit");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
     require(numberMinted(msg.sender) + quantity <= maxPerAddressDuringMint, "can not mint this many");
+    uint256 price = publicSaleConfig.price * quantity;
+    require(price >= msg.value, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
-    refundIfOver(publicSaleConfig.price * quantity);
+    refundIfOver(price);
+  }
+
+  modifier publicSaleOn() {
+    require(publicSaleConfig.open == true, "Public sale not in progress");
+    _;
   }
 
   function refundIfOver(uint256 price) private {
-    require(msg.value >= price, "Need to send more ETH.");
+    require(msg.value >= price, "Need to send more KLAY.");
     if (msg.value > price) {
       msg.sender.transfer(msg.value - price);
     }
-  }
-
-  function isPublicSaleOn(
-    uint256 publicPriceWei,
-    uint256 publicSaleKey,
-    uint256 publicSaleStartTime,
-    uint256 publicSaleEndTime
-  ) public view returns (bool) {
-    return publicPriceWei != 0 && publicSaleKey != 0 && block.timestamp >= publicSaleStartTime && block.timestamp <= publicSaleEndTime;
   }
 
   function startPublicSale(
