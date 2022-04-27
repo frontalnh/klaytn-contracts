@@ -1,12 +1,11 @@
 pragma solidity ^0.5.0;
 
-import "./KIP17MintableUpgradeable.sol";
 import "./KIP17BurnableUpgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
 import "./KIP17Upgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
 
-contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17MintableUpgradeable, KIP17BurnableUpgradeable {
+contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17BurnableUpgradeable {
   // Token name
   string private _name;
 
@@ -31,7 +30,6 @@ contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable,
     // register the supported interfaces to conform to KIP17 via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_METADATA);
     __KIP13_init();
-    __KIP17Mintable_init();
     __KIP17Burnable_init();
     maxBatchSize = maxBatchSize_;
     collectionSize = collectionSize_;

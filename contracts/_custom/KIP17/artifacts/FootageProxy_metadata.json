@@ -53,29 +53,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "renounceOwnership",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
 						"name": "newAdmin",
@@ -83,34 +60,6 @@
 					}
 				],
 				"name": "changeAdmin",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "isOwner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -154,23 +103,6 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": true,
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferred",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
 						"indexed": false,
 						"name": "previousAdmin",
 						"type": "address"
@@ -208,18 +140,6 @@
 				"implementation()": {
 					"details": "Returns the current implementation.   * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.   * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call. `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`"
 				},
-				"isOwner()": {
-					"details": "Returns true if the caller is the current owner."
-				},
-				"owner()": {
-					"details": "Returns the address of the current owner."
-				},
-				"renounceOwnership()": {
-					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.   * > Note: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
-				},
-				"transferOwnership(address)": {
-					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				},
 				"upgradeTo(address)": {
 					"details": "Upgrade the implementation of the proxy.   * NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}."
 				},
@@ -246,9 +166,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageProxy.sol": {
-			"keccak256": "0xd3518927a55cc97397e4a7dbd3191b2c7f0202faf989386fd9ba4c78225a9506",
+			"keccak256": "0xe88efcbe8d41d34c47ac88b48471c8f68af107a422d00a7ef554649ab9fe1a74",
 			"urls": [
-				"bzzr://54e0e98163a21e5a159cbd8bac6a924e71e004b974d46ccc49ab6ff54210ce2a"
+				"bzzr://72f04acce546e60bd7b63e85f9451d2689732ec5bb6e9e3ccb51908b811b66b2"
 			]
 		},
 		"contracts/_custom/oldproxy/Proxy.sol": {
@@ -273,12 +193,6 @@
 			"keccak256": "0xf7415711dbec40bc633af7d8cb5c3c0bc3d1ed97fd8c13f795a03eb3073ea219",
 			"urls": [
 				"bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"
-			]
-		},
-		"contracts/ownership/Ownable.sol": {
-			"keccak256": "0x9afc6e5239b677246922fbae97acfb553e72d6163a6689697e269ba96557dc55",
-			"urls": [
-				"bzzr://2d894c6fd17edd5b56fa0805ffdf0a73491a584cfd53b5cb670a142cbc05fb77"
 			]
 		},
 		"contracts/token/KIP17/IKIP17.sol": {
