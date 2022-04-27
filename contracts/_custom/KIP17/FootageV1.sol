@@ -42,7 +42,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   }
 
   PreSaleConfig public preSaleConfig;
-  PublicSaleConfig public saleConfig;
+  PublicSaleConfig public publicSaleConfig;
   AllowlistSaleConfig public allowlistSaleConfig;
 
   // Storage End
@@ -121,19 +121,16 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   }
 
   function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser {
-    PublicSaleConfig memory config = saleConfig;
-    uint256 publicSaleKey = uint256(config.publicSaleKey);
-    uint256 publicPrice = uint256(config.price);
-    uint256 publicSaleStartTime = uint256(config.startTime);
-    uint256 publicSaleEndTime = uint256(config.endTime);
-    uint256 publicSaleLimit = uint256(config.limit);
-    require(publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
-    require(isPublicSaleOn(publicPrice, publicSaleKey, publicSaleStartTime, publicSaleEndTime), "public sale has not begun yet");
-    require(totalSupply() + quantity <= publicSaleLimit, "reached public sale limit");
+    require(publicSaleConfig.publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
+    require(
+      isPublicSaleOn(publicSaleConfig.price, publicSaleConfig.publicSaleKey, publicSaleConfig.startTime, publicSaleConfig.endTime),
+      "public sale has not begun yet"
+    );
+    require(totalSupply() + quantity <= publicSaleConfig.limit, "reached public sale limit");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
     require(numberMinted(msg.sender) + quantity <= maxPerAddressDuringMint, "can not mint this many");
     _safeMint(msg.sender, quantity);
-    refundIfOver(publicPrice * quantity);
+    refundIfOver(publicSaleConfig.price * quantity);
   }
 
   function refundIfOver(uint256 price) private {
@@ -159,15 +156,15 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint32 publicSaleEndTime,
     uint256 publicSaleLimit
   ) external onlyOwner {
-    saleConfig = PublicSaleConfig(true, publicSaleKey, publicSaleStartTime, publicSaleEndTime, publicPriceWei, publicSaleLimit);
+    publicSaleConfig = PublicSaleConfig(true, publicSaleKey, publicSaleStartTime, publicSaleEndTime, publicPriceWei, publicSaleLimit);
   }
 
   function endPublicSale() external onlyOwner {
-    saleConfig.price = 0;
+    publicSaleConfig.open = false;
   }
 
   function setPublicSaleKey(uint32 key) external onlyOwner {
-    saleConfig.publicSaleKey = key;
+    publicSaleConfig.publicSaleKey = key;
   }
 
   function seedAllowlist(address[] calldata addresses, uint256[] calldata numSlots) external onlyOwner {
