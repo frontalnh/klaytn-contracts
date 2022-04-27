@@ -41,9 +41,9 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint256 limit;
   }
 
-  PreSaleConfig public preSaleConfig;
-  PublicSaleConfig public publicSaleConfig;
-  AllowlistSaleConfig public allowlistSaleConfig;
+  PreSaleConfig public preSaleConf;
+  PublicSaleConfig public publicSaleConf;
+  AllowlistSaleConfig public allowSaleConf;
 
   // Storage End
 
@@ -70,7 +70,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   }
 
   modifier allowlistSaleOn() {
-    require(allowlistSaleConfig.open == true, "Allowlist sale not in progress");
+    require(allowSaleConf.open == true, "Allowlist sale not in progress");
     _;
   }
 
@@ -80,21 +80,21 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint256 price_,
     uint256 limit_
   ) external onlyOwner {
-    preSaleConfig.open = true;
-    preSaleConfig.startTime = startTime_;
-    preSaleConfig.endTime = endTime_;
-    preSaleConfig.price = price_;
-    preSaleConfig.limit = limit_;
+    preSaleConf.open = true;
+    preSaleConf.startTime = startTime_;
+    preSaleConf.endTime = endTime_;
+    preSaleConf.price = price_;
+    preSaleConf.limit = limit_;
   }
 
   modifier preSaleOn() {
-    require(preSaleConfig.open == true, "Presale not in progress");
+    require(preSaleConf.open == true, "Presale not in progress");
     _;
   }
 
   function preSaleMint(uint256 quantity_) external payable onlyOwner preSaleOn {
     require(collectionSize >= totalSupply() + quantity_, "Reached collection size");
-    uint256 price = preSaleConfig.price * quantity_;
+    uint256 price = preSaleConf.price * quantity_;
     require(msg.value >= price, "You should send more KLAY");
     require(maxPerAddressDuringMint >= numberMinted(msg.sender) + quantity_, "Reached max allowed mint");
     _safeMint(msg.sender, quantity_);
@@ -102,41 +102,41 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   }
 
   function closePreSale() external onlyOwner {
-    preSaleConfig.open = false;
+    preSaleConf.open = false;
   }
 
   function openAllowlistSale(uint256 price) external onlyOwner {
-    allowlistSaleConfig.open = true;
-    allowlistSaleConfig.price = price;
+    allowSaleConf.open = true;
+    allowSaleConf.price = price;
   }
 
   function closeAllowListSale() external onlyOwner {
-    allowlistSaleConfig.open = false;
+    allowSaleConf.open = false;
   }
 
   function allowlistMint(uint256 amount) external payable callerIsUser allowlistSaleOn {
-    uint256 price = uint256(allowlistSaleConfig.price * amount);
-    require(allowlistSaleConfig.allowlist[msg.sender] >= amount, "not eligible for allowlist mint");
+    uint256 price = uint256(allowSaleConf.price * amount);
+    require(allowSaleConf.allowlist[msg.sender] >= amount, "not eligible for allowlist mint");
     require(totalSupply() + amount <= collectionSize, "reached max supply");
-    allowlistSaleConfig.allowlist[msg.sender] = allowlistSaleConfig.allowlist[msg.sender] - amount;
+    allowSaleConf.allowlist[msg.sender] = allowSaleConf.allowlist[msg.sender] - amount;
     _safeMint(msg.sender, amount);
     refundIfOver(price);
   }
 
   function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser publicSaleOn {
-    require(publicSaleConfig.publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
-    require(block.timestamp >= publicSaleConfig.startTime && block.timestamp <= publicSaleConfig.endTime, "Public sale not in progress");
-    require(totalSupply() + quantity <= publicSaleConfig.limit, "reached public sale limit");
+    require(publicSaleConf.publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
+    require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "Public sale not in progress");
+    require(totalSupply() + quantity <= publicSaleConf.limit, "reached public sale limit");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
     require(numberMinted(msg.sender) + quantity <= maxPerAddressDuringMint, "can not mint this many");
-    uint256 price = publicSaleConfig.price * quantity;
+    uint256 price = publicSaleConf.price * quantity;
     require(price >= msg.value, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
     refundIfOver(price);
   }
 
   modifier publicSaleOn() {
-    require(publicSaleConfig.open == true, "Public sale not in progress");
+    require(publicSaleConf.open == true, "Public sale not in progress");
     _;
   }
 
@@ -149,26 +149,26 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
 
   function startPublicSale(
     uint32 publicSaleKey,
-    uint64 publicPriceWei,
-    uint32 publicSaleStartTime,
-    uint32 publicSaleEndTime,
-    uint256 publicSaleLimit
+    uint64 priceWei,
+    uint32 startTime,
+    uint32 endTime,
+    uint256 limit
   ) external onlyOwner {
-    publicSaleConfig = PublicSaleConfig(true, publicSaleKey, publicSaleStartTime, publicSaleEndTime, publicPriceWei, publicSaleLimit);
+    publicSaleConf = PublicSaleConfig(true, publicSaleKey, startTime, endTime, priceWei, limit);
   }
 
   function endPublicSale() external onlyOwner {
-    publicSaleConfig.open = false;
+    publicSaleConf.open = false;
   }
 
   function setPublicSaleKey(uint32 key) external onlyOwner {
-    publicSaleConfig.publicSaleKey = key;
+    publicSaleConf.publicSaleKey = key;
   }
 
   function seedAllowlist(address[] calldata addresses, uint256[] calldata numSlots) external onlyOwner {
     require(addresses.length == numSlots.length, "addresses does not match numSlots length");
     for (uint256 i = 0; i < addresses.length; i++) {
-      allowlistSaleConfig.allowlist[addresses[i]] = numSlots[i];
+      allowSaleConf.allowlist[addresses[i]] = numSlots[i];
     }
   }
 
