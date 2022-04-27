@@ -2,16 +2,17 @@ pragma solidity ^0.5.0;
 
 import "../../token/KIP17/IKIP17.sol";
 import "../../token/KIP17/IERC721Receiver.sol";
+import "../../token/KIP17/IKIP17Receiver.sol";
 import "../../math/SafeMath.sol";
 import "../../utils/Address.sol";
 import "../../drafts/Counters.sol";
-import "../introspection/KIP13Upgradable.sol";
+import "../../introspection/KIP13.sol";
 
 /**
  * @title KIP17 Non-Fungible Token Standard basic implementation
  * @dev see http://kips.klaytn.com/KIPs/kip-17-non_fungible_token
  */
-contract KIP17Upgradable is KIP13Upgradable, IKIP17 {
+contract KIP17Upgradeable is KIP13, IKIP17 {
   using SafeMath for uint256;
   using Address for address;
   using Counters for Counters.Counter;
@@ -52,7 +53,7 @@ contract KIP17Upgradable is KIP13Upgradable, IKIP17 {
    */
   bytes4 private constant _INTERFACE_ID_KIP17 = 0x80ac58cd;
 
-  function __KIP17_init() internal {
+  constructor() public {
     // register the supported interfaces to conform to KIP17 via KIP13
     _registerInterface(_INTERFACE_ID_KIP17);
   }
@@ -131,6 +132,25 @@ contract KIP17Upgradable is KIP13Upgradable, IKIP17 {
    */
   function isApprovedForAll(address owner, address operator) public view returns (bool) {
     return _operatorApprovals[owner][operator];
+  }
+
+  /**
+   * @dev Transfers the ownership of a given token ID to another address.
+   * Usage of this method is discouraged, use `safeTransferFrom` whenever possible.
+   * Requires the msg.sender to be the owner, approved, or operator.
+   * @param from current owner of the token
+   * @param to address to receive the ownership of the given token ID
+   * @param tokenId uint256 ID of the token to be transferred
+   */
+  function transferFrom(
+    address from,
+    address to,
+    uint256 tokenId
+  ) public {
+    //solhint-disable-next-line max-line-length
+    require(_isApprovedOrOwner(msg.sender, tokenId), "KIP17: transfer caller is not owner nor approved");
+
+    _transferFrom(from, to, tokenId);
   }
 
   /**
@@ -238,6 +258,31 @@ contract KIP17Upgradable is KIP13Upgradable, IKIP17 {
    */
   function _burn(uint256 tokenId) internal {
     _burn(ownerOf(tokenId), tokenId);
+  }
+
+  /**
+   * @dev Internal function to transfer ownership of a given token ID to another address.
+   * As opposed to transferFrom, this imposes no restrictions on msg.sender.
+   * @param from current owner of the token
+   * @param to address to receive the ownership of the given token ID
+   * @param tokenId uint256 ID of the token to be transferred
+   */
+  function _transferFrom(
+    address from,
+    address to,
+    uint256 tokenId
+  ) internal {
+    require(ownerOf(tokenId) == from, "KIP17: transfer of token that is not own");
+    require(to != address(0), "KIP17: transfer to the zero address");
+
+    _clearApproval(tokenId);
+
+    _ownedTokensCount[from].decrement();
+    _ownedTokensCount[to].increment();
+
+    _tokenOwner[tokenId] = to;
+
+    emit Transfer(from, to, tokenId);
   }
 
   /**
