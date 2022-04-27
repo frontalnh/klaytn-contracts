@@ -10,8 +10,7 @@ contract ILemong {
 
 contract LemongBiddingV1 is Initializable, OwnableUpgradable {
   // ---------- proxy status start ----------
-  mapping(address => uint256) public whitelistAmount;
-  address[] public whitelist;
+  mapping(address => uint256) public whitelist;
 
   address[] public winAddresses;
   mapping(address => uint256) public winAmounts;
@@ -61,19 +60,15 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
     _price = price_;
   }
 
-  function seedWhiteList(address[] calldata addresses, uint256[] calldata amounts) external onlyOwner {
-    if (addresses.length != amounts.length) {
-      revert("The length of addresses and amounts don't match.");
-    }
-
-    whitelist = addresses;
-    for (uint256 i; i < amounts.length; i++) {
-      whitelistAmount[addresses[i]] = amounts[i];
+  function seedWhiteList(address[] calldata addresses, uint256[] calldata numSlots) external onlyOwner {
+    require(addresses.length == numSlots.length, "addresses does not match numSlots length");
+    for (uint256 i = 0; i < addresses.length; i++) {
+      whitelist[addresses[i]] = numSlots[i];
     }
   }
 
   function _isWhiteListAddress(address address_) internal view returns (bool) {
-    if (whitelistAmount[address_] > 0) {
+    if (whitelist[address_] > 0) {
       return true;
     } else {
       return false;
@@ -104,7 +99,7 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
     require(avail, "Only the account in whitelist or partner NFT holders can bid.");
     require(_remains >= amount, "No whitelist left.");
     if (isWhiteListAddress_) {
-      require(whitelistAmount[msg.sender] >= amount, "you are bidding more than you can.");
+      require(whitelist[msg.sender] >= amount, "you are bidding more than you can.");
     }
     require(_maxBidPerTx >= amount, "You can not bid that much");
     require(_maxBidPerAddress >= winAmounts[msg.sender] + amount, "Exceed max bid per account");
@@ -118,7 +113,7 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradable {
     }
     _remains = _remains - amount;
     winAmounts[msg.sender] = winAmounts[msg.sender] + amount;
-    whitelistAmount[msg.sender] = whitelistAmount[msg.sender] - amount;
+    whitelist[msg.sender] = whitelist[msg.sender] - amount;
     refundIfOver(price);
   }
 

@@ -270,6 +270,20 @@
 			{
 				"constant": true,
 				"inputs": [],
+				"name": "_maxMintPerAddress",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
 				"name": "_maxBidPerTx",
 				"outputs": [
 					{
@@ -451,9 +465,9 @@
 	},
 	"sources": {
 		"contracts/_custom/bidding/LemongBiddingProxy.sol": {
-			"keccak256": "0x0f8b9ddf5d3aef9e6d5f1b2cc246f814fe4dd4a7b2fcfb56a994c2ab95964e37",
+			"keccak256": "0x7ff6a2709af721808d7cfd79858011f20d221a00d6fea4a17fb14721dda36759",
 			"urls": [
-				"bzzr://346b216fd919d9ef12e1d000c445c71ffe7d833ba7210441e858471b608f56b6"
+				"bzzr://4843ca6173f0e6da85c05b81ec79d34f9b4f614dd54ee0466a6a2795ab8ac256"
 			]
 		},
 		"contracts/_custom/oldproxy/Proxy.sol": {
