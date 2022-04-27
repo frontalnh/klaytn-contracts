@@ -76,20 +76,6 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [],
-				"name": "totalSupply",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [
 					{
@@ -106,38 +92,6 @@
 					}
 				],
 				"name": "transferFrom",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"name": "index",
-						"type": "uint256"
-					}
-				],
-				"name": "tokenOfOwnerByIndex",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17Enumerable_init",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -169,37 +123,27 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "name",
-						"type": "string"
+						"name": "to",
+						"type": "address"
 					},
 					{
-						"name": "symbol",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"name": "tokenURI",
 						"type": "string"
 					}
 				],
-				"name": "__KIP17Full_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "index",
-						"type": "uint256"
-					}
-				],
-				"name": "tokenByIndex",
+				"name": "mintWithTokenURI",
 				"outputs": [
 					{
 						"name": "",
-						"type": "uint256"
+						"type": "bool"
 					}
 				],
 				"payable": false,
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -241,6 +185,15 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [],
+				"name": "__KIP17MetadataMintable_init",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "symbol",
@@ -256,8 +209,22 @@
 			},
 			{
 				"constant": false,
+				"inputs": [
+					{
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "addMinter",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
 				"inputs": [],
-				"name": "__KIP17_init",
+				"name": "renounceMinter",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -282,6 +249,25 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "isMinter",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -302,24 +288,6 @@
 					}
 				],
 				"name": "safeTransferFrom",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"name": "symbol",
-						"type": "string"
-					}
-				],
-				"name": "__KIP17Metadata_init",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -366,6 +334,30 @@
 				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "MinterAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "MinterRemoved",
+				"type": "event"
 			},
 			{
 				"anonymous": false,
@@ -435,13 +427,10 @@
 			}
 		],
 		"devdoc": {
-			"details": "see http://kips.klaytn.com/KIPs/kip-17-non_fungible_token",
+			"details": "KIP17 minting logic with metadata.",
 			"methods": {
-				"__KIP17Enumerable_init()": {
+				"__KIP17MetadataMintable_init()": {
 					"details": "Constructor function."
-				},
-				"__KIP17Metadata_init(string,string)": {
-					"details": "Constructor function"
 				},
 				"approve(address,uint256)": {
 					"details": "Approves another address to transfer the given token ID The zero address indicates there is no approved address. There can only be one approved address per token at a given time. Can only be called by the token owner or an approved operator.",
@@ -471,6 +460,15 @@
 						"owner": "owner address which you want to query the approval of"
 					},
 					"return": "bool whether the given operator is approved by the given owner"
+				},
+				"mintWithTokenURI(address,uint256,string)": {
+					"details": "Function to mint tokens.",
+					"params": {
+						"to": "The address that will receive the minted tokens.",
+						"tokenId": "The token id to mint.",
+						"tokenURI": "The token URI of the minted token."
+					},
+					"return": "A boolean that indicates if the operation was successful."
 				},
 				"name()": {
 					"details": "Gets the token name.",
@@ -514,30 +512,11 @@
 					"details": "Gets the token symbol.",
 					"return": "string representing the token symbol"
 				},
-				"tokenByIndex(uint256)": {
-					"details": "Gets the token ID at a given index of all the tokens in this contract Reverts if the index is greater or equal to the total number of tokens.",
-					"params": {
-						"index": "uint256 representing the index to be accessed of the tokens list"
-					},
-					"return": "uint256 token ID at the given index of the tokens list"
-				},
-				"tokenOfOwnerByIndex(address,uint256)": {
-					"details": "Gets the token ID at a given index of the tokens list of the requested owner.",
-					"params": {
-						"index": "uint256 representing the index to be accessed of the requested tokens list",
-						"owner": "address owning the tokens list to be accessed"
-					},
-					"return": "uint256 token ID at the given index of the tokens list owned by the requested address"
-				},
 				"tokenURI(uint256)": {
 					"details": "Returns an URI for a given token ID. Throws if the token ID does not exist. May return an empty string.",
 					"params": {
 						"tokenId": "uint256 ID of the token to query"
 					}
-				},
-				"totalSupply()": {
-					"details": "Gets the total amount of tokens stored by the contract.",
-					"return": "uint256 representing the total amount of tokens"
 				},
 				"transferFrom(address,address,uint256)": {
 					"details": "Transfers the ownership of a given token ID to another address. Usage of this method is discouraged, use `safeTransferFrom` whenever possible. Requires the msg.sender to be the owner, approved, or operator.",
@@ -548,7 +527,7 @@
 					}
 				}
 			},
-			"title": "Full KIP-17 Token This implementation includes all the required and some optional functionality of the KIP-17 standard Moreover, it includes approve all functionality using operator terminology"
+			"title": "KIP17MetadataMintable"
 		},
 		"userdoc": {
 			"methods": {}
@@ -556,7 +535,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": "KIP17Full"
+			"contracts/_custom/KIP17/KIP17MetadataMintableUpgradeable.sol": "KIP17MetadataMintableUpgradeable"
 		},
 		"evmVersion": "constantinople",
 		"libraries": {},
@@ -567,28 +546,22 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/_custom/KIP17/KIP17EnumerableUpgradeable.sol": {
-			"keccak256": "0xde87ad75cec97b07444d9c4467b71a6a31fae9a20dfb0be0b4717925e33a2b5b",
+		"contracts/_custom/KIP17/KIP17MetadataMintableUpgradeable.sol": {
+			"keccak256": "0x95970bab32c61b209ffa99bcc70ae18a510606c1f10fe0fae5cf1b4a2c9a7d2d",
 			"urls": [
-				"bzzr://9b1764cd10a5c7e895aaca7c280f8a0eab02043b1dda0a17c5f87b5d7599f4fc"
+				"bzzr://f460d9a553997b1032dd18f0abfe5051ff8088490337f4cbac08b28a8eabb268"
 			]
 		},
-		"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": {
-			"keccak256": "0xd9775d7e06904ffcdcc6cc6fde944860fef77b40784f1bf0738563344b162e71",
+		"contracts/access/Roles.sol": {
+			"keccak256": "0xb002c378d7b82a101bd659c341518953ca0919d342c0a400196982c0e7e7bcdb",
 			"urls": [
-				"bzzr://8bd64d3c73af70dcefb20f0d5c399d4dc2a445e0ab01cab3e58c6358e20baef5"
+				"bzzr://bd34c1ce05b5b2b3a62fc02e160f6805b1cadd476854664f433c685b2fda8dad"
 			]
 		},
-		"contracts/_custom/KIP17/KIP17MetadataUpgradeable.sol": {
-			"keccak256": "0xab3e8064ba5424c2abc65f353d54733d06b9dae9b1c2d96057ba51d8b38af919",
+		"contracts/access/roles/MinterRole.sol": {
+			"keccak256": "0x63da54a7a5d4e4d82ac8d1f4f7f995fd8ef2b5fe1f2960b83e534fa37fb60910",
 			"urls": [
-				"bzzr://f24f465d000c7bffce8ba09aca0e33759bd9697a555c7cddcb1e84ce95a49f19"
-			]
-		},
-		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
-			"keccak256": "0x6829ffa354738810aa016906451788a5bb02eb94b26b950a695dd86cb5f78ce5",
-			"urls": [
-				"bzzr://8bbd0edf91c4347482d2397870d14b96f16c9dfcfd06482b0256e2e14c2c8a25"
+				"bzzr://cea53b805426e40efadb24f2613aca39182462e9ecd23fde7aacf0c4b5885aaf"
 			]
 		},
 		"contracts/drafts/Counters.sol": {
@@ -627,12 +600,6 @@
 				"bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"
 			]
 		},
-		"contracts/token/KIP17/IKIP17Enumerable.sol": {
-			"keccak256": "0x5a6a02f871bfcf213445ac1c3625af470cbd25599f915f2bbc0b7df0ed998031",
-			"urls": [
-				"bzzr://f613649522f60a170ab6e4cc32b2087cb29d6bfba77680797cfa5467ffc8c356"
-			]
-		},
 		"contracts/token/KIP17/IKIP17Metadata.sol": {
 			"keccak256": "0xad2c2abcd4cb881620f297edcdf9cd491effc1ace2f12f468bf3546f940d1bf4",
 			"urls": [
@@ -643,6 +610,18 @@
 			"keccak256": "0xf3dee67a4a395e20ad0459e1f255b9c563272d2fb6752e7421c1302cfcf00ff0",
 			"urls": [
 				"bzzr://28f7d1d507cc9f1377346b3c8a868b712a68b79dfe8888231b30671848b0a80b"
+			]
+		},
+		"contracts/token/KIP17/KIP17.sol": {
+			"keccak256": "0x3ffc95c0da23762b273dad189c551bc0591811ca96026b0da064464aa1f1ec4f",
+			"urls": [
+				"bzzr://6187953810079ca3e10048653d8de3c23991bd4e4df84ffd741f3b2c6f6766c7"
+			]
+		},
+		"contracts/token/KIP17/KIP17Metadata.sol": {
+			"keccak256": "0x67db095981e55d1f88a38e7f794f85df18b9d2a4a8c6906c1d7b793af04a99b8",
+			"urls": [
+				"bzzr://38399a4e42bf9737f880a81bc6a7d19b2e570426101df7f9747759e33f79e396"
 			]
 		},
 		"contracts/utils/Address.sol": {

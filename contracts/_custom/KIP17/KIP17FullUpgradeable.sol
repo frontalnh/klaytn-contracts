@@ -10,7 +10,7 @@ import "./KIP17MetadataUpgradeable.sol";
  * Moreover, it includes approve all functionality using operator terminology
  * @dev see http://kips.klaytn.com/KIPs/kip-17-non_fungible_token
  */
-contract KIP17Full is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17MetadataUpgradeable {
+contract KIP17FullUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17MetadataUpgradeable {
   function __KIP17Full_init(string memory name, string memory symbol) public {
     __KIP17Metadata_init(name, symbol);
     // solhint-disable-previous-line no-empty-blocks

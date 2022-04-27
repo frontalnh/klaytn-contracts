@@ -556,7 +556,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": "KIP17Full"
+			"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": "KIP17FullUpgradeable"
 		},
 		"evmVersion": "constantinople",
 		"libraries": {},
@@ -574,9 +574,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": {
-			"keccak256": "0xd9775d7e06904ffcdcc6cc6fde944860fef77b40784f1bf0738563344b162e71",
+			"keccak256": "0x4b176f9388bf76c64ae0b28976ef2ef9c8b5cfcb81bb923a4b7c56828ba333c2",
 			"urls": [
-				"bzzr://8bd64d3c73af70dcefb20f0d5c399d4dc2a445e0ab01cab3e58c6358e20baef5"
+				"bzzr://e53f46902d94deac92c96e50761a8a6d7eb1aabe53c7cfbd999b505b9fa1e16c"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17MetadataUpgradeable.sol": {
