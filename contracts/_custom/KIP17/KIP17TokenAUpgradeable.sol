@@ -4,6 +4,7 @@ import "./KIP17FullUpgradeable.sol";
 import "./KIP17MetadataMintableUpgradeable.sol";
 import "./KIP17MintableUpgradeable.sol";
 import "./KIP17BurnableUpgradeable.sol";
+import "./KIP17PausableUpgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
 import "./KIP17Upgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
@@ -15,6 +16,7 @@ contract KIP17TokenAUpgradeable is
   KIP17MetadataUpgradeable,
   KIP17MintableUpgradeable,
   KIP17BurnableUpgradeable,
+  KIP17PausableUpgradeable
 {
   uint256 private currentIndex = 0;
   uint256 internal collectionSize;

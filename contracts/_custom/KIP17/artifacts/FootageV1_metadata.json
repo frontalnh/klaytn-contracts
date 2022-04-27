@@ -253,15 +253,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "unpause",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
 						"name": "to",
@@ -323,25 +314,6 @@
 				"constant": true,
 				"inputs": [
 					{
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "isPauser",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
 						"name": "index",
 						"type": "uint256"
 					}
@@ -373,20 +345,6 @@
 			},
 			{
 				"constant": true,
-				"inputs": [],
-				"name": "paused",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
 				"inputs": [
 					{
 						"name": "tokenId",
@@ -408,15 +366,6 @@
 				"constant": false,
 				"inputs": [],
 				"name": "__KIP17Mintable_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "renouncePauser",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -522,29 +471,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "addPauser",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "pause",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -876,15 +802,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [],
-				"name": "__KIP17Pausable_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [
 					{
@@ -943,54 +860,6 @@
 				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "Paused",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "Unpaused",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "PauserAdded",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "PauserRemoved",
-				"type": "event"
 			},
 			{
 				"anonymous": false,
@@ -1114,8 +983,12 @@
 				"__KIP17Mintable_init()": {
 					"details": "Constructor function."
 				},
-				"__KIP17Pausable_init()": {
-					"details": "Constructor function."
+				"approve(address,uint256)": {
+					"details": "Approves another address to transfer the given token ID The zero address indicates there is no approved address. There can only be one approved address per token at a given time. Can only be called by the token owner or an approved operator.",
+					"params": {
+						"to": "address to be approved for the given token ID",
+						"tokenId": "uint256 ID of the token to be approved"
+					}
 				},
 				"balanceOf(address)": {
 					"details": "Gets the balance of the specified address.",
@@ -1170,12 +1043,6 @@
 					},
 					"return": "address currently marked as the owner of the given token ID"
 				},
-				"pause()": {
-					"details": "Called by a pauser to pause, triggers stopped state."
-				},
-				"paused()": {
-					"details": "Returns true if the contract is paused, and false otherwise."
-				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.   * > Note: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
 				},
@@ -1194,6 +1061,13 @@
 						"from": "current owner of the token",
 						"to": "address to receive the ownership of the given token ID",
 						"tokenId": "uint256 ID of the token to be transferred"
+					}
+				},
+				"setApprovalForAll(address,bool)": {
+					"details": "Sets or unsets the approval of a given operator An operator is allowed to transfer all tokens of the sender on their behalf.",
+					"params": {
+						"approved": "representing the status of the approval to be set",
+						"to": "operator address to set the approval"
 					}
 				},
 				"supportsInterface(bytes4)": {
@@ -1228,11 +1102,16 @@
 					"details": "Gets the total amount of tokens stored by the contract.",
 					"return": "uint256 representing the total amount of tokens"
 				},
+				"transferFrom(address,address,uint256)": {
+					"details": "Transfers the ownership of a given token ID to another address. Usage of this method is discouraged, use `safeTransferFrom` whenever possible. Requires the msg.sender to be the owner, approved, or operator.",
+					"params": {
+						"from": "current owner of the token",
+						"to": "address to receive the ownership of the given token ID",
+						"tokenId": "uint256 ID of the token to be transferred"
+					}
+				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				},
-				"unpause()": {
-					"details": "Called by a pauser to unpause, returns to normal state."
 				}
 			}
 		},
@@ -1295,16 +1174,10 @@
 				"bzzr://d3efa2747cb2862e10127cbcdef99effc38d755c8227bd1d52af687dda208de9"
 			]
 		},
-		"contracts/_custom/KIP17/KIP17PausableUpgradeable.sol": {
-			"keccak256": "0x2d83fda81d5f7b9548a699f037f6810650aa50ebe68c4ddd636c27fc2d97fde1",
-			"urls": [
-				"bzzr://805e312bf6b7ffe981bf1b57af866b8229d22c0446c565a94e58dca63f3a1361"
-			]
-		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
-			"keccak256": "0x2fb3bba59bb93ebf2e8192e55c4b2350ebe7cbfdfe828e0b20b45362300e40bc",
+			"keccak256": "0xfcad8bdb79a5a158d82e3d856bf3d4f6630af4fd19d5a32e82edef3ffae66f92",
 			"urls": [
-				"bzzr://a8beb9f7bee65fc52989f10a840d392c7761762f53d644c4ab1c85cd703422a1"
+				"bzzr://c5ece81bb8ee56490c72819c483e8a52928ec8e18b9768dc4cc94e76bf579281"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
@@ -1325,22 +1198,10 @@
 				"bzzr://f52636c9a0c826bd9ada4bb65fa5177e06f2465ec88f0efaa54e4815cf02b2c6"
 			]
 		},
-		"contracts/_custom/access/roles/PauserRoleUpgradeable.sol": {
-			"keccak256": "0xbf83112a77b6a85f16b2d92d2c9cff23f16df264625dbcc80370503fb0e2ff6d",
-			"urls": [
-				"bzzr://414263f231d583e11b17a8c0fe7a31e7ee2e9fedbf530422d638c844e6f301f3"
-			]
-		},
 		"contracts/_custom/introspection/KIP13Upgradeable.sol": {
 			"keccak256": "0x6c40bb75ebb71394bc8c0bcfdc29c71a32b0f13fc14769debb1fa6e46d6a9293",
 			"urls": [
 				"bzzr://ff74a16a9a76d2cd9ea56b350c51bc0657cccab33a32b7cbae9aebb432b24b7b"
-			]
-		},
-		"contracts/_custom/lifecycle/PausableUpgradeable.sol": {
-			"keccak256": "0x24afb3cf361a30aececd1da3f602910680de26f9be32ca2dbf969f9d26f84154",
-			"urls": [
-				"bzzr://ec70171a3eeba6f8593aff9f47c1472e514a5c3b332ee5194c3e7aaa8561e75e"
 			]
 		},
 		"contracts/_custom/oldproxy/Initializable.sol": {
