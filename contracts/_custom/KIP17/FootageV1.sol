@@ -15,13 +15,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
-  struct PreSaleConf {
-    bool open;
-    uint32 startTime;
-    uint32 endTime;
-    uint256 price;
-    uint256 limit;
-  }
+
   struct PublicSaleConf {
     bool open;
     uint32 publicSaleKey;
@@ -30,6 +24,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint64 price;
     uint256 limit;
   }
+
   struct AllowSaleConf {
     bool open;
     uint256 price; // mint price for allow list accounts
@@ -38,7 +33,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     mapping(address => uint256) allowlist;
     uint256 limit;
   }
-  PreSaleConf public preSaleConf;
+
   PublicSaleConf public publicSaleConf;
   AllowSaleConf public allowSaleConf;
   mapping(address => uint256) private _numberMinted;
@@ -63,30 +58,6 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   modifier callerIsUser() {
     require(tx.origin == msg.sender, "The caller is another contract");
     _;
-  }
-
-  function openPreSale(
-    uint32 startTime_,
-    uint32 endTime_,
-    uint256 price_,
-    uint256 limit_
-  ) external onlyOwner {
-    preSaleConf = PreSaleConf(true, startTime_, endTime_, price_, limit_);
-  }
-
-  function preSaleMint(uint256 quantity_) external payable onlyOwner {
-    require(collectionSize >= totalSupply() + quantity_, "Reached collection size");
-    require(preSaleConf.open == true, "Presale not in progress");
-    uint256 price = preSaleConf.price * quantity_;
-    require(msg.value >= price, "You should send more KLAY");
-    require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
-    _safeMint(msg.sender, quantity_);
-    _increaseMinted(msg.sender, quantity_);
-    refundIfOver(price);
-  }
-
-  function closePreSale() external onlyOwner {
-    preSaleConf.open = false;
   }
 
   function openAllowlistSale(uint256 price) external onlyOwner {
