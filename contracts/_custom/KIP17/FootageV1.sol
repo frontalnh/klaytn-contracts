@@ -71,11 +71,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint256 price_,
     uint256 limit_
   ) external onlyOwner {
-    preSaleConf.open = true;
-    preSaleConf.startTime = startTime_;
-    preSaleConf.endTime = endTime_;
-    preSaleConf.price = price_;
-    preSaleConf.limit = limit_;
+    preSaleConf = PreSaleConf(true, startTime_, endTime_, price_, limit_);
   }
 
   function preSaleMint(uint256 quantity_) external payable onlyOwner {
