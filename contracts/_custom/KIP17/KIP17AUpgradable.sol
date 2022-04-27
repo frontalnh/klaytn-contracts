@@ -72,7 +72,6 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Me
     require(maxBatchSize_ > 0, "KIP17A: max batch size must be nonzero");
     __KIP13_init();
     __KIP17_init();
-    __Revealable_init();
     _name = name_;
     _symbol = symbol_;
     maxBatchSize = maxBatchSize_;

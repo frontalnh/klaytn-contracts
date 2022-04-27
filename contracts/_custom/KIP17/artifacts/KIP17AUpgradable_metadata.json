@@ -25,36 +25,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "priceWei",
-						"type": "uint64"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"name": "openPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "name",
@@ -120,36 +90,6 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [],
-				"name": "allowSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [
 					{
@@ -166,54 +106,6 @@
 					}
 				],
 				"name": "transferFrom",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "publicSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "price",
-						"type": "uint64"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "setOwnersExplicit",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -240,20 +132,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "devMint",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -312,20 +190,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "baseURI",
-						"type": "string"
-					}
-				],
-				"name": "setBaseURI",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [
 					{
@@ -361,185 +225,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "renounceOwnership",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "name_",
-						"type": "string"
-					},
-					{
-						"name": "symbol_",
-						"type": "string"
-					},
-					{
-						"name": "maxBatchSize_",
-						"type": "uint256"
-					},
-					{
-						"name": "collectionSize_",
-						"type": "uint256"
-					},
-					{
-						"name": "amountForDevs_",
-						"type": "uint256"
-					}
-				],
-				"name": "initialize",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity_",
-						"type": "uint256"
-					}
-				],
-				"name": "preSaleMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "preSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "maxPerAddressDuringMint",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "startTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "price_",
-						"type": "uint256"
-					},
-					{
-						"name": "limit_",
-						"type": "uint256"
-					}
-				],
-				"name": "openPreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "isOwner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "key",
-						"type": "uint32"
-					}
-				],
-				"name": "setPublicSaleKey",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "price",
-						"type": "uint256"
-					}
-				],
-				"name": "openAllowlistSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -599,33 +284,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "withdrawMoney",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "addresses",
-						"type": "address[]"
-					},
-					{
-						"name": "numSlots",
-						"type": "uint256[]"
-					}
-				],
-				"name": "seedAllowlist",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
 						"name": "from",
@@ -651,38 +309,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "allowlistMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "closePreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "endPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [
 					{
@@ -702,46 +328,9 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					},
-					{
-						"name": "callerPublicSaleKey",
-						"type": "uint256"
-					}
-				],
-				"name": "publicSaleMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "nextOwnerToExplicitlySet",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "numberMinted",
 				"outputs": [
 					{
 						"name": "",
@@ -774,60 +363,6 @@
 				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "closeAllowListSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "amountForDevs",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferred",
-				"type": "event"
 			},
 			{
 				"anonymous": false,
@@ -897,6 +432,7 @@
 			}
 		],
 		"devdoc": {
+			"details": "Implementation of https://eips.ethereum.org/EIPS/eip-721[KIP17] Non-Fungible Token Standard, including the Metadata and Enumerable extension. Built to optimize for lower gas during batch mints. * Assumes serials are sequentially minted starting at 0 (e.g. 0, 1, 2, 3..). * Assumes the number of issuable tokens (collection size) is capped and fits in a uint128. * Does not support burning tokens to address(0).",
 			"methods": {
 				"approve(address,uint256)": {
 					"details": "See {IKIP17-approve}."
@@ -910,20 +446,11 @@
 				"isApprovedForAll(address,address)": {
 					"details": "See {IKIP17-isApprovedForAll}."
 				},
-				"isOwner()": {
-					"details": "Returns true if the caller is the current owner."
-				},
 				"name()": {
 					"details": "See {IKIP17Metadata-name}."
 				},
-				"owner()": {
-					"details": "Returns the address of the current owner."
-				},
 				"ownerOf(uint256)": {
 					"details": "See {IKIP17-ownerOf}."
-				},
-				"renounceOwnership()": {
-					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.   * > Note: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
 				},
 				"safeTransferFrom(address,address,uint256)": {
 					"details": "See {IKIP17-safeTransferFrom}."
@@ -954,9 +481,6 @@
 				},
 				"transferFrom(address,address,uint256)": {
 					"details": "See {IKIP17-transferFrom}."
-				},
-				"transferOwnership(address)": {
-					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			}
 		},
@@ -966,7 +490,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/_custom/KIP17/FootageV1.sol": "FootageV1"
+			"contracts/_custom/KIP17/KIP17AUpgradable.sol": "KIP17AUpgradable"
 		},
 		"evmVersion": "constantinople",
 		"libraries": {},
@@ -981,12 +505,6 @@
 			"keccak256": "0x90a3995645af7562d84b9d69363ffa5ae7217714ab61e951bf7bc450f40e4061",
 			"urls": [
 				"bzzr://51482c01bddf23793bddee43b60ab9578a62948a4f2082def24ea792a553b055"
-			]
-		},
-		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x54b0c02489b26785047b3c1e34dfd76b2ff3bf74ad0301e2f8a2ed766fdb5aba",
-			"urls": [
-				"bzzr://d7e5906f683523e4a2143837159932f2931cb9ada51af2705406409741d37ee2"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17AUpgradable.sol": {
@@ -1013,22 +531,10 @@
 				"bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"
 			]
 		},
-		"contracts/_custom/ownership/OwnableUpgradeable.sol": {
-			"keccak256": "0xac9b294d16733b3d31461354489438ab3ea99279cf11d2b452947311552ebf54",
-			"urls": [
-				"bzzr://9fb03341c69ec03a5a77f64854b51d3b216a0e22d944ff5a69aab96e6d730aa8"
-			]
-		},
 		"contracts/_custom/reveal/RevealableUpgradeable.sol": {
 			"keccak256": "0x7f4d17a31b1b111f053a6e9aac1871a5a56db423c2f15700ba7c8afc92046f8d",
 			"urls": [
 				"bzzr://bd400774172ac212028442b2ca37f9325e2158037c5a21b849f99df3139f6866"
-			]
-		},
-		"contracts/_custom/utils/ReentrancyGuardUpgradable.sol": {
-			"keccak256": "0x6ab60bd7b9f69182582d3a4b5e7cc6b60faf44249d62be2365ff1b1bac514134",
-			"urls": [
-				"bzzr://baec21bf80f27b2eda5c452cecfd45d1b49cb7c7f0eb66aaf4403207b42f91e1"
 			]
 		},
 		"contracts/_custom/utils/Strings.sol": {

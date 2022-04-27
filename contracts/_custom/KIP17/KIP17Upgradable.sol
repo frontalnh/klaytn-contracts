@@ -134,25 +134,6 @@ contract KIP17Upgradable is KIP13Upgradable, IKIP17 {
   }
 
   /**
-   * @dev Transfers the ownership of a given token ID to another address.
-   * Usage of this method is discouraged, use `safeTransferFrom` whenever possible.
-   * Requires the msg.sender to be the owner, approved, or operator.
-   * @param from current owner of the token
-   * @param to address to receive the ownership of the given token ID
-   * @param tokenId uint256 ID of the token to be transferred
-   */
-  function transferFrom(
-    address from,
-    address to,
-    uint256 tokenId
-  ) public {
-    //solhint-disable-next-line max-line-length
-    require(_isApprovedOrOwner(msg.sender, tokenId), "KIP17: transfer caller is not owner nor approved");
-
-    _transferFrom(from, to, tokenId);
-  }
-
-  /**
    * @dev Safely transfers the ownership of a given token ID to another address
    * If the target address is a contract, it must implement `onKIP17Received`,
    * which is called upon a safe transfer, and return the magic value
@@ -257,31 +238,6 @@ contract KIP17Upgradable is KIP13Upgradable, IKIP17 {
    */
   function _burn(uint256 tokenId) internal {
     _burn(ownerOf(tokenId), tokenId);
-  }
-
-  /**
-   * @dev Internal function to transfer ownership of a given token ID to another address.
-   * As opposed to transferFrom, this imposes no restrictions on msg.sender.
-   * @param from current owner of the token
-   * @param to address to receive the ownership of the given token ID
-   * @param tokenId uint256 ID of the token to be transferred
-   */
-  function _transferFrom(
-    address from,
-    address to,
-    uint256 tokenId
-  ) internal {
-    require(ownerOf(tokenId) == from, "KIP17: transfer of token that is not own");
-    require(to != address(0), "KIP17: transfer to the zero address");
-
-    _clearApproval(tokenId);
-
-    _ownedTokensCount[from].decrement();
-    _ownedTokensCount[to].increment();
-
-    _tokenOwner[tokenId] = to;
-
-    emit Transfer(from, to, tokenId);
   }
 
   /**
