@@ -76,40 +76,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "name_",
-						"type": "string"
-					},
-					{
-						"name": "symbol_",
-						"type": "string"
-					},
-					{
-						"name": "maxBatchSize_",
-						"type": "uint256"
-					},
-					{
-						"name": "collectionSize_",
-						"type": "uint256"
-					},
-					{
-						"name": "amountForAuctionAndDev_",
-						"type": "uint256"
-					},
-					{
-						"name": "amountForDevs_",
-						"type": "uint256"
-					}
-				],
-				"name": "initialize",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "totalSupply",
@@ -317,20 +283,6 @@
 			},
 			{
 				"constant": true,
-				"inputs": [],
-				"name": "amountForAuctionAndDev",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
 				"inputs": [
 					{
 						"name": "tokenId",
@@ -371,6 +323,36 @@
 				"constant": false,
 				"inputs": [],
 				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "name_",
+						"type": "string"
+					},
+					{
+						"name": "symbol_",
+						"type": "string"
+					},
+					{
+						"name": "maxBatchSize_",
+						"type": "uint256"
+					},
+					{
+						"name": "collectionSize_",
+						"type": "uint256"
+					},
+					{
+						"name": "amountForDevs_",
+						"type": "uint256"
+					}
+				],
+				"name": "initialize",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -965,9 +947,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0xc141ab50d753f5397eb096cec34b66bc17c37f82b77d2d18d5a0093eb8dfe18f",
+			"keccak256": "0x795a6c30148a3720dcc1f651f6391c66358051e2d9952e5073e283f85b05aa45",
 			"urls": [
-				"bzzr://29afa9a713b836a08e65100037cfea24487f64461535d4d01b7fd5e6262b7022"
+				"bzzr://9d1cd2eee0e25ff8d09c40cc2590f2fd4655d5d9e2a1afb26fade29eab6bc5d7"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17AUpgradable.sol": {

@@ -128,7 +128,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     }
   }
 
-  function startPublicSale(
+  function openPublicSale(
     uint32 publicSaleKey,
     uint64 priceWei,
     uint32 startTime,
