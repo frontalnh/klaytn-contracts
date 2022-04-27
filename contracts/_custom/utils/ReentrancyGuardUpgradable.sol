@@ -34,7 +34,7 @@ contract ReentrancyGuardUpgradable {
 
   uint256 private _status;
 
-  function __ReentrancyGuardUpgradable_init() internal {
+  function __ReentrancyGuard_init() internal {
     _status = _NOT_ENTERED;
   }
 
