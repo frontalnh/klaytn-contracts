@@ -532,15 +532,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "__KIP17_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
 						"name": "operator",
@@ -986,9 +977,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradable.sol": {
-			"keccak256": "0x217670bf8ee77125c186935119df488f4c87e5bca4c5fba4b6b202e992404895",
+			"keccak256": "0x7114aa4ba00213eb9c0ba36380301654afb35d172361e0de27cc136f4c96b437",
 			"urls": [
-				"bzzr://d3d24dc739b0a4dba1ed838e6b84bbeb0c8c11f28d55fea1e9d82511298974d5"
+				"bzzr://bb1abc9b0eebbd97578230d26667022c46982d350c6af12cea0068f4e46baf0d"
 			]
 		},
 		"contracts/_custom/introspection/KIP13Upgradable.sol": {

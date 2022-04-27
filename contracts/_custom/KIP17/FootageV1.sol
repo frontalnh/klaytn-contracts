@@ -13,7 +13,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
-  uint256 public amountForAuctionAndDev;
   struct PreSaleConf {
     bool open;
     uint32 startTime;
@@ -48,16 +47,14 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     string calldata symbol_,
     uint256 maxBatchSize_,
     uint256 collectionSize_,
-    uint256 amountForAuctionAndDev_,
     uint256 amountForDevs_
   ) external initializer {
     __Ownable_init();
     __KIP17A_init(name_, symbol_, maxBatchSize_, collectionSize_);
     __ReentrancyGuard_init();
     maxPerAddressDuringMint = maxBatchSize_;
-    amountForAuctionAndDev = amountForAuctionAndDev_;
     amountForDevs = amountForDevs_;
-    require(amountForAuctionAndDev_ <= collectionSize_, "larger collection size needed");
+    require(amountForDevs_ <= collectionSize_, "larger collection size needed");
   }
 
   modifier callerIsUser() {
