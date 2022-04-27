@@ -11,9 +11,8 @@ import "../oldproxy/Initializable.sol";
 
 contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, ReentrancyGuardUpgradable {
   // Storage Start
-  uint256 public maxPerAddressDuringMint;
+  uint256 public _maxPerAddressDuringMint;
   uint256 public amountForDevs;
-  uint256 public amountForAuctionAndDev;
   struct PreSaleConf {
     bool open;
     uint32 startTime;
@@ -48,16 +47,15 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     string calldata symbol_,
     uint256 maxBatchSize_,
     uint256 collectionSize_,
-    uint256 amountForAuctionAndDev_,
-    uint256 amountForDevs_
+    uint256 amountForDevs_,
+    uint256 maxPerAddressDuringMint_
   ) external initializer {
     __Ownable_init();
     __KIP17A_init(name_, symbol_, maxBatchSize_, collectionSize_);
     __ReentrancyGuard_init();
-    maxPerAddressDuringMint = maxBatchSize_;
-    amountForAuctionAndDev = amountForAuctionAndDev_;
+    _maxPerAddressDuringMint = maxPerAddressDuringMint_;
     amountForDevs = amountForDevs_;
-    require(amountForAuctionAndDev_ <= collectionSize_, "larger collection size needed");
+    require(amountForDevs_ <= collectionSize_, "larger collection size needed");
   }
 
   modifier callerIsUser() {
@@ -83,7 +81,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     require(preSaleConf.open == true, "Presale not in progress");
     uint256 price = preSaleConf.price * quantity_;
     require(msg.value >= price, "You should send more KLAY");
-    require(maxPerAddressDuringMint >= numberMinted(msg.sender) + quantity_, "Reached max allowed mint");
+    require(_maxPerAddressDuringMint >= numberMinted(msg.sender) + quantity_, "Reached max allowed mint");
     _safeMint(msg.sender, quantity_);
     refundIfOver(price);
   }
@@ -117,7 +115,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "Public sale not in progress");
     require(totalSupply() + quantity <= publicSaleConf.limit, "reached public sale limit");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
-    require(numberMinted(msg.sender) + quantity <= maxPerAddressDuringMint, "can not mint this many");
+    require(numberMinted(msg.sender) + quantity <= _maxPerAddressDuringMint, "can not mint this many");
     uint256 price = publicSaleConf.price * quantity;
     require(price >= msg.value, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);

@@ -10,7 +10,6 @@ contract FootageProxy is TransparentUpgradeableProxy, Ownable {
   // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
-  uint256 public amountForAuctionAndDev;
 
   struct PreSaleConfig {
     bool open;
