@@ -14,14 +14,14 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
   uint256 public amountForAuctionAndDev;
-  struct PreSaleConfig {
+  struct PreSaleConf {
     bool open;
     uint32 startTime;
     uint32 endTime;
     uint256 price;
     uint256 limit;
   }
-  struct PublicSaleConfig {
+  struct PublicSaleConf {
     bool open;
     uint32 publicSaleKey;
     uint32 startTime;
@@ -29,7 +29,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint64 price;
     uint256 limit;
   }
-  struct AllowlistSaleConfig {
+  struct AllowSaleConf {
     bool open;
     uint256 price; // mint price for allow list accounts
     uint32 startTime;
@@ -37,9 +37,9 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     mapping(address => uint256) allowlist;
     uint256 limit;
   }
-  PreSaleConfig public preSaleConf;
-  PublicSaleConfig public publicSaleConf;
-  AllowlistSaleConfig public allowSaleConf;
+  PreSaleConf public preSaleConf;
+  PublicSaleConf public publicSaleConf;
+  AllowSaleConf public allowSaleConf;
 
   // Storage End
 
@@ -111,8 +111,9 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     refundIfOver(price);
   }
 
-  function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser publicSaleOn {
-    require(publicSaleConf.publicSaleKey == callerPublicSaleKey, "called with incorrect public sale key");
+  function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser {
+    require(publicSaleConf.open == true, "Public sale not in progress");
+    require(publicSaleConf.publicSaleKey == callerPublicSaleKey, "incorrect public sale key");
     require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "Public sale not in progress");
     require(totalSupply() + quantity <= publicSaleConf.limit, "reached public sale limit");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
@@ -121,11 +122,6 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     require(price >= msg.value, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
     refundIfOver(price);
-  }
-
-  modifier publicSaleOn() {
-    require(publicSaleConf.open == true, "Public sale not in progress");
-    _;
   }
 
   function refundIfOver(uint256 price) private {
@@ -142,7 +138,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     uint32 endTime,
     uint256 limit
   ) external onlyOwner {
-    publicSaleConf = PublicSaleConfig(true, publicSaleKey, startTime, endTime, priceWei, limit);
+    publicSaleConf = PublicSaleConf(true, publicSaleKey, startTime, endTime, priceWei, limit);
   }
 
   function endPublicSale() external onlyOwner {
@@ -172,7 +168,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     _safeMint(msg.sender, left);
   }
 
-  // // metadata URI
+  // metadata URI
   string private _baseTokenURI;
 
   function _baseURI() internal view returns (string memory) {
