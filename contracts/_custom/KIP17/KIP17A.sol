@@ -301,8 +301,6 @@ contract KIP17A is Context, KIP13, KIP17, IKIP17Metadata, IKIP17Enumerable {
     require(!_exists(startTokenId), "KIP17A: token already minted");
     require(quantity <= maxBatchSize, "KIP17A: quantity to mint too high");
 
-    _beforeTokenTransfers(address(0), to, startTokenId, quantity);
-
     AddressData memory addressData = _addressData[to];
     _addressData[to] = AddressData(addressData.balance + uint128(quantity), addressData.numberMinted + uint128(quantity));
     _ownerships[startTokenId] = TokenOwnership(to, uint64(block.timestamp));
@@ -344,8 +342,6 @@ contract KIP17A is Context, KIP13, KIP17, IKIP17Metadata, IKIP17Enumerable {
 
     require(prevOwnership.addr == from, "KIP17A: transfer from incorrect owner");
     require(to != address(0), "KIP17A: transfer to the zero address");
-
-    _beforeTokenTransfers(from, to, tokenId, 1);
 
     // Clear approvals from the previous owner
     _approve(address(0), tokenId, prevOwnership.addr);
@@ -403,25 +399,6 @@ contract KIP17A is Context, KIP13, KIP17, IKIP17Metadata, IKIP17Enumerable {
     }
     nextOwnerToExplicitlySet = endIndex + 1;
   }
-
-  /**
-   * @dev Hook that is called before a set of serially-ordered token ids are about to be transferred. This includes minting.
-   *
-   * startTokenId - the first token id to be transferred
-   * quantity - the amount to be transferred
-   *
-   * Calling conditions:
-   *
-   * - When `from` and `to` are both non-zero, ``from``'s `tokenId` will be
-   * transferred to `to`.
-   * - When `from` is zero, `tokenId` will be minted for `to`.
-   */
-  function _beforeTokenTransfers(
-    address from,
-    address to,
-    uint256 startTokenId,
-    uint256 quantity
-  ) internal {}
 
   /**
    * @dev Hook that is called after a set of serially-ordered token ids have been transferred. This includes

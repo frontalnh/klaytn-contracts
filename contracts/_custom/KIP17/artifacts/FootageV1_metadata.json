@@ -996,9 +996,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradable.sol": {
-			"keccak256": "0x7114aa4ba00213eb9c0ba36380301654afb35d172361e0de27cc136f4c96b437",
+			"keccak256": "0x2450eb64586c4f347b578a22c9e7c8689beddebafbd480205a59cea7b516fc08",
 			"urls": [
-				"bzzr://bb1abc9b0eebbd97578230d26667022c46982d350c6af12cea0068f4e46baf0d"
+				"bzzr://00c3e574200ab98259a29bce10992e92343e99a1e636284cf0d2b4d8a9d19a82"
 			]
 		},
 		"contracts/_custom/introspection/KIP13Upgradable.sol": {
