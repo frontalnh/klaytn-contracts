@@ -297,6 +297,20 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [
 					{
@@ -309,6 +323,20 @@
 					{
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "revealed",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"payable": false,
@@ -457,6 +485,15 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "__KIP17Burnable_init",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -614,6 +651,29 @@
 					}
 				],
 				"name": "setApprovalForAll",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "reveal",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "uri",
+						"type": "string"
+					}
+				],
+				"name": "setRevealURI",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -948,6 +1008,9 @@
 		],
 		"devdoc": {
 			"methods": {
+				"__KIP17Burnable_init()": {
+					"details": "Constructor function."
+				},
 				"__KIP17Enumerable_init()": {
 					"details": "Constructor function."
 				},
@@ -970,6 +1033,12 @@
 						"owner": "address to query the balance of"
 					},
 					"return": "uint256 representing the amount owned by the passed address"
+				},
+				"burn(uint256)": {
+					"details": "Burns a specific KIP17 token.",
+					"params": {
+						"tokenId": "uint256 id of the KIP17 token to be burned."
+					}
 				},
 				"getApproved(uint256)": {
 					"details": "Gets the approved address for a token ID, or zero if no address set Reverts if the token ID does not exist.",
@@ -1061,10 +1130,7 @@
 					"return": "uint256 token ID at the given index of the tokens list owned by the requested address"
 				},
 				"tokenURI(uint256)": {
-					"details": "Returns an URI for a given token ID. Throws if the token ID does not exist. May return an empty string.",
-					"params": {
-						"tokenId": "uint256 ID of the token to query"
-					}
+					"details": "See {IKIP17Metadata-tokenURI}."
 				},
 				"totalSupply()": {
 					"details": "Gets the total amount of tokens stored by the contract.",
@@ -1101,9 +1167,15 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x5cf5afd8eff39b05af4e62786c9c7af7b61a4c075d13aa71a8c3a690d94cc76d",
+			"keccak256": "0x5074bb0125df33ec39f520072c18c48e41dbbcfa4967c61cdb0b7452f07a9e0b",
 			"urls": [
-				"bzzr://844629cfe44e7deb9c05f29b21b0e24e508defa099bfdaadf00b2787a4a27168"
+				"bzzr://b6f5d24429b1591f478cb1a256ce7b1c9a4735327e35932b45c68f472efa0e75"
+			]
+		},
+		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
+			"keccak256": "0xd0b8df4649558c3b3dacd1b730a60774eae8cc387230993e29c3d7c1a96ee2c3",
+			"urls": [
+				"bzzr://afe2f6182290493c25d182b353aeff9997a58b0d97d7198f5e7144213b457910"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17EnumerableUpgradeable.sol": {
@@ -1119,15 +1191,15 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17MetadataMintableUpgradeable.sol": {
-			"keccak256": "0x293afcad800528a141614558d057ee1268cbbf302c91dc96bf8bfb743914d37c",
+			"keccak256": "0xcd66b31d1409804ae11e6ace623d5741ae74066b1698d16fdeadcacb7ca0849a",
 			"urls": [
-				"bzzr://a8cba53eb31a13105d38d614fcd5cbfcd86b088d141b3966c94d843be8f88e7a"
+				"bzzr://f315029cf3009b2d3f04ad19c7d99e2ada2b1a6ee383251522d0c67c5af3e7cb"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17MetadataUpgradeable.sol": {
-			"keccak256": "0xa6f3cc796e89414d5d35d3ec4f266a8b180d5f2434effc99389243a1b3421b69",
+			"keccak256": "0x65a401023044f8ce33d6db3b7adee0e484d5d3c7e18cd20a0d69bae64383fdf6",
 			"urls": [
-				"bzzr://d283f78fd839b0c71b0bfc7f12a590f9d44219b51cc15158178a445466352bc1"
+				"bzzr://71743b2260465c57f3a950f1bf155268af11336160baee760f2562036ba97fac"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17MintableUpgradeable.sol": {
@@ -1137,9 +1209,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
-			"keccak256": "0xc0fc619587864e3fb0e11216857ceb70e0c04633b6ccf7140aabd8d459fa8868",
+			"keccak256": "0xfcad8bdb79a5a158d82e3d856bf3d4f6630af4fd19d5a32e82edef3ffae66f92",
 			"urls": [
-				"bzzr://1519ae2926286ab9c16f254821e5acfbd98a160b30948600a10b77f2df6918df"
+				"bzzr://c5ece81bb8ee56490c72819c483e8a52928ec8e18b9768dc4cc94e76bf579281"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
@@ -1178,10 +1250,22 @@
 				"bzzr://90a6c53311b94892ae4b286c1a1ec5cc930b63e5093b1ce898fb120b88961588"
 			]
 		},
+		"contracts/_custom/reveal/RevealableUpgradeable.sol": {
+			"keccak256": "0x7f4d17a31b1b111f053a6e9aac1871a5a56db423c2f15700ba7c8afc92046f8d",
+			"urls": [
+				"bzzr://bd400774172ac212028442b2ca37f9325e2158037c5a21b849f99df3139f6866"
+			]
+		},
 		"contracts/_custom/utils/ReentrancyGuardUpgradable.sol": {
 			"keccak256": "0x6ab60bd7b9f69182582d3a4b5e7cc6b60faf44249d62be2365ff1b1bac514134",
 			"urls": [
 				"bzzr://baec21bf80f27b2eda5c452cecfd45d1b49cb7c7f0eb66aaf4403207b42f91e1"
+			]
+		},
+		"contracts/_custom/utils/Strings.sol": {
+			"keccak256": "0x9f40210b4faa4cc52dc4a9e5b98207216055682470efb7e3a543280ed850726f",
+			"urls": [
+				"bzzr://13fae1612997d70d27df81c88d3254a2a9911baf53a96d28e368eac1c8062e7a"
 			]
 		},
 		"contracts/drafts/Counters.sol": {

@@ -1,7 +1,6 @@
 pragma solidity ^0.5.0;
 
 import "./KIP17FullUpgradeable.sol";
-import "./KIP17MetadataMintableUpgradeable.sol";
 import "./KIP17MintableUpgradeable.sol";
 import "./KIP17BurnableUpgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
