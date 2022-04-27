@@ -12,6 +12,7 @@ import "../../GSN/Context.sol";
 import "../utils/Strings.sol";
 import "../introspection/KIP13Upgradable.sol";
 import "../oldproxy/Initializable.sol";
+import "../reveal/RevealableUpgradeable.sol";
 
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[KIP17] Non-Fungible Token Standard, including
@@ -23,7 +24,7 @@ import "../oldproxy/Initializable.sol";
  *
  * Does not support burning tokens to address(0).
  */
-contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Metadata, IKIP17Enumerable, Initializable {
+contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Metadata, IKIP17Enumerable, Initializable, RevealableUpgradeable {
   using Address for address;
   using Strings for uint256;
 
@@ -71,6 +72,7 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Me
     require(maxBatchSize_ > 0, "KIP17A: max batch size must be nonzero");
     __KIP13_init();
     __KIP17_init();
+    __Revealable_init();
     _name = name_;
     _symbol = symbol_;
     maxBatchSize = maxBatchSize_;
@@ -176,6 +178,9 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Me
     require(_exists(tokenId), "KIP17Metadata: URI query for nonexistent token");
 
     string memory baseURI = _baseURI();
+    if (revealed) {
+      baseURI = _revealURI;
+    }
     return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
   }
 
