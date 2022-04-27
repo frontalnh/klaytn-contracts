@@ -1184,12 +1184,6 @@
 				"bzzr://54e4ce2ab37084ea3d0edab417c3a9d3cbdd0d402d254ce3b696de09facf6f41"
 			]
 		},
-		"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": {
-			"keccak256": "0xb6d59d822a1d9e20037c73838a855dae572aa3123da6532e4dd9cfcde422b889",
-			"urls": [
-				"bzzr://cfdd44e9f9b081a1f2c7118ff6427e16a43ed714c4c0db0a28e5426ce5234839"
-			]
-		},
 		"contracts/_custom/KIP17/KIP17MetadataUpgradeable.sol": {
 			"keccak256": "0x65a401023044f8ce33d6db3b7adee0e484d5d3c7e18cd20a0d69bae64383fdf6",
 			"urls": [
@@ -1203,9 +1197,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
-			"keccak256": "0x0a9ab908294f1e582df791bdb38203ef5e668a796f06158220a4b4a21ce82317",
+			"keccak256": "0x0ac76285875d91d74e33f5b24fc717566cd32644dec418b3057c23d7ea654819",
 			"urls": [
-				"bzzr://4375d0ede8de6e2a5e3d630067d957068fbdf559d5e69ad8c411505dfd37d88d"
+				"bzzr://6fd2bb059344162a93d5d578fc399b4ffb5dda942f88bfdf26d1b14409c49143"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
