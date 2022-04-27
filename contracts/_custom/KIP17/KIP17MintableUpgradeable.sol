@@ -21,7 +21,7 @@ contract KIP17MintableUpgradeable is KIP17Upgradeable, MinterRoleUpgradeable {
   /**
    * @dev Constructor function.
    */
-  function __KIP17Mintable_init() public {
+  function __KIP17Mintable_init() internal {
     // register the supported interface to conform to KIP17Mintable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_MINTABLE);
     __KIP17_init();

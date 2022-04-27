@@ -53,7 +53,7 @@ contract KIP17Upgradeable is KIP13Upgradeable, IKIP17 {
    */
   bytes4 private constant _INTERFACE_ID_KIP17 = 0x80ac58cd;
 
-  function __KIP17_init() public {
+  function __KIP17_init() internal {
     // register the supported interfaces to conform to KIP17 via KIP13
     _registerInterface(_INTERFACE_ID_KIP17);
     __KIP13_init();

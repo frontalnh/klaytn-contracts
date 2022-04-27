@@ -445,50 +445,6 @@
 			},
 			{
 				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity_",
-						"type": "uint256"
-					}
-				],
-				"name": "preSaleMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "preSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [],
 				"name": "__KIP17Burnable_init",
 				"outputs": [],
@@ -522,32 +478,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "startTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "price_",
-						"type": "uint256"
-					},
-					{
-						"name": "limit_",
-						"type": "uint256"
-					}
-				],
-				"name": "openPreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -763,15 +693,6 @@
 				"outputs": [],
 				"payable": true,
 				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "closePreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -1146,9 +1067,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x54ef0afe09ce6dc10bac215f4a03704633278f380a6201739f13970feb5ebdb8",
+			"keccak256": "0x13bd5973d8fde16daada865a055f9d505177a9c92f96b634312e7eb9b063fc37",
 			"urls": [
-				"bzzr://50f3d58b8e7784c274d540e1f3f42d24deb30105a558f9bfdd2a567f48d1f84f"
+				"bzzr://2e897a59ece9b17e2fe89d8c79bf7c1c94a1df707ab09b55b1e941e17308228c"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {

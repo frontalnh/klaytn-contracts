@@ -19,7 +19,7 @@ contract KIP17BurnableUpgradeable is KIP13Upgradeable, KIP17Upgradeable {
   /**
    * @dev Constructor function.
    */
-  function __KIP17Burnable_init() public {
+  function __KIP17Burnable_init() internal {
     // register the supported interface to conform to KIP17Burnable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_BURNABLE);
     __KIP13_init();
