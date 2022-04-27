@@ -69,9 +69,8 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Me
   ) internal initializer {
     require(collectionSize_ > 0, "KIP17A: collection must have a nonzero supply");
     require(maxBatchSize_ > 0, "KIP17A: max batch size must be nonzero");
-    __KIP13Upgradable_init();
-    __KIP17A_init(name_, symbol_, maxBatchSize_, collectionSize_);
-
+    __KIP13_init();
+    __KIP17_init();
     _name = name_;
     _symbol = symbol_;
     maxBatchSize = maxBatchSize_;

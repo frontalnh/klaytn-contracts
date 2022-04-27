@@ -20,7 +20,7 @@ contract KIP13Upgradable is IKIP13 {
    */
   mapping(bytes4 => bool) private _supportedInterfaces;
 
-  function __KIP13Upgradable_init() internal {
+  function __KIP13_init() internal {
     // Derived contracts need only register support for their own interfaces,
     // we register support for KIP13 itself here
     _registerInterface(_INTERFACE_ID_KIP13);
