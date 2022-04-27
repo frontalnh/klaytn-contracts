@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "./KIP17.sol";
+import "./KIP17Upgradeable.sol";
 import "../../lifecycle/Pausable.sol";
 import "../../introspection/KIP13.sol";
 
@@ -8,7 +8,7 @@ import "../../introspection/KIP13.sol";
  * @title KIP17 Non-Fungible Pausable token
  * @dev KIP17 modified with pausable transfers.
  */
-contract KIP17Pausable is KIP13, KIP17, Pausable {
+contract KIP17PausableUpgradeable is KIP13, KIP17Upgradeable, Pausable {
     /*
      *     bytes4(keccak256('paused()')) == 0x5c975abb
      *     bytes4(keccak256('pause()')) == 0x8456cb59
@@ -24,7 +24,7 @@ contract KIP17Pausable is KIP13, KIP17, Pausable {
     /**
      * @dev Constructor function.
      */
-    constructor () public {
+    function __KIP17Pausable_init () public {
         // register the supported interface to conform to KIP17Pausable via KIP13
         _registerInterface(_INTERFACE_ID_KIP17_PAUSABLE);
     }
