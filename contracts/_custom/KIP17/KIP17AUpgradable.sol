@@ -315,7 +315,6 @@ contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Me
     }
 
     currentIndex = updatedIndex;
-    _afterTokenTransfers(address(0), to, startTokenId, quantity);
   }
 
   /**

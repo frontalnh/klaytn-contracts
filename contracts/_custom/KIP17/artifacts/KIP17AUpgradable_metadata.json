@@ -508,15 +508,15 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17AUpgradable.sol": {
-			"keccak256": "0x2af946799b1f7af0990c33033684abbd23ac0f391cb5ab7223263eb9df61d0b1",
+			"keccak256": "0xf18e7c19c980536bde4cd805a0ec07e0b3a308e80fb60d5a4f056b326e4d019f",
 			"urls": [
-				"bzzr://47dca95637481f086a20a4c4dd69b23fdc10c924a186847f130bd96c4d011564"
+				"bzzr://a9b0038b42ce814ff64d2205bbad83d605ba76cc71b23ae89fd44b6b2546e6c4"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradable.sol": {
-			"keccak256": "0x7114aa4ba00213eb9c0ba36380301654afb35d172361e0de27cc136f4c96b437",
+			"keccak256": "0x2450eb64586c4f347b578a22c9e7c8689beddebafbd480205a59cea7b516fc08",
 			"urls": [
-				"bzzr://bb1abc9b0eebbd97578230d26667022c46982d350c6af12cea0068f4e46baf0d"
+				"bzzr://00c3e574200ab98259a29bce10992e92343e99a1e636284cf0d2b4d8a9d19a82"
 			]
 		},
 		"contracts/_custom/introspection/KIP13Upgradable.sol": {
