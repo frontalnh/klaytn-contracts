@@ -5,18 +5,7 @@ import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/TransparentUpgradeableProxy.sol";
 
 contract LemongBiddingProxy is TransparentUpgradeableProxy, Ownable {
-  constructor(
-    uint256 totalSupply,
-    uint256 maxBidPerAddress,
-    uint256 maxBidPerTx,
-    address _logic,
-    address _admin
-  ) public TransparentUpgradeableProxy(_logic, _admin, "") {
-    _totalSupply = totalSupply;
-    _maxBidPerAddress = maxBidPerAddress;
-    _maxBidPerTx = maxBidPerTx;
-    _remains = totalSupply;
-  }
+  constructor(address _logic, address _admin) public TransparentUpgradeableProxy(_logic, _admin, "") {}
 
   // ---------- proxy status start ----------
   mapping(address => uint256) public whitelist;

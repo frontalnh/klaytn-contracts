@@ -75,7 +75,7 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     _;
   }
 
-  function startPreSale(
+  function openPreSale(
     uint32 startTime_,
     uint32 endTime_,
     uint256 price_,
@@ -97,16 +97,16 @@ contract FootageV1 is Initializable, OwnableUpgradable, KIP17AUpgradable, Reentr
     refundIfOver(price);
   }
 
-  function endPreSale() external onlyOwner {
+  function closePreSale() external onlyOwner {
     preSaleConfig.open = false;
   }
 
-  function startAllowlistSale(uint256 price) external onlyOwner {
+  function openAllowlistSale(uint256 price) external onlyOwner {
     allowlistSaleConfig.open = true;
     allowlistSaleConfig.price = price;
   }
 
-  function endAllowListSale() external onlyOwner {
+  function closeAllowListSale() external onlyOwner {
     allowlistSaleConfig.open = false;
   }
 
