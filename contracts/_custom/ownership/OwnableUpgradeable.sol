@@ -10,7 +10,7 @@ import "../oldproxy/Initializable.sol";
  * `onlyOwner`, which can be aplied to your functions to restrict their use to
  * the owner.
  */
-contract OwnableUpgradable is Initializable {
+contract OwnableUpgradeable is Initializable {
   address payable private _owner;
 
   event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);

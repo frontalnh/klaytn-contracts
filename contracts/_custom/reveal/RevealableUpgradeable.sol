@@ -1,7 +1,7 @@
-import "../ownership/OwnableUpgradable.sol";
+import "../ownership/OwnableUpgradeable.sol";
 pragma solidity ^0.5.6;
 
-contract RevealableUpgradeable is OwnableUpgradable {
+contract RevealableUpgradeable is OwnableUpgradeable {
   bool public revealed = false;
   string internal _revealURI;
 

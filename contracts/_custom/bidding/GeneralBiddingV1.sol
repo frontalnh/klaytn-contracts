@@ -1,10 +1,10 @@
 pragma solidity ^0.5.6;
 
-import "../ownership/OwnableUpgradable.sol";
+import "../ownership/OwnableUpgradeable.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/Initializable.sol";
 
-contract GeneralBiddingV1 is Initializable, OwnableUpgradable {
+contract GeneralBiddingV1 is Initializable, OwnableUpgradeable {
   // ---------- proxy status start ----------
   mapping(address => uint256) public whitelistAmount;
   address[] public whitelist;

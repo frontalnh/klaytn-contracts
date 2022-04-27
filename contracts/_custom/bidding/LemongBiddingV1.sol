@@ -1,6 +1,6 @@
 pragma solidity ^0.5.6;
 
-import "../ownership/OwnableUpgradable.sol";
+import "../ownership/OwnableUpgradeable.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/Initializable.sol";
 
@@ -8,7 +8,7 @@ contract ILemong {
   function numberMinted(address owner) public view returns (uint256);
 }
 
-contract LemongBiddingV1 is Initializable, OwnableUpgradable {
+contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
   // ---------- proxy status start ----------
   mapping(address => uint256) public whitelist;
 

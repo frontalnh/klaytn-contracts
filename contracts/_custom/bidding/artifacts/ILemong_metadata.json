@@ -1,80 +1,70 @@
 {
-	"compiler": {
-		"version": "0.5.6+commit.b259423e"
-	},
-	"language": "Solidity",
-	"output": {
-		"abi": [
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "numberMinted",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			}
-		],
-		"devdoc": {
-			"methods": {}
-		},
-		"userdoc": {
-			"methods": {}
-		}
-	},
-	"settings": {
-		"compilationTarget": {
-			"contracts/_custom/bidding/LemongBiddingV1.sol": "ILemong"
-		},
-		"evmVersion": "constantinople",
-		"libraries": {},
-		"optimizer": {
-			"enabled": false,
-			"runs": 200
-		},
-		"remappings": []
-	},
-	"sources": {
-		"contracts/_custom/bidding/LemongBiddingV1.sol": {
-			"keccak256": "0x8602022ed90468f1a09b7bea0e9b0446d8516f9b3948b0272fe8b481ee31c392",
-			"urls": [
-				"bzzr://b0c25241d5ae3ff7c25f0680b53de18e52de960869aab13aaabfe5e3b5baf600"
-			]
-		},
-		"contracts/_custom/oldproxy/Initializable.sol": {
-			"keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
-			"urls": [
-				"bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"
-			]
-		},
-		"contracts/_custom/ownership/OwnableUpgradable.sol": {
-			"keccak256": "0x2a797055543cebb453e5df26ad6346688c197787ed7f93ad51e570e4d61e513b",
-			"urls": [
-				"bzzr://2f3e0b2401f55d6781caef8cfb2052cc7ba333e1cb36e236a51277e12eba6b67"
-			]
-		},
-		"contracts/introspection/IKIP13.sol": {
-			"keccak256": "0xf7415711dbec40bc633af7d8cb5c3c0bc3d1ed97fd8c13f795a03eb3073ea219",
-			"urls": [
-				"bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"
-			]
-		},
-		"contracts/token/KIP17/IKIP17.sol": {
-			"keccak256": "0x0b30e5fe64932d8b9343c7897ebb7a0ac15a15577ce5ec1f18c3ba4396120de0",
-			"urls": [
-				"bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"
-			]
-		}
-	},
-	"version": 1
+  "compiler": {
+    "version": "0.5.6+commit.b259423e"
+  },
+  "language": "Solidity",
+  "output": {
+    "abi": [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "name": "numberMinted",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ],
+    "devdoc": {
+      "methods": {}
+    },
+    "userdoc": {
+      "methods": {}
+    }
+  },
+  "settings": {
+    "compilationTarget": {
+      "contracts/_custom/bidding/LemongBiddingV1.sol": "ILemong"
+    },
+    "evmVersion": "constantinople",
+    "libraries": {},
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "remappings": []
+  },
+  "sources": {
+    "contracts/_custom/bidding/LemongBiddingV1.sol": {
+      "keccak256": "0x8602022ed90468f1a09b7bea0e9b0446d8516f9b3948b0272fe8b481ee31c392",
+      "urls": ["bzzr://b0c25241d5ae3ff7c25f0680b53de18e52de960869aab13aaabfe5e3b5baf600"]
+    },
+    "contracts/_custom/oldproxy/Initializable.sol": {
+      "keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
+      "urls": ["bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"]
+    },
+    "contracts/_custom/ownership/OwnableUpgradeable.sol": {
+      "keccak256": "0x2a797055543cebb453e5df26ad6346688c197787ed7f93ad51e570e4d61e513b",
+      "urls": ["bzzr://2f3e0b2401f55d6781caef8cfb2052cc7ba333e1cb36e236a51277e12eba6b67"]
+    },
+    "contracts/introspection/IKIP13.sol": {
+      "keccak256": "0xf7415711dbec40bc633af7d8cb5c3c0bc3d1ed97fd8c13f795a03eb3073ea219",
+      "urls": ["bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"]
+    },
+    "contracts/token/KIP17/IKIP17.sol": {
+      "keccak256": "0x0b30e5fe64932d8b9343c7897ebb7a0ac15a15577ce5ec1f18c3ba4396120de0",
+      "urls": ["bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"]
+    }
+  },
+  "version": 1
 }

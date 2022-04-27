@@ -1,1053 +1,1017 @@
 {
-	"compiler": {
-		"version": "0.5.6+commit.b259423e"
-	},
-	"language": "Solidity",
-	"output": {
-		"abi": [
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "interfaceId",
-						"type": "bytes4"
-					}
-				],
-				"name": "supportsInterface",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "name",
-				"outputs": [
-					{
-						"name": "",
-						"type": "string"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "getApproved",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "approve",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "totalSupply",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "allowSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "transferFrom",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "publicSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "price",
-						"type": "uint64"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "setOwnersExplicit",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"name": "index",
-						"type": "uint256"
-					}
-				],
-				"name": "tokenOfOwnerByIndex",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "devMint",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "safeTransferFrom",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "index",
-						"type": "uint256"
-					}
-				],
-				"name": "tokenByIndex",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "baseURI",
-						"type": "string"
-					}
-				],
-				"name": "setBaseURI",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "ownerOf",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "balanceOf",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "renounceOwnership",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "name_",
-						"type": "string"
-					},
-					{
-						"name": "symbol_",
-						"type": "string"
-					},
-					{
-						"name": "maxBatchSize_",
-						"type": "uint256"
-					},
-					{
-						"name": "collectionSize_",
-						"type": "uint256"
-					},
-					{
-						"name": "amountForDevs_",
-						"type": "uint256"
-					}
-				],
-				"name": "initialize",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity_",
-						"type": "uint256"
-					}
-				],
-				"name": "preSaleMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "preSaleConf",
-				"outputs": [
-					{
-						"name": "open",
-						"type": "bool"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "maxPerAddressDuringMint",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "startTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "price_",
-						"type": "uint256"
-					},
-					{
-						"name": "limit_",
-						"type": "uint256"
-					}
-				],
-				"name": "openPreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "isOwner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "key",
-						"type": "uint32"
-					}
-				],
-				"name": "setPublicSaleKey",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "price",
-						"type": "uint256"
-					}
-				],
-				"name": "openAllowlistSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "symbol",
-				"outputs": [
-					{
-						"name": "",
-						"type": "string"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "setApprovalForAll",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "withdrawMoney",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "addresses",
-						"type": "address[]"
-					},
-					{
-						"name": "numSlots",
-						"type": "uint256[]"
-					}
-				],
-				"name": "seedAllowlist",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"name": "_data",
-						"type": "bytes"
-					}
-				],
-				"name": "safeTransferFrom",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "priceWei",
-						"type": "uint64"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"name": "startPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "allowlistMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "closePreSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "endPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "tokenURI",
-				"outputs": [
-					{
-						"name": "",
-						"type": "string"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					},
-					{
-						"name": "callerPublicSaleKey",
-						"type": "uint256"
-					}
-				],
-				"name": "publicSaleMint",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "nextOwnerToExplicitlySet",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "numberMinted",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"name": "operator",
-						"type": "address"
-					}
-				],
-				"name": "isApprovedForAll",
-				"outputs": [
-					{
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [],
-				"name": "closeAllowListSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "amountForDevs",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferred",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "Transfer",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "approved",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "Approval",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "ApprovalForAll",
-				"type": "event"
-			}
-		],
-		"devdoc": {
-			"methods": {
-				"approve(address,uint256)": {
-					"details": "See {IKIP17-approve}."
-				},
-				"balanceOf(address)": {
-					"details": "See {IKIP17-balanceOf}."
-				},
-				"getApproved(uint256)": {
-					"details": "See {IKIP17-getApproved}."
-				},
-				"isApprovedForAll(address,address)": {
-					"details": "See {IKIP17-isApprovedForAll}."
-				},
-				"isOwner()": {
-					"details": "Returns true if the caller is the current owner."
-				},
-				"name()": {
-					"details": "See {IKIP17Metadata-name}."
-				},
-				"owner()": {
-					"details": "Returns the address of the current owner."
-				},
-				"ownerOf(uint256)": {
-					"details": "See {IKIP17-ownerOf}."
-				},
-				"renounceOwnership()": {
-					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.   * > Note: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
-				},
-				"safeTransferFrom(address,address,uint256)": {
-					"details": "See {IKIP17-safeTransferFrom}."
-				},
-				"safeTransferFrom(address,address,uint256,bytes)": {
-					"details": "See {IKIP17-safeTransferFrom}."
-				},
-				"setApprovalForAll(address,bool)": {
-					"details": "See {IKIP17-setApprovalForAll}."
-				},
-				"supportsInterface(bytes4)": {
-					"details": "See `IKIP13.supportsInterface`.   * Time complexity O(1), guaranteed to always use less than 30 000 gas."
-				},
-				"symbol()": {
-					"details": "See {IKIP17Metadata-symbol}."
-				},
-				"tokenByIndex(uint256)": {
-					"details": "See {IKIP17Enumerable-tokenByIndex}."
-				},
-				"tokenOfOwnerByIndex(address,uint256)": {
-					"details": "See {IKIP17Enumerable-tokenOfOwnerByIndex}. This read function is O(collectionSize). If calling from a separate contract, be sure to test gas first. It may also degrade with extremely large collection sizes (e.g >> 10000), test for your use case."
-				},
-				"tokenURI(uint256)": {
-					"details": "See {IKIP17Metadata-tokenURI}."
-				},
-				"totalSupply()": {
-					"details": "See {IKIP17Enumerable-totalSupply}."
-				},
-				"transferFrom(address,address,uint256)": {
-					"details": "See {IKIP17-transferFrom}."
-				},
-				"transferOwnership(address)": {
-					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				}
-			}
-		},
-		"userdoc": {
-			"methods": {}
-		}
-	},
-	"settings": {
-		"compilationTarget": {
-			"contracts/_custom/KIP17/FootageV1.sol": "FootageV1"
-		},
-		"evmVersion": "constantinople",
-		"libraries": {},
-		"optimizer": {
-			"enabled": false,
-			"runs": 200
-		},
-		"remappings": []
-	},
-	"sources": {
-		"contracts/GSN/Context.sol": {
-			"keccak256": "0x90a3995645af7562d84b9d69363ffa5ae7217714ab61e951bf7bc450f40e4061",
-			"urls": [
-				"bzzr://51482c01bddf23793bddee43b60ab9578a62948a4f2082def24ea792a553b055"
-			]
-		},
-		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x795a6c30148a3720dcc1f651f6391c66358051e2d9952e5073e283f85b05aa45",
-			"urls": [
-				"bzzr://9d1cd2eee0e25ff8d09c40cc2590f2fd4655d5d9e2a1afb26fade29eab6bc5d7"
-			]
-		},
-		"contracts/_custom/KIP17/KIP17AUpgradable.sol": {
-			"keccak256": "0xd005f43daf91cc205eba34e381664a8156ac84db7b8509af568bd051a70c244b",
-			"urls": [
-				"bzzr://9a1fdd6a052aac9d86de417f7f463c53beec785de298d0683966435c53354605"
-			]
-		},
-		"contracts/_custom/KIP17/KIP17Upgradable.sol": {
-			"keccak256": "0x7114aa4ba00213eb9c0ba36380301654afb35d172361e0de27cc136f4c96b437",
-			"urls": [
-				"bzzr://bb1abc9b0eebbd97578230d26667022c46982d350c6af12cea0068f4e46baf0d"
-			]
-		},
-		"contracts/_custom/introspection/KIP13Upgradable.sol": {
-			"keccak256": "0xf344cab5bf58b52900b1f16541fba5d7935bacb7ebbf1eac33b591c8b6891be6",
-			"urls": [
-				"bzzr://39d7b5312090117761627c260d7aa7b918e8cf10fae606ab04cd2a7b1e4bd0e4"
-			]
-		},
-		"contracts/_custom/oldproxy/Initializable.sol": {
-			"keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
-			"urls": [
-				"bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"
-			]
-		},
-		"contracts/_custom/ownership/OwnableUpgradable.sol": {
-			"keccak256": "0x2a797055543cebb453e5df26ad6346688c197787ed7f93ad51e570e4d61e513b",
-			"urls": [
-				"bzzr://2f3e0b2401f55d6781caef8cfb2052cc7ba333e1cb36e236a51277e12eba6b67"
-			]
-		},
-		"contracts/_custom/utils/ReentrancyGuardUpgradable.sol": {
-			"keccak256": "0x6ab60bd7b9f69182582d3a4b5e7cc6b60faf44249d62be2365ff1b1bac514134",
-			"urls": [
-				"bzzr://baec21bf80f27b2eda5c452cecfd45d1b49cb7c7f0eb66aaf4403207b42f91e1"
-			]
-		},
-		"contracts/_custom/utils/Strings.sol": {
-			"keccak256": "0x9f40210b4faa4cc52dc4a9e5b98207216055682470efb7e3a543280ed850726f",
-			"urls": [
-				"bzzr://13fae1612997d70d27df81c88d3254a2a9911baf53a96d28e368eac1c8062e7a"
-			]
-		},
-		"contracts/drafts/Counters.sol": {
-			"keccak256": "0x5eb69360d3441ab2ee799bd7c007cccbffb0896f12b2dfe1456193e2aa180a11",
-			"urls": [
-				"bzzr://ecd0352164978c418c8f5b0080c972b65e4b07f6afc593fb7cdd856185a458ea"
-			]
-		},
-		"contracts/introspection/IKIP13.sol": {
-			"keccak256": "0xf7415711dbec40bc633af7d8cb5c3c0bc3d1ed97fd8c13f795a03eb3073ea219",
-			"urls": [
-				"bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"
-			]
-		},
-		"contracts/math/SafeMath.sol": {
-			"keccak256": "0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076",
-			"urls": [
-				"bzzr://292843005e754e752644f767477ec5ad7a1ffc91ddb18c38b8079c62f3993cad"
-			]
-		},
-		"contracts/token/KIP17/IERC721Receiver.sol": {
-			"keccak256": "0xadbfb7028fb0f851dc848a48b9e54e7c89ffd2c2edc12fa4ba9bb383dfaa83d9",
-			"urls": [
-				"bzzr://2466b6491600969dd9ffdeb0b705e7cecc38418aa215cec64b2481273bba9076"
-			]
-		},
-		"contracts/token/KIP17/IKIP17.sol": {
-			"keccak256": "0x0b30e5fe64932d8b9343c7897ebb7a0ac15a15577ce5ec1f18c3ba4396120de0",
-			"urls": [
-				"bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"
-			]
-		},
-		"contracts/token/KIP17/IKIP17Enumerable.sol": {
-			"keccak256": "0x5a6a02f871bfcf213445ac1c3625af470cbd25599f915f2bbc0b7df0ed998031",
-			"urls": [
-				"bzzr://f613649522f60a170ab6e4cc32b2087cb29d6bfba77680797cfa5467ffc8c356"
-			]
-		},
-		"contracts/token/KIP17/IKIP17Metadata.sol": {
-			"keccak256": "0xad2c2abcd4cb881620f297edcdf9cd491effc1ace2f12f468bf3546f940d1bf4",
-			"urls": [
-				"bzzr://f2de7f30fb22e7238dd752bbd1ac67648cc3f6236348a63d0224fbb659090d48"
-			]
-		},
-		"contracts/token/KIP17/IKIP17Receiver.sol": {
-			"keccak256": "0xf3dee67a4a395e20ad0459e1f255b9c563272d2fb6752e7421c1302cfcf00ff0",
-			"urls": [
-				"bzzr://28f7d1d507cc9f1377346b3c8a868b712a68b79dfe8888231b30671848b0a80b"
-			]
-		},
-		"contracts/utils/Address.sol": {
-			"keccak256": "0x823cd3a29dd4f710e9350f8e569f4db5bcd25a32257b7586c2603b5c205f1d76",
-			"urls": [
-				"bzzr://16eb37aaae6ccbccbadb24cc0722fcd69f45705d34ac439ec627327376d6ac09"
-			]
-		}
-	},
-	"version": 1
+  "compiler": {
+    "version": "0.5.6+commit.b259423e"
+  },
+  "language": "Solidity",
+  "output": {
+    "abi": [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "interfaceId",
+            "type": "bytes4"
+          }
+        ],
+        "name": "supportsInterface",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "name",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "getApproved",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "allowSaleConf",
+        "outputs": [
+          {
+            "name": "open",
+            "type": "bool"
+          },
+          {
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "name": "limit",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "transferFrom",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "publicSaleConf",
+        "outputs": [
+          {
+            "name": "open",
+            "type": "bool"
+          },
+          {
+            "name": "publicSaleKey",
+            "type": "uint32"
+          },
+          {
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "name": "price",
+            "type": "uint64"
+          },
+          {
+            "name": "limit",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "quantity",
+            "type": "uint256"
+          }
+        ],
+        "name": "setOwnersExplicit",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "name": "tokenOfOwnerByIndex",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "quantity",
+            "type": "uint256"
+          }
+        ],
+        "name": "devMint",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "safeTransferFrom",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "name": "tokenByIndex",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "baseURI",
+            "type": "string"
+          }
+        ],
+        "name": "setBaseURI",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "ownerOf",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "name_",
+            "type": "string"
+          },
+          {
+            "name": "symbol_",
+            "type": "string"
+          },
+          {
+            "name": "maxBatchSize_",
+            "type": "uint256"
+          },
+          {
+            "name": "collectionSize_",
+            "type": "uint256"
+          },
+          {
+            "name": "amountForDevs_",
+            "type": "uint256"
+          }
+        ],
+        "name": "initialize",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "quantity_",
+            "type": "uint256"
+          }
+        ],
+        "name": "preSaleMint",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "preSaleConf",
+        "outputs": [
+          {
+            "name": "open",
+            "type": "bool"
+          },
+          {
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "name": "limit",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "maxPerAddressDuringMint",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "startTime_",
+            "type": "uint32"
+          },
+          {
+            "name": "endTime_",
+            "type": "uint32"
+          },
+          {
+            "name": "price_",
+            "type": "uint256"
+          },
+          {
+            "name": "limit_",
+            "type": "uint256"
+          }
+        ],
+        "name": "openPreSale",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "isOwner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "key",
+            "type": "uint32"
+          }
+        ],
+        "name": "setPublicSaleKey",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "price",
+            "type": "uint256"
+          }
+        ],
+        "name": "openAllowlistSale",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "name": "approved",
+            "type": "bool"
+          }
+        ],
+        "name": "setApprovalForAll",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "withdrawMoney",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "addresses",
+            "type": "address[]"
+          },
+          {
+            "name": "numSlots",
+            "type": "uint256[]"
+          }
+        ],
+        "name": "seedAllowlist",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "name": "_data",
+            "type": "bytes"
+          }
+        ],
+        "name": "safeTransferFrom",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "publicSaleKey",
+            "type": "uint32"
+          },
+          {
+            "name": "priceWei",
+            "type": "uint64"
+          },
+          {
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "name": "limit",
+            "type": "uint256"
+          }
+        ],
+        "name": "startPublicSale",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "allowlistMint",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "closePreSale",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "endPublicSale",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "tokenURI",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "quantity",
+            "type": "uint256"
+          },
+          {
+            "name": "callerPublicSaleKey",
+            "type": "uint256"
+          }
+        ],
+        "name": "publicSaleMint",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "nextOwnerToExplicitlySet",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "name": "numberMinted",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "name": "operator",
+            "type": "address"
+          }
+        ],
+        "name": "isApprovedForAll",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "closeAllowListSale",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "amountForDevs",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "Transfer",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "approved",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "Approval",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "approved",
+            "type": "bool"
+          }
+        ],
+        "name": "ApprovalForAll",
+        "type": "event"
+      }
+    ],
+    "devdoc": {
+      "methods": {
+        "approve(address,uint256)": {
+          "details": "See {IKIP17-approve}."
+        },
+        "balanceOf(address)": {
+          "details": "See {IKIP17-balanceOf}."
+        },
+        "getApproved(uint256)": {
+          "details": "See {IKIP17-getApproved}."
+        },
+        "isApprovedForAll(address,address)": {
+          "details": "See {IKIP17-isApprovedForAll}."
+        },
+        "isOwner()": {
+          "details": "Returns true if the caller is the current owner."
+        },
+        "name()": {
+          "details": "See {IKIP17Metadata-name}."
+        },
+        "owner()": {
+          "details": "Returns the address of the current owner."
+        },
+        "ownerOf(uint256)": {
+          "details": "See {IKIP17-ownerOf}."
+        },
+        "renounceOwnership()": {
+          "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.   * > Note: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+        },
+        "safeTransferFrom(address,address,uint256)": {
+          "details": "See {IKIP17-safeTransferFrom}."
+        },
+        "safeTransferFrom(address,address,uint256,bytes)": {
+          "details": "See {IKIP17-safeTransferFrom}."
+        },
+        "setApprovalForAll(address,bool)": {
+          "details": "See {IKIP17-setApprovalForAll}."
+        },
+        "supportsInterface(bytes4)": {
+          "details": "See `IKIP13.supportsInterface`.   * Time complexity O(1), guaranteed to always use less than 30 000 gas."
+        },
+        "symbol()": {
+          "details": "See {IKIP17Metadata-symbol}."
+        },
+        "tokenByIndex(uint256)": {
+          "details": "See {IKIP17Enumerable-tokenByIndex}."
+        },
+        "tokenOfOwnerByIndex(address,uint256)": {
+          "details": "See {IKIP17Enumerable-tokenOfOwnerByIndex}. This read function is O(collectionSize). If calling from a separate contract, be sure to test gas first. It may also degrade with extremely large collection sizes (e.g >> 10000), test for your use case."
+        },
+        "tokenURI(uint256)": {
+          "details": "See {IKIP17Metadata-tokenURI}."
+        },
+        "totalSupply()": {
+          "details": "See {IKIP17Enumerable-totalSupply}."
+        },
+        "transferFrom(address,address,uint256)": {
+          "details": "See {IKIP17-transferFrom}."
+        },
+        "transferOwnership(address)": {
+          "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+        }
+      }
+    },
+    "userdoc": {
+      "methods": {}
+    }
+  },
+  "settings": {
+    "compilationTarget": {
+      "contracts/_custom/KIP17/FootageV1.sol": "FootageV1"
+    },
+    "evmVersion": "constantinople",
+    "libraries": {},
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "remappings": []
+  },
+  "sources": {
+    "contracts/GSN/Context.sol": {
+      "keccak256": "0x90a3995645af7562d84b9d69363ffa5ae7217714ab61e951bf7bc450f40e4061",
+      "urls": ["bzzr://51482c01bddf23793bddee43b60ab9578a62948a4f2082def24ea792a553b055"]
+    },
+    "contracts/_custom/KIP17/FootageV1.sol": {
+      "keccak256": "0x795a6c30148a3720dcc1f651f6391c66358051e2d9952e5073e283f85b05aa45",
+      "urls": ["bzzr://9d1cd2eee0e25ff8d09c40cc2590f2fd4655d5d9e2a1afb26fade29eab6bc5d7"]
+    },
+    "contracts/_custom/KIP17/KIP17AUpgradable.sol": {
+      "keccak256": "0xd005f43daf91cc205eba34e381664a8156ac84db7b8509af568bd051a70c244b",
+      "urls": ["bzzr://9a1fdd6a052aac9d86de417f7f463c53beec785de298d0683966435c53354605"]
+    },
+    "contracts/_custom/KIP17/KIP17Upgradable.sol": {
+      "keccak256": "0x7114aa4ba00213eb9c0ba36380301654afb35d172361e0de27cc136f4c96b437",
+      "urls": ["bzzr://bb1abc9b0eebbd97578230d26667022c46982d350c6af12cea0068f4e46baf0d"]
+    },
+    "contracts/_custom/introspection/KIP13Upgradable.sol": {
+      "keccak256": "0xf344cab5bf58b52900b1f16541fba5d7935bacb7ebbf1eac33b591c8b6891be6",
+      "urls": ["bzzr://39d7b5312090117761627c260d7aa7b918e8cf10fae606ab04cd2a7b1e4bd0e4"]
+    },
+    "contracts/_custom/oldproxy/Initializable.sol": {
+      "keccak256": "0x643a1ff7f7fabbbd9f9511a783f3159033ef27aae0e2dac168cb454ac207fbf3",
+      "urls": ["bzzr://2276561280341fa6cf8b9a95b4e1c96587042c633102c92762d6e1e8a13ff05d"]
+    },
+    "contracts/_custom/ownership/OwnableUpgradeable.sol": {
+      "keccak256": "0x2a797055543cebb453e5df26ad6346688c197787ed7f93ad51e570e4d61e513b",
+      "urls": ["bzzr://2f3e0b2401f55d6781caef8cfb2052cc7ba333e1cb36e236a51277e12eba6b67"]
+    },
+    "contracts/_custom/utils/ReentrancyGuardUpgradable.sol": {
+      "keccak256": "0x6ab60bd7b9f69182582d3a4b5e7cc6b60faf44249d62be2365ff1b1bac514134",
+      "urls": ["bzzr://baec21bf80f27b2eda5c452cecfd45d1b49cb7c7f0eb66aaf4403207b42f91e1"]
+    },
+    "contracts/_custom/utils/Strings.sol": {
+      "keccak256": "0x9f40210b4faa4cc52dc4a9e5b98207216055682470efb7e3a543280ed850726f",
+      "urls": ["bzzr://13fae1612997d70d27df81c88d3254a2a9911baf53a96d28e368eac1c8062e7a"]
+    },
+    "contracts/drafts/Counters.sol": {
+      "keccak256": "0x5eb69360d3441ab2ee799bd7c007cccbffb0896f12b2dfe1456193e2aa180a11",
+      "urls": ["bzzr://ecd0352164978c418c8f5b0080c972b65e4b07f6afc593fb7cdd856185a458ea"]
+    },
+    "contracts/introspection/IKIP13.sol": {
+      "keccak256": "0xf7415711dbec40bc633af7d8cb5c3c0bc3d1ed97fd8c13f795a03eb3073ea219",
+      "urls": ["bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"]
+    },
+    "contracts/math/SafeMath.sol": {
+      "keccak256": "0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076",
+      "urls": ["bzzr://292843005e754e752644f767477ec5ad7a1ffc91ddb18c38b8079c62f3993cad"]
+    },
+    "contracts/token/KIP17/IERC721Receiver.sol": {
+      "keccak256": "0xadbfb7028fb0f851dc848a48b9e54e7c89ffd2c2edc12fa4ba9bb383dfaa83d9",
+      "urls": ["bzzr://2466b6491600969dd9ffdeb0b705e7cecc38418aa215cec64b2481273bba9076"]
+    },
+    "contracts/token/KIP17/IKIP17.sol": {
+      "keccak256": "0x0b30e5fe64932d8b9343c7897ebb7a0ac15a15577ce5ec1f18c3ba4396120de0",
+      "urls": ["bzzr://7027ab2da185a775cc0697e60a6d17db910959fa365c5337dce50d2bf380c4fc"]
+    },
+    "contracts/token/KIP17/IKIP17Enumerable.sol": {
+      "keccak256": "0x5a6a02f871bfcf213445ac1c3625af470cbd25599f915f2bbc0b7df0ed998031",
+      "urls": ["bzzr://f613649522f60a170ab6e4cc32b2087cb29d6bfba77680797cfa5467ffc8c356"]
+    },
+    "contracts/token/KIP17/IKIP17Metadata.sol": {
+      "keccak256": "0xad2c2abcd4cb881620f297edcdf9cd491effc1ace2f12f468bf3546f940d1bf4",
+      "urls": ["bzzr://f2de7f30fb22e7238dd752bbd1ac67648cc3f6236348a63d0224fbb659090d48"]
+    },
+    "contracts/token/KIP17/IKIP17Receiver.sol": {
+      "keccak256": "0xf3dee67a4a395e20ad0459e1f255b9c563272d2fb6752e7421c1302cfcf00ff0",
+      "urls": ["bzzr://28f7d1d507cc9f1377346b3c8a868b712a68b79dfe8888231b30671848b0a80b"]
+    },
+    "contracts/utils/Address.sol": {
+      "keccak256": "0x823cd3a29dd4f710e9350f8e569f4db5bcd25a32257b7586c2603b5c205f1d76",
+      "urls": ["bzzr://16eb37aaae6ccbccbadb24cc0722fcd69f45705d34ac439ec627327376d6ac09"]
+    }
+  },
+  "version": 1
 }
