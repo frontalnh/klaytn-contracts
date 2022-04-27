@@ -1,14 +1,16 @@
 pragma solidity ^0.5.0;
 
 import "../../token/KIP17/KIP17Metadata.sol";
-import "../../access/roles/MinterRole.sol";
-import "../../introspection/KIP13.sol";
+import "../access/roles/MinterRoleUpgradeable.sol";
+import "../introspection/KIP13Upgradeable.sol";
+import "./KIP17Upgradeable.sol";
+import "./KIP17MetadataUpgradeable.sol";
 
 /**
  * @title KIP17MetadataMintable
  * @dev KIP17 minting logic with metadata.
  */
-contract KIP17MetadataMintableUpgradeable is KIP13, KIP17, KIP17Metadata, MinterRole {
+contract KIP17MetadataMintableUpgradeable is KIP13Upgradeable, KIP17Upgradeable, KIP17MetadataUpgradeable, MinterRoleUpgradeable {
   /*
    *     bytes4(keccak256('mintWithTokenURI(address,uint256,string)')) == 0x50bb4e7f
    *     bytes4(keccak256('isMinter(address)')) == 0xaa271e1a
@@ -25,6 +27,9 @@ contract KIP17MetadataMintableUpgradeable is KIP13, KIP17, KIP17Metadata, Minter
   function __KIP17MetadataMintable_init() public {
     // register the supported interface to conform to KIP17Mintable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_METADATA_MINTABLE);
+    __KIP13_init();
+    __KIP17_init();
+    __MinterRole_init();
   }
 
   /**

@@ -1,13 +1,13 @@
 pragma solidity ^0.5.0;
 
 import "./KIP17Upgradeable.sol";
-import "../../access/roles/MinterRole.sol";
+import "../access/roles/MinterRoleUpgradeable.sol";
 
 /**
  * @title KIP17Mintable
  * @dev KIP17 minting logic.
  */
-contract KIP17MintableUpgradeable is KIP17Upgradeable, MinterRole {
+contract KIP17MintableUpgradeable is KIP17Upgradeable, MinterRoleUpgradeable {
   /*
    *     bytes4(keccak256('isMinter(address)')) == 0xaa271e1a
    *     bytes4(keccak256('addMinter(address)')) == 0x983b2d56
@@ -24,6 +24,8 @@ contract KIP17MintableUpgradeable is KIP17Upgradeable, MinterRole {
   function __KIP17Mintable_init() public {
     // register the supported interface to conform to KIP17Mintable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_MINTABLE);
+    __KIP17_init();
+    __MinterRole_init();
   }
 
   /**
