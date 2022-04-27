@@ -4,8 +4,6 @@ pragma solidity ^0.5.6;
 
 import "../ownership/OwnableUpgradeable.sol";
 import "../utils/ReentrancyGuardUpgradable.sol";
-import "./KIP17AUpgradable.sol";
-import "../utils/Strings.sol";
 import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/Initializable.sol";
 import "./KIP17TokenAUpgradeable.sol";
