@@ -8,18 +8,16 @@ contract FootageProxy is TransparentUpgradeableProxy, Ownable {
   constructor(address _logic, address _admin) public TransparentUpgradeableProxy(_logic, _admin, "") {}
 
   // Storage Start
-  uint256 public maxPerAddressDuringMint;
+  uint256 public _maxPerAddressDuringMint;
   uint256 public amountForDevs;
-
-  struct PreSaleConfig {
+  struct PreSaleConf {
     bool open;
     uint32 startTime;
     uint32 endTime;
     uint256 price;
     uint256 limit;
   }
-
-  struct PublicSaleConfig {
+  struct PublicSaleConf {
     bool open;
     uint32 publicSaleKey;
     uint32 startTime;
@@ -27,8 +25,7 @@ contract FootageProxy is TransparentUpgradeableProxy, Ownable {
     uint64 price;
     uint256 limit;
   }
-
-  struct AllowlistSaleConfig {
+  struct AllowSaleConf {
     bool open;
     uint256 price; // mint price for allow list accounts
     uint32 startTime;
@@ -36,10 +33,9 @@ contract FootageProxy is TransparentUpgradeableProxy, Ownable {
     mapping(address => uint256) allowlist;
     uint256 limit;
   }
-
-  PreSaleConfig public preSaleConfig;
-  PublicSaleConfig public publicSaleConfig;
-  AllowlistSaleConfig public allowlistSaleConfig;
+  PreSaleConf public preSaleConf;
+  PublicSaleConf public publicSaleConf;
+  AllowSaleConf public allowSaleConf;
 
   // Storage End
 }
