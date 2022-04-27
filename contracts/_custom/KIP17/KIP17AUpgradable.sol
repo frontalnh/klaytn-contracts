@@ -3,7 +3,7 @@
 pragma solidity ^0.5.6;
 
 import "../../token/KIP17/IKIP17.sol";
-import "./KIP17Upgradable.sol";
+import "./KIP17Upgradeable.sol";
 import "../../token/KIP17/IKIP17Receiver.sol";
 import "../../token/KIP17/IKIP17Metadata.sol";
 import "../../token/KIP17/IKIP17Enumerable.sol";
@@ -24,7 +24,7 @@ import "../reveal/RevealableUpgradeable.sol";
  *
  * Does not support burning tokens to address(0).
  */
-contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradable, IKIP17Metadata, IKIP17Enumerable, Initializable, RevealableUpgradeable {
+contract KIP17AUpgradable is Context, KIP13Upgradable, KIP17Upgradeable, IKIP17Metadata, IKIP17Enumerable, Initializable, RevealableUpgradeable {
   using Address for address;
   using Strings for uint256;
 
