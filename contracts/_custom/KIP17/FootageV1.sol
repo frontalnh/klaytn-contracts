@@ -12,7 +12,6 @@ import "../reveal/RevealableUpgradeable.sol";
 contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable, ReentrancyGuardUpgradable, RevealableUpgradeable {
   using Strings for uint256;
 
-  // Storage Start
   uint256 public maxPerAddressDuringMint;
   uint256 public amountForDevs;
 
