@@ -1190,12 +1190,6 @@
 				"bzzr://cfdd44e9f9b081a1f2c7118ff6427e16a43ed714c4c0db0a28e5426ce5234839"
 			]
 		},
-		"contracts/_custom/KIP17/KIP17MetadataMintableUpgradeable.sol": {
-			"keccak256": "0xcd66b31d1409804ae11e6ace623d5741ae74066b1698d16fdeadcacb7ca0849a",
-			"urls": [
-				"bzzr://f315029cf3009b2d3f04ad19c7d99e2ada2b1a6ee383251522d0c67c5af3e7cb"
-			]
-		},
 		"contracts/_custom/KIP17/KIP17MetadataUpgradeable.sol": {
 			"keccak256": "0x65a401023044f8ce33d6db3b7adee0e484d5d3c7e18cd20a0d69bae64383fdf6",
 			"urls": [
@@ -1209,9 +1203,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
-			"keccak256": "0xfcad8bdb79a5a158d82e3d856bf3d4f6630af4fd19d5a32e82edef3ffae66f92",
+			"keccak256": "0x0a9ab908294f1e582df791bdb38203ef5e668a796f06158220a4b4a21ce82317",
 			"urls": [
-				"bzzr://c5ece81bb8ee56490c72819c483e8a52928ec8e18b9768dc4cc94e76bf579281"
+				"bzzr://4375d0ede8de6e2a5e3d630067d957068fbdf559d5e69ad8c411505dfd37d88d"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {
@@ -1280,12 +1274,6 @@
 				"bzzr://2c161a0e94debcd164c7a87e2c12c087ffefe24bc7a4a9f304f5d8ba39ed15a1"
 			]
 		},
-		"contracts/introspection/KIP13.sol": {
-			"keccak256": "0x84681701e79f53ba1e9660b6a130bba31880d66cee996ab7d5567d239155c6da",
-			"urls": [
-				"bzzr://743958df51380e11b5e58092297c1e122582ade8d358010c733f27e175e7ca10"
-			]
-		},
 		"contracts/math/SafeMath.sol": {
 			"keccak256": "0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076",
 			"urls": [
@@ -1320,18 +1308,6 @@
 			"keccak256": "0xf3dee67a4a395e20ad0459e1f255b9c563272d2fb6752e7421c1302cfcf00ff0",
 			"urls": [
 				"bzzr://28f7d1d507cc9f1377346b3c8a868b712a68b79dfe8888231b30671848b0a80b"
-			]
-		},
-		"contracts/token/KIP17/KIP17.sol": {
-			"keccak256": "0x3ffc95c0da23762b273dad189c551bc0591811ca96026b0da064464aa1f1ec4f",
-			"urls": [
-				"bzzr://6187953810079ca3e10048653d8de3c23991bd4e4df84ffd741f3b2c6f6766c7"
-			]
-		},
-		"contracts/token/KIP17/KIP17Metadata.sol": {
-			"keccak256": "0x67db095981e55d1f88a38e7f794f85df18b9d2a4a8c6906c1d7b793af04a99b8",
-			"urls": [
-				"bzzr://38399a4e42bf9737f880a81bc6a7d19b2e570426101df7f9747759e33f79e396"
 			]
 		},
 		"contracts/utils/Address.sol": {
