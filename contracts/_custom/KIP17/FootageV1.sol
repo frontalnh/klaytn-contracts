@@ -116,7 +116,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     publicSaleConf = PublicSaleConf(true, publicSaleKey, startTime, endTime, priceWei, limit);
   }
 
-  function endPublicSale() external onlyOwner {
+  function closePublicSale() external onlyOwner {
     publicSaleConf.open = false;
   }
 
