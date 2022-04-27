@@ -56,7 +56,7 @@ contract GKIP17Impl is Initializable, OwnableUpgradeable, KIP17AUpgradable, Reen
   ) external initializer {
     __Ownable_init();
     __KIP17A_init(name_, symbol_, maxBatchSize_, collectionSize_);
-    __ReentrancyGuardUpgradable_init();
+    __ReentrancyGuard_init();
     maxPerAddressDuringMint = maxBatchSize_;
     amountForAuctionAndDev = amountForAuctionAndDev_;
     amountForDevs = amountForDevs_;

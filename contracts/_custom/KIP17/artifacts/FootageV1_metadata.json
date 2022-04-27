@@ -339,24 +339,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"name": "symbol",
-						"type": "string"
-					}
-				],
-				"name": "__KIP17Full_init",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [
 					{
@@ -1272,9 +1254,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x37bc45f1f77f53246baaa5f47fb4ed6e1f9bbd236b1d1e47e43b58c20bad6d0f",
+			"keccak256": "0x5cf5afd8eff39b05af4e62786c9c7af7b61a4c075d13aa71a8c3a690d94cc76d",
 			"urls": [
-				"bzzr://6f9b38d9ddab85ea3b2671ad1ec6572de5875b44533c9642624223cf0d373755"
+				"bzzr://844629cfe44e7deb9c05f29b21b0e24e508defa099bfdaadf00b2787a4a27168"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
@@ -1290,9 +1272,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17FullUpgradeable.sol": {
-			"keccak256": "0x41665ddb14f1fbb22dea444a8335b7c8806bc93419e928201cf76acfb3dbaa8e",
+			"keccak256": "0xb6d59d822a1d9e20037c73838a855dae572aa3123da6532e4dd9cfcde422b889",
 			"urls": [
-				"bzzr://356dbc8e0864693154291e1cdb09c9389929ba4f4b77c27be116e1b463f9ca85"
+				"bzzr://cfdd44e9f9b081a1f2c7118ff6427e16a43ed714c4c0db0a28e5426ce5234839"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17MetadataMintableUpgradeable.sol": {
@@ -1320,9 +1302,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17TokenAUpgradeable.sol": {
-			"keccak256": "0xf355743a79cd135ac372bbe1da2174e06ca4dfdbd39bc34de35a4c2d3ce964cf",
+			"keccak256": "0x2fb3bba59bb93ebf2e8192e55c4b2350ebe7cbfdfe828e0b20b45362300e40bc",
 			"urls": [
-				"bzzr://e1f96871f38c832a687ea60ef4d824e63ef5d4c4b4282134bdf66412b975b191"
+				"bzzr://a8beb9f7bee65fc52989f10a840d392c7761762f53d644c4ab1c85cd703422a1"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17Upgradeable.sol": {

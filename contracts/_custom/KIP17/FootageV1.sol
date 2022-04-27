@@ -4,7 +4,6 @@ pragma solidity ^0.5.6;
 
 import "../ownership/OwnableUpgradeable.sol";
 import "../utils/ReentrancyGuardUpgradable.sol";
-import "../../token/KIP17/IKIP17.sol";
 import "../oldproxy/Initializable.sol";
 import "./KIP17TokenAUpgradeable.sol";
 
@@ -112,11 +111,11 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   }
 
   function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser {
-    require(publicSaleConf.open == true, "Public sale not in progress");
+    require(publicSaleConf.open == true, "not opened");
     require(publicSaleConf.publicSaleKey == callerPublicSaleKey, "incorrect public sale key");
-    require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "Public sale not in progress");
-    require(totalSupply() + quantity <= publicSaleConf.limit, "reached public sale limit");
-    require(totalSupply() + quantity <= collectionSize, "reached max supply");
+    require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "not on sale");
+    require(totalSupply() + quantity <= publicSaleConf.limit, "reached limit");
+    require(totalSupply() + quantity <= collectionSize, "reached collection size");
     require(_numberMinted[msg.sender] + quantity <= maxPerAddressDuringMint, "can not mint this many");
     require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity, "Reached max allowed mint");
     uint256 price = publicSaleConf.price * quantity;
