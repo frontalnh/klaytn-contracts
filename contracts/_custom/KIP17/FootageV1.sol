@@ -22,6 +22,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint32 endTime;
     uint64 price;
     uint256 limit;
+    uint32 checkAddressLimit; // 0, 1
   }
 
   struct AllowSaleConf {
@@ -94,7 +95,9 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     require(totalSupply() + quantity <= publicSaleConf.limit, "reached limit");
     require(totalSupply() + quantity <= collectionSize, "reached collection size");
     require(_numberMinted[msg.sender] + quantity <= maxPerAddressDuringMint, "can not mint this many");
-    // require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity, "Reached max allowed mint");
+    if (publicSaleConf.checkAddressLimit == 1) {
+      require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity, "Reached max allowed mint");
+    }
     uint256 price = publicSaleConf.price * quantity;
     require(msg.value >= price, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
@@ -118,9 +121,10 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint64 priceWei,
     uint32 startTime,
     uint32 endTime,
-    uint256 limit
+    uint256 limit,
+    uint32 checkAddressLimit_
   ) external onlyOwner {
-    publicSaleConf = PublicSaleConf(true, publicSaleKey, startTime, endTime, priceWei, limit);
+    publicSaleConf = PublicSaleConf(true, publicSaleKey, startTime, endTime, priceWei, limit, checkAddressLimit_);
   }
 
   function closePublicSale() external onlyOwner {
