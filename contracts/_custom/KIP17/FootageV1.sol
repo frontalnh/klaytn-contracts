@@ -79,7 +79,6 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint256 price = uint256(allowSaleConf.price * quantity_);
     require(allowlist[msg.sender] >= quantity_, "not eligible for allowlist mint");
     require(totalSupply() + quantity_ <= collectionSize, "reached max supply");
-    // require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
     require(allowSaleConf.limit >= allowSaleConf.minted + quantity_, "exceed limit");
     allowlist[msg.sender] = allowlist[msg.sender] - quantity_;
     _safeMint(msg.sender, quantity_);
@@ -94,9 +93,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     require(block.timestamp >= publicSaleConf.startTime && block.timestamp <= publicSaleConf.endTime, "not on sale");
     require(totalSupply() + quantity <= publicSaleConf.limit, "reached limit");
     require(totalSupply() + quantity <= collectionSize, "reached collection size");
-    if (publicSaleConf.checkAddressLimit == 1) {
-      require(_numberMinted[msg.sender] + quantity <= maxPerAddressDuringMint, "can not mint this many");
-    }
+    require(_numberMinted[msg.sender] + quantity <= maxPerAddressDuringMint, "can not mint this many");
     uint256 price = publicSaleConf.price * quantity;
     require(msg.value >= price, "Need to send more KLAY");
     _safeMint(msg.sender, quantity);
