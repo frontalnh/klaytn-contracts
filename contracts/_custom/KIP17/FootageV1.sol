@@ -78,7 +78,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint256 price = uint256(allowSaleConf.price * quantity_);
     require(allowlist[msg.sender] >= quantity_, "not eligible for allowlist mint");
     require(totalSupply() + quantity_ <= collectionSize, "reached max supply");
-    require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
+    // require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
     require(allowSaleConf.limit >= allowSaleConf.minted + quantity_, "exceed limit");
     allowlist[msg.sender] = allowlist[msg.sender] - quantity_;
     _safeMint(msg.sender, quantity_);

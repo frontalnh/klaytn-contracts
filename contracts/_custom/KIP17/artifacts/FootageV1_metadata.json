@@ -120,6 +120,32 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"name": "limit_",
+						"type": "uint256"
+					},
+					{
+						"name": "startTime_",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime_",
+						"type": "uint32"
+					}
+				],
+				"name": "openAllowlistSale",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "allowSaleConf",
@@ -142,6 +168,10 @@
 					},
 					{
 						"name": "limit",
+						"type": "uint256"
+					},
+					{
+						"name": "minted",
 						"type": "uint256"
 					}
 				],
@@ -462,20 +492,6 @@
 					}
 				],
 				"name": "setPublicSaleKey",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "price",
-						"type": "uint256"
-					}
-				],
-				"name": "openAllowlistSale",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -925,9 +941,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x160dc7fd5cbdbf47389903569577aef2bae8c4cf0daf2a2d5ce2186e4e105e6c",
+			"keccak256": "0x2cca0d15bf4b43d9c9d43e0e9cf84a4b26398482360a6c016910260975b4aa14",
 			"urls": [
-				"bzzr://af078b5faaa456ac349524a571bc8845945c7eb1cddf8bf0448e2978becee630"
+				"bzzr://c35dc71b4c5fbc2ec4ca7459ae10829338caacb44083f67cf3962c749e9208d5"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
