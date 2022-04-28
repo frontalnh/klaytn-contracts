@@ -184,5 +184,6 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
 
   function setMaxPerAddress(uint256 amount_) public {
     maxPerAddressDuringMint = amount_;
+    _updateBatchSize(amount_);
   }
 }

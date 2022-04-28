@@ -79,4 +79,8 @@ contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable,
   function symbol() external view returns (string memory) {
     return _symbol;
   }
+
+  function _updateBatchSize(uint256 amount) internal {
+    maxBatchSize = amount;
+  }
 }
