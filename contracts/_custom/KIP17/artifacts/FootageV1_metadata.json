@@ -450,6 +450,20 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "amount_",
+						"type": "uint256"
+					}
+				],
+				"name": "setMaxPerAddress",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "maxPerAddressDuringMint",
@@ -968,9 +982,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x2585815abd7bc3ec558ead90eebfa44bc54dd873474bc9af8a6f7d066a791023",
+			"keccak256": "0x830ee6e131ea7434cff5a99725c55f4f5802e568af2f944a48970478dca7a406",
 			"urls": [
-				"bzzr://75da1bcdd28f955d046a1c43e97f2915c15011e750aadf1320509148059c15d6"
+				"bzzr://922e4ea62013bdbdcaaf0b3704399ed09307c12d8b5e380c6f201798d3de94c2"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
