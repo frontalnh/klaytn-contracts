@@ -182,4 +182,8 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     }
     return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
   }
+
+  function setMaxPerAddress(uint256 amount_) public {
+    maxPerAddressDuringMint = amount_;
+  }
 }

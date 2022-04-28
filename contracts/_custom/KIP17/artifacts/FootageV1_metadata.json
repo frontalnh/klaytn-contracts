@@ -547,6 +547,25 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "allowlist",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -949,9 +968,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0xd583ee9bdd1656e3d3f4e740df28088e0665ee550e5b45b5d031f2d46ec4a3b6",
+			"keccak256": "0x2585815abd7bc3ec558ead90eebfa44bc54dd873474bc9af8a6f7d066a791023",
 			"urls": [
-				"bzzr://e51f5c4ac4ad29dda7f1e1f84aaa7981bf46a434870afa7f5e069db4c952d4f3"
+				"bzzr://75da1bcdd28f955d046a1c43e97f2915c15011e750aadf1320509148059c15d6"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
