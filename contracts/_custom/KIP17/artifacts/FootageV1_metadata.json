@@ -25,36 +25,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "priceWei",
-						"type": "uint64"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"name": "openPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "name",
@@ -229,6 +199,10 @@
 					{
 						"name": "limit",
 						"type": "uint256"
+					},
+					{
+						"name": "checkAddressLimit",
+						"type": "uint32"
 					}
 				],
 				"payable": false,
@@ -276,6 +250,40 @@
 					}
 				],
 				"name": "devMint",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "publicSaleKey",
+						"type": "uint32"
+					},
+					{
+						"name": "priceWei",
+						"type": "uint64"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"name": "limit",
+						"type": "uint256"
+					},
+					{
+						"name": "checkAddressLimit_",
+						"type": "uint32"
+					}
+				],
+				"name": "openPublicSale",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -941,9 +949,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x2cca0d15bf4b43d9c9d43e0e9cf84a4b26398482360a6c016910260975b4aa14",
+			"keccak256": "0xd583ee9bdd1656e3d3f4e740df28088e0665ee550e5b45b5d031f2d46ec4a3b6",
 			"urls": [
-				"bzzr://c35dc71b4c5fbc2ec4ca7459ae10829338caacb44083f67cf3962c749e9208d5"
+				"bzzr://e51f5c4ac4ad29dda7f1e1f84aaa7981bf46a434870afa7f5e069db4c952d4f3"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {

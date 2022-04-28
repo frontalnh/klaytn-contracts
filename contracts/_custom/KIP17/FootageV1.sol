@@ -33,7 +33,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint256 limit;
     uint256 minted;
   }
-  mapping(address => uint256) allowlist;
+  mapping(address => uint256) public allowlist;
 
   PublicSaleConf public publicSaleConf;
   AllowSaleConf public allowSaleConf;
