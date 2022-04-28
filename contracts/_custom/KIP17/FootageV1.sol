@@ -29,9 +29,10 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint256 price; // mint price for allow list accounts
     uint32 startTime;
     uint32 endTime;
-    mapping(address => uint256) allowlist;
     uint256 limit;
+    uint256 minted;
   }
+  mapping(address => uint256) allowlist;
 
   PublicSaleConf public publicSaleConf;
   AllowSaleConf public allowSaleConf;
@@ -59,9 +60,13 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     _;
   }
 
-  function openAllowlistSale(uint256 price) external onlyOwner {
-    allowSaleConf.open = true;
-    allowSaleConf.price = price;
+  function openAllowlistSale(
+    uint256 price,
+    uint256 limit_,
+    uint32 startTime_,
+    uint32 endTime_
+  ) external onlyOwner {
+    allowSaleConf = AllowSaleConf(true, price, startTime_, endTime_, limit_, 0);
   }
 
   function closeAllowListSale() external onlyOwner {
@@ -71,12 +76,14 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   function allowlistMint(uint256 quantity_) external payable callerIsUser {
     require(allowSaleConf.open == true, "Allowlist sale not in progress");
     uint256 price = uint256(allowSaleConf.price * quantity_);
-    require(allowSaleConf.allowlist[msg.sender] >= quantity_, "not eligible for allowlist mint");
+    require(allowlist[msg.sender] >= quantity_, "not eligible for allowlist mint");
     require(totalSupply() + quantity_ <= collectionSize, "reached max supply");
     require(maxPerAddressDuringMint >= _numberMinted[msg.sender] + quantity_, "Reached max allowed mint");
-    allowSaleConf.allowlist[msg.sender] = allowSaleConf.allowlist[msg.sender] - quantity_;
+    require(allowSaleConf.limit >= allowSaleConf.minted + quantity_, "exceed limit");
+    allowlist[msg.sender] = allowlist[msg.sender] - quantity_;
     _safeMint(msg.sender, quantity_);
     _increaseMinted(msg.sender, quantity_);
+    allowSaleConf.minted = allowSaleConf.minted + quantity_;
     refundIfOver(price);
   }
 
@@ -127,7 +134,7 @@ contract FootageV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   function seedAllowlist(address[] calldata addresses, uint256[] calldata numSlots) external onlyOwner {
     require(addresses.length == numSlots.length, "addresses does not match numSlots length");
     for (uint256 i = 0; i < addresses.length; i++) {
-      allowSaleConf.allowlist[addresses[i]] = numSlots[i];
+      allowlist[addresses[i]] = numSlots[i];
     }
   }
 
