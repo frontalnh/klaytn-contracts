@@ -707,6 +707,25 @@
 				"constant": true,
 				"inputs": [
 					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "numberMinted",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
 						"name": "owner",
 						"type": "address"
 					},
@@ -988,9 +1007,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV2.sol": {
-			"keccak256": "0xdfc7dea89e05adb5e5fe5142a8761b47abf81091a8c29844fd3e1e6063cf3ae2",
+			"keccak256": "0xbdab02176d9a10ecb5e6fd30b417c5d570f4f08f81040a66dc5ef5eeb7c41549",
 			"urls": [
-				"bzzr://a460ab9d3a4b7be594b1ebf47cabbbd8d16776521f58bbc887b6e43fa62de895"
+				"bzzr://e6b981d81e64e9d34f50485a249ffb707c7cc08246f7aab4c91fc34885923767"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
