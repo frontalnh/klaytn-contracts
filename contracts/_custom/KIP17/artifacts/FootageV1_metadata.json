@@ -982,9 +982,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV1.sol": {
-			"keccak256": "0x2fdba6692d53f2357308e4ec5d36883ced9b91544cd39ea7037e1dfdf2a95688",
+			"keccak256": "0x731e188dd7bb53297ffc98ec904855af7bce7d9ce6bca32317c771d4d2b43eb0",
 			"urls": [
-				"bzzr://d946b55252f7ee1b11f7ffb342daf7f88df236f4a79c53181b7ff772b4ff9ceb"
+				"bzzr://fcc059c5a8d47392d3a4ed54cea4cb9fe12f08ffd582e58592f4812c547e4417"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {

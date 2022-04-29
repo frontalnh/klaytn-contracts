@@ -58,7 +58,7 @@ contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable,
 
     for (uint256 i = 0; i < quantity; i++) {
       _mint(to, tokenId);
-      tokenId++;
+      tokenId++; // token ID for next mint
     }
 
     currentIndex = tokenId;
