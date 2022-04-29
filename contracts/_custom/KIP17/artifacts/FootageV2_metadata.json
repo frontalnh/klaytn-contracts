@@ -25,36 +25,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "publicSaleKey",
-						"type": "uint32"
-					},
-					{
-						"name": "priceWei",
-						"type": "uint64"
-					},
-					{
-						"name": "startTime",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime",
-						"type": "uint32"
-					},
-					{
-						"name": "limit",
-						"type": "uint256"
-					}
-				],
-				"name": "openPublicSale",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "name",
@@ -238,7 +208,7 @@
 					},
 					{
 						"name": "price",
-						"type": "uint64"
+						"type": "uint256"
 					},
 					{
 						"name": "limit",
@@ -387,6 +357,36 @@
 					}
 				],
 				"name": "setBatchSize",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "publicSaleKey",
+						"type": "uint32"
+					},
+					{
+						"name": "priceWei",
+						"type": "uint256"
+					},
+					{
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"name": "limit",
+						"type": "uint256"
+					}
+				],
+				"name": "openPublicSale",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -1007,9 +1007,9 @@
 	},
 	"sources": {
 		"contracts/_custom/KIP17/FootageV2.sol": {
-			"keccak256": "0xbdab02176d9a10ecb5e6fd30b417c5d570f4f08f81040a66dc5ef5eeb7c41549",
+			"keccak256": "0xe3af08a9e2bbda5164475fccb2724baa08aabe4d35ed95915eff7509a4247339",
 			"urls": [
-				"bzzr://e6b981d81e64e9d34f50485a249ffb707c7cc08246f7aab4c91fc34885923767"
+				"bzzr://5f59003fb91c2f3a2c8af02f3a16a9b06b78db01f3502718dcab4f01358d7977"
 			]
 		},
 		"contracts/_custom/KIP17/KIP17BurnableUpgradeable.sol": {
