@@ -22,7 +22,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint32 startTime;
     uint32 endTime;
     uint64 price;
-    uint256 limit; // TODO: check
+    uint256 limit;
   }
 
   struct AllowSaleConf {
@@ -180,5 +180,9 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   function setBatchSize(uint256 amount_) public onlyOwner {
     maxBatchSize = amount_;
     _updateBatchSize(amount_);
+  }
+
+  function devMinted() external view onlyOwner returns (uint256) {
+    return _devMinted;
   }
 }
