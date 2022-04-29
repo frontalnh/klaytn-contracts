@@ -14,6 +14,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
 
   uint256 public maxBatchSize;
   uint256 public amountForDevs;
+  uint256 private _devMinted;
 
   struct PublicSaleConf {
     bool open;
@@ -37,8 +38,6 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
   PublicSaleConf public publicSaleConf;
   AllowSaleConf public allowSaleConf;
   mapping(address => uint256) private numberMinted;
-
-  // Storage End
 
   function initialize(
     string calldata name_,
@@ -138,7 +137,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
 
   // For marketing etc.
   function devMint(uint256 quantity) external onlyOwner {
-    require(totalSupply() + quantity <= amountForDevs, "too many already minted before dev mint");
+    require(_devMinted + quantity <= amountForDevs, "too many already minted before dev mint");
 
     uint256 numChunks = quantity / maxBatchSize;
     for (uint256 i = 0; i < numChunks; i++) {
@@ -146,6 +145,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     }
     uint256 left = quantity % maxBatchSize;
     _safeMint(msg.sender, left);
+    _devMinted = _devMinted + quantity;
   }
 
   // metadata URI
@@ -177,7 +177,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
   }
 
-  function setMaxPerAddress(uint256 amount_) public {
+  function setBatchSize(uint256 amount_) public onlyOwner {
     maxBatchSize = amount_;
     _updateBatchSize(amount_);
   }

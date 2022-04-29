@@ -6,10 +6,7 @@ import "./KIP17Upgradeable.sol";
 import "./KIP17EnumerableUpgradeable.sol";
 
 contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17BurnableUpgradeable {
-  // Token name
   string private _name;
-
-  // Token symbol
   string private _symbol;
   uint256 private currentIndex = 0;
   uint256 internal collectionSize;
@@ -26,9 +23,7 @@ contract KIP17TokenAUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable,
     __KIP17Enumerable_init();
     _name = name;
     _symbol = symbol;
-
-    // register the supported interfaces to conform to KIP17 via KIP13
-    _registerInterface(_INTERFACE_ID_KIP17_METADATA);
+    _registerInterface(_INTERFACE_ID_KIP17_METADATA); // register the supported interfaces to conform to KIP17 via KIP13
     __KIP13_init();
     __KIP17Burnable_init();
     maxBatchSize = maxBatchSize_;
