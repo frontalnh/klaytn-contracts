@@ -37,7 +37,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
 
   PublicSaleConf public publicSaleConf;
   AllowSaleConf public allowSaleConf;
-  mapping(address => uint256) private numberMinted;
+  mapping(address => uint256) public numberMinted;
 
   function initialize(
     string calldata name_,
