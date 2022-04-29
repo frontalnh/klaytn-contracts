@@ -21,7 +21,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
     uint32 publicSaleKey;
     uint32 startTime;
     uint32 endTime;
-    uint64 price;
+    uint256 price;
     uint256 limit;
   }
 
@@ -112,7 +112,7 @@ contract FootageV2 is Initializable, OwnableUpgradeable, KIP17TokenAUpgradeable,
 
   function openPublicSale(
     uint32 publicSaleKey,
-    uint64 priceWei,
+    uint256 priceWei,
     uint32 startTime,
     uint32 endTime,
     uint256 limit
