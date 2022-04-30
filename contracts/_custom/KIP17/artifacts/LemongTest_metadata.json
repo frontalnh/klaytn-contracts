@@ -1000,9 +1000,9 @@
 			]
 		},
 		"contracts/_custom/KIP17/KIP17A.sol": {
-			"keccak256": "0x03b25bcd626e3fb6ace95143d32b2c5d3f525782e2c3ac82b8db6e05df2f8591",
+			"keccak256": "0xc8110295c669035dacbb4314e5f679f9f211a942f5d069c21a9544ab8fbb8f5b",
 			"urls": [
-				"bzzr://455a35680a52c7b456e23c91d99788a29211716190f425396485193fa5a63ab0"
+				"bzzr://2c4a9fdb748ba8b91ef8d1e13dbf5650d03789d6d29354f9331f08cc6f3c656a"
 			]
 		},
 		"contracts/_custom/KIP17/LemongTest.sol": {
