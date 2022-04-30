@@ -46,9 +46,9 @@
 	},
 	"sources": {
 		"contracts/_custom/bidding/LemongBiddingV1.sol": {
-			"keccak256": "0x7447b1d4f2a417a830285d4ae727c7ece6a4a93aa441eb59f954a3a2a6dcd9bc",
+			"keccak256": "0x593fac738b60f8cf9fcae60c560f3dd3dd81ae6175a6b8c62c4d4007ebed0e87",
 			"urls": [
-				"bzzr://bc7bd85ed992aac7cc59206b7d4192209681fc65d5ac109ec2e8cad7d01b40d1"
+				"bzzr://cbac7c5dc4268ece69af4b9126cfae84325c99be1c7bdd826ca5453803580ece"
 			]
 		},
 		"contracts/_custom/oldproxy/Initializable.sol": {

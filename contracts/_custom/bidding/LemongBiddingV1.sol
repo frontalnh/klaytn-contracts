@@ -108,9 +108,8 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
     require(block.timestamp <= _endTime, "Bidding has been ended");
     uint256 minted = ILemong(_lemongAddress).numberMinted(msg.sender);
     require(minted <= _maxMintPerAddress, "You can not mint anymore. Check how many LEMONG NFT did you mint.");
-    if (winAmounts[msg.sender] == 0) {
-      winAddresses.push(msg.sender);
-    }
+    require(winAmounts[msg.sender] == 0, "You have already bidded once");
+    winAddresses.push(msg.sender);
     _remains = _remains - amount;
     winAmounts[msg.sender] = winAmounts[msg.sender] + amount;
     whitelist[msg.sender] = whitelist[msg.sender] - amount;
