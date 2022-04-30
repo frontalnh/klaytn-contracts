@@ -39,28 +39,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "startTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "endTime_",
-						"type": "uint32"
-					},
-					{
-						"name": "price_",
-						"type": "uint256"
-					}
-				],
-				"name": "startBidding",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "_totalSupply",
@@ -153,6 +131,32 @@
 				"constant": false,
 				"inputs": [],
 				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "startTime_",
+						"type": "uint32"
+					},
+					{
+						"name": "endTime_",
+						"type": "uint32"
+					},
+					{
+						"name": "price_",
+						"type": "uint256"
+					},
+					{
+						"name": "totalSupply_",
+						"type": "uint256"
+					}
+				],
+				"name": "startBidding",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -417,20 +421,6 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"name": "setTotalSupply",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [],
 				"name": "_startTime",
@@ -496,9 +486,9 @@
 	},
 	"sources": {
 		"contracts/_custom/bidding/LemongBiddingV1.sol": {
-			"keccak256": "0x230ad0cd225251c05ef1b219617bf99e6d50cd03b6da14301d9aeb2a644e081c",
+			"keccak256": "0x7447b1d4f2a417a830285d4ae727c7ece6a4a93aa441eb59f954a3a2a6dcd9bc",
 			"urls": [
-				"bzzr://f684c341339e70aab447534ab92cb7b4f21a5caa88f2b2367fe1ea165fbfc219"
+				"bzzr://bc7bd85ed992aac7cc59206b7d4192209681fc65d5ac109ec2e8cad7d01b40d1"
 			]
 		},
 		"contracts/_custom/oldproxy/Initializable.sol": {

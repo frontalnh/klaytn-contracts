@@ -131,10 +131,6 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
     require(success, "Transfer failed.");
   }
 
-  function getWinAddresses() external view returns (address[] memory) {
-    return winAddresses;
-  }
-
   function _setTotalSupply(uint256 quantity) internal onlyOwner {
     _totalSupply = quantity;
     _remains = quantity;
