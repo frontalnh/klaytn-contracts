@@ -135,7 +135,7 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
     return winAddresses;
   }
 
-  function setTotalSupply(uint256 quantity) external onlyOwner {
+  function _setTotalSupply(uint256 quantity) internal onlyOwner {
     _totalSupply = quantity;
     _remains = quantity;
   }
@@ -143,10 +143,12 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
   function startBidding(
     uint32 startTime_,
     uint32 endTime_,
-    uint256 price_
+    uint256 price_,
+    uint256 totalSupply_
   ) external onlyOwner {
     _startTime = startTime_;
     _endTime = endTime_;
     _price = price_;
+    _setTotalSupply(totalSupply_);
   }
 }
