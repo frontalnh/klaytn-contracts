@@ -100,6 +100,7 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
     require(_remains >= amount, "No whitelist left.");
     if (isWhiteListAddress_) {
       require(whitelist[msg.sender] >= amount, "you are bidding more than you can.");
+      whitelist[msg.sender] = whitelist[msg.sender] - amount;
     }
     require(_maxBidPerTx >= amount, "You can not bid that much");
     require(_maxBidPerAddress >= winAmounts[msg.sender] + amount, "Exceed max bid per account");
@@ -112,7 +113,6 @@ contract LemongBiddingV1 is Initializable, OwnableUpgradeable {
     winAddresses.push(msg.sender);
     _remains = _remains - amount;
     winAmounts[msg.sender] = winAmounts[msg.sender] + amount;
-    whitelist[msg.sender] = whitelist[msg.sender] - amount;
     refundIfOver(price);
   }
 
