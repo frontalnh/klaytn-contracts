@@ -34,10 +34,6 @@ contract Lemong is Ownable, KIP17A, ReentrancyGuard {
   }
 
   SaleConfig public saleConfig;
-  HolderSaleConfig public holderSaleConfig;
-  AllowListSaleConfig public allowListSaleConfig;
-
-  mapping(address => uint256) public allowlist;
 
   uint256 public minMatchCondition = 2;
 
@@ -53,79 +49,9 @@ contract Lemong is Ownable, KIP17A, ReentrancyGuard {
     require(amountForAuctionAndDev_ <= collectionSize_, "larger collection size needed");
   }
 
-  function startHolderSale(
-    uint256 holderPrice,
-    address[] calldata contracts,
-    uint256[] calldata minHolds,
-    uint256 mintLimit
-  ) external onlyOwner {
-    holderSaleConfig = HolderSaleConfig(holderPrice, contracts, minHolds, mintLimit);
-  }
-
-  function setMintMatchCondition(uint256 count) external {
-    minMatchCondition = count;
-  }
-
-  function endHolderSale() external onlyOwner {
-    holderSaleConfig.holderPrice = 0;
-  }
-
   modifier callerIsUser() {
     require(tx.origin == msg.sender, "The caller is another contract");
     _;
-  }
-
-  modifier matchNFTHoldCondition() {
-    uint256 _matchCnt = 0;
-
-    for (uint256 i = 0; i < holderSaleConfig.nftContracts.length; i++) {
-      uint256 balance = IKIP17(holderSaleConfig.nftContracts[i]).balanceOf(msg.sender);
-      if (holderSaleConfig.nftMinHolds[i] <= balance) {
-        _matchCnt++;
-      }
-    }
-
-    require(minMatchCondition <= _matchCnt, "NFT hold condition not matched");
-    _;
-  }
-
-  modifier allowlistMintOn() {
-    uint256 price = uint256(allowListSaleConfig.price);
-    require(price != 0, "allowlist sale has not begun yet");
-    _;
-  }
-
-  function startAllowlistSale(uint256 price) external onlyOwner {
-    allowListSaleConfig.price = price;
-  }
-
-  function endAllowListSale() external onlyOwner {
-    allowListSaleConfig.price = 0;
-  }
-
-  function allowlistMint(uint256 amount) external payable callerIsUser allowlistMintOn {
-    uint256 price = uint256(allowListSaleConfig.price);
-    require(price != 0, "allowlist sale has not begun yet");
-    require(allowlist[msg.sender] >= amount, "not eligible for allowlist mint");
-    require(totalSupply() + amount <= collectionSize, "reached max supply");
-    allowlist[msg.sender] = allowlist[msg.sender] - amount;
-    _safeMint(msg.sender, amount);
-    refundIfOver(price);
-  }
-
-  modifier holderSaleOn() {
-    require(holderSaleConfig.holderPrice != 0, "holder sale not in progress");
-    _;
-  }
-
-  // mint for user who owns specific NFT tokens
-  function holderMint(uint256 amount) external payable callerIsUser matchNFTHoldCondition holderSaleOn {
-    uint256 price = uint256(holderSaleConfig.holderPrice);
-    require(price != 0, "holder sale has not begun yet");
-    require(totalSupply() + amount <= collectionSize, "reached max supply");
-    require(balanceOf(msg.sender) + amount <= holderSaleConfig.mintLimit, "reached max mint count for NFT holders");
-    _safeMint(msg.sender, amount);
-    refundIfOver(price);
   }
 
   function publicSaleMint(uint256 quantity, uint256 callerPublicSaleKey) external payable callerIsUser {
@@ -178,26 +104,6 @@ contract Lemong is Ownable, KIP17A, ReentrancyGuard {
     saleConfig.publicSaleKey = key;
   }
 
-  function seedAllowlist(address[] calldata addresses, uint256[] calldata numSlots) external onlyOwner {
-    require(addresses.length == numSlots.length, "addresses does not match numSlots length");
-    for (uint256 i = 0; i < addresses.length; i++) {
-      allowlist[addresses[i]] = numSlots[i];
-    }
-  }
-
-  // For marketing etc.
-  function devMint(uint256 quantity) external onlyOwner {
-    require(totalSupply() + quantity <= amountForDevs, "too many already minted before dev mint");
-
-    uint256 numChunks = quantity / maxBatchSize;
-    for (uint256 i = 0; i < numChunks; i++) {
-      _safeMint(msg.sender, maxBatchSize);
-    }
-    uint256 left = quantity % maxBatchSize;
-    _safeMint(msg.sender, left);
-  }
-
-  // // metadata URI
   string private _baseTokenURI;
 
   function _baseURI() internal view returns (string memory) {
