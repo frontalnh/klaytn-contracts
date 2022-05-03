@@ -21,21 +21,7 @@ contract Lemong is Ownable, KIP17A, ReentrancyGuard {
     uint256 publicSaleLimit;
   }
 
-  struct AllowListSaleConfig {
-    uint256 price; // mint price for allow list accounts
-  }
-
-  struct HolderSaleConfig {
-    uint256 holderPrice;
-    // check nft holder
-    address[] nftContracts;
-    uint256[] nftMinHolds;
-    uint256 mintLimit;
-  }
-
   SaleConfig public saleConfig;
-
-  uint256 public minMatchCondition = 2;
 
   constructor(
     uint256 maxBatchSize_,
