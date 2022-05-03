@@ -109,20 +109,6 @@
 			{
 				"constant": true,
 				"inputs": [],
-				"name": "minMatchCondition",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
 				"name": "totalSupply",
 				"outputs": [
 					{
@@ -823,9 +809,9 @@
 			]
 		},
 		"pentasquare/_custom/KIP17/Lemong.sol": {
-			"keccak256": "0x7af97d4b021c864aaf4d7f1ba70bf719beb2901cafa8f15c60723b65006adc1c",
+			"keccak256": "0xb5dd1cbc2702b23a7993c78deb23f49eebf73077a2fa121d32cee91525775ae8",
 			"urls": [
-				"bzzr://653a6886f6c216242259f5dd22c773721cafcb7c72df24201b796cb09e3effd1"
+				"bzzr://e2efd0fbbbf5dd267f9281aa24a9c85d3c874aa3d630f2ad5db8a29a4719a1bb"
 			]
 		},
 		"pentasquare/_custom/oldproxy/Initializable.sol": {
