@@ -16,6 +16,7 @@ contract LemongRevealedV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgra
   uint256 public maxBatchSize;
   address public lemongV1Contract;
   address public lemongV1ContractOwner;
+  bool public swapOpened;
 
   function initialize(
     string calldata name_,
@@ -31,6 +32,7 @@ contract LemongRevealedV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgra
     maxBatchSize = maxBatchSize_;
     lemongV1Contract = lemongV1Contract_;
     lemongV1ContractOwner = lemongV1ContractOwner_;
+    swapOpened = false;
   }
 
   modifier callerIsUser() {
@@ -78,11 +80,20 @@ contract LemongRevealedV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgra
   }
 
   function swap(uint256[] calldata tokenIds) external callerIsUser {
+    require(swapOpened, "You can not swap right now");
     for (uint256 i = 0; i < tokenIds.length; i++) {
       uint256 tokenId = tokenIds[i];
       require(msg.sender == ILemongV1(lemongV1Contract).ownerOf(tokenId), "sender is not the owner of the token");
       ILemongV1(lemongV1Contract).safeTransferFrom(msg.sender, lemongV1ContractOwner, tokenId);
       _mint(msg.sender, tokenId);
     }
+  }
+
+  function openSwap() external onlyOwner {
+    swapOpened = true;
+  }
+
+  function closeSwap() external onlyOwner {
+    swapOpened = false;
   }
 }

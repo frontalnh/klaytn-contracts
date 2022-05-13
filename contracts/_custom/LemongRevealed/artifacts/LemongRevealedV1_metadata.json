@@ -527,25 +527,6 @@
 				"constant": true,
 				"inputs": [
 					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "numberMinted",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
 						"name": "owner",
 						"type": "address"
 					},
@@ -834,9 +815,9 @@
 			]
 		},
 		"contracts/_custom/LemongRevealed/LemongRevealedV1.sol": {
-			"keccak256": "0x0865b8727fcb0f6e77a16e5bf20f7ee0ab4449159c2294493901db08af99017a",
+			"keccak256": "0xa3db07dbbf7692917336c8d0077566b885e2edde1e3ea7533aba503ac57ac134",
 			"urls": [
-				"bzzr://4b89e1257f67e81437e121c71c2ff8063506c846356565fbf9e4155fd32530ff"
+				"bzzr://a196a0326444d4a48dae95556a5d9149169a3c13465e7dde6a6f3d59f19d39b9"
 			]
 		},
 		"contracts/_custom/introspection/KIP13Upgradeable.sol": {
