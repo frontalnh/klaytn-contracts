@@ -17,8 +17,6 @@ contract LemongRevealedV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgra
   address public lemongV1Contract;
   address public lemongV1ContractOwner;
 
-  mapping(address => uint256) public numberMinted;
-
   function initialize(
     string calldata name_,
     string calldata symbol_,
@@ -38,13 +36,6 @@ contract LemongRevealedV1 is Initializable, OwnableUpgradeable, KIP17TokenAUpgra
   modifier callerIsUser() {
     require(tx.origin == msg.sender, "The caller is another contract");
     _;
-  }
-
-  function refundIfOver(uint256 price) private {
-    require(msg.value >= price, "Need to send more KLAY.");
-    if (msg.value > price) {
-      msg.sender.transfer(msg.value - price);
-    }
   }
 
   // metadata URI
