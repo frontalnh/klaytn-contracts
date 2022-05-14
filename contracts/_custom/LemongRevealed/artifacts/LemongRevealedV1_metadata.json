@@ -149,6 +149,20 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [],
+				"name": "swapOpened",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -286,6 +300,15 @@
 					}
 				],
 				"name": "setLemongContract",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "openSwap",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -561,6 +584,15 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [],
+				"name": "closeSwap",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -815,9 +847,9 @@
 			]
 		},
 		"contracts/_custom/LemongRevealed/LemongRevealedV1.sol": {
-			"keccak256": "0xa3db07dbbf7692917336c8d0077566b885e2edde1e3ea7533aba503ac57ac134",
+			"keccak256": "0x0396ed9749d75679f79c3f8a90c1521b4e413a277f740628e094ab4439ed6642",
 			"urls": [
-				"bzzr://a196a0326444d4a48dae95556a5d9149169a3c13465e7dde6a6f3d59f19d39b9"
+				"bzzr://acd358447ff3cc8cec2bba6a6f39f34791d8069396e44ff810539055eb92a008"
 			]
 		},
 		"contracts/_custom/introspection/KIP13Upgradeable.sol": {
