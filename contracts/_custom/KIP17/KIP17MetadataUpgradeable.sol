@@ -26,7 +26,7 @@ contract KIP17MetadataUpgradeable is KIP13Upgradeable, KIP17Upgradeable, IKIP17M
   /**
    * @dev Constructor function
    */
-  function __KIP17Metadata_init(string memory name, string memory symbol) public {
+  function __KIP17Metadata_init(string memory name, string memory symbol) internal {
     _name = name;
     _symbol = symbol;
 

@@ -11,7 +11,7 @@ import "./KIP17MetadataUpgradeable.sol";
  * @dev see http://kips.klaytn.com/KIPs/kip-17-non_fungible_token
  */
 contract KIP17FullUpgradeable is KIP17Upgradeable, KIP17EnumerableUpgradeable, KIP17MetadataUpgradeable {
-  function __KIP17Full_init(string memory name, string memory symbol) public {
+  function __KIP17Full_init(string memory name, string memory symbol) internal {
     __KIP17_init();
     __KIP17Enumerable_init();
     __KIP17Metadata_init(name, symbol);
