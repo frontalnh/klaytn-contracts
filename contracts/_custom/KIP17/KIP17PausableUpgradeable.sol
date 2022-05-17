@@ -24,7 +24,7 @@ contract KIP17PausableUpgradeable is KIP13Upgradeable, KIP17Upgradeable, Pausabl
   /**
    * @dev Constructor function.
    */
-  function __KIP17Pausable_init() public {
+  function __KIP17Pausable_init() internal {
     // register the supported interface to conform to KIP17Pausable via KIP13
     _registerInterface(_INTERFACE_ID_KIP17_PAUSABLE);
   }
