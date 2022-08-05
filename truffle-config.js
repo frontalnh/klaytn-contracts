@@ -1,6 +1,6 @@
 // Custom Data Starts
-const NAMHOON_accessKeyId = "KASKNN6OZJA71UWQDKSBJOVD";
-const NAMHOON_secretAccessKey = "y4JMDOsrzCT8e8Blt8VBBRnl2wfyGPI0B0STtopM";
+const NAMHOON_accessKeyId = "KASK82CE37A0GKII4P3HHWX6"; // support@indinity.co
+const NAMHOON_secretAccessKey = "6UjyrBLdp7JtLBVdjxOaIrmxEltNKOdsQzxomNMe";
 // Custom Data Ends
 /**
  * Use this file to configure your truffle project. It's seeded with some
